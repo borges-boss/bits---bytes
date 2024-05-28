@@ -1,0 +1,13 @@
+{
+    "game_start_opening_text":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vulputate efficitur dolor non viverra. Suspendisse dignissim ultrices augue, at eleifend leo convallis eget. Nam non purus sit amet mauris lobortis aliquet. Praesent posuere ultricies elit id vulputate. Donec augue urna, cursus vitae risus a, pellentesque sollicitudin tortor. Donec gravida mi at libero ornare, vitae dapibus leo volutpat. Aliquam interdum rhoncus nisl, eget euismod lectus. Donec ligula risus, placerat vitae sem eu, suscipit consectetur arcu. Nam blandit leo vitae massa elementum, at dapibus dolor posuere. Quisque vel facilisis turpis, dapibus pulvinar ex. Fusce ac ante rutrum, interdum sem quis, tempus diam.",
+    "saves": [
+        {
+            "title": "Game 1",
+            "last_save": "2024-05-24T00:40:06.975Z"
+        },
+        {
+            "title": "Bazinga",
+            "last_save": "2024-05-24T00:40:06.975Z"
+        }
+    ]
+}
