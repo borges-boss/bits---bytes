@@ -1,5 +1,5 @@
-from load_menu.models.load_menu_model import LoadMenuModel
-from load_menu.views.load_menu_view import LoadMenuView
+from content.load_menu.models.load_menu_model import LoadMenuModel
+from content.load_menu.views.load_menu_view import LoadMenuView
 from utils.console_utils import ConsoleUtils
 
 class LoadMenuController:

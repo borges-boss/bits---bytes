@@ -1,5 +1,5 @@
 from services.data_store import DataStore
-from game_save.mappings.game_save_log_mapping import GameSaveLogMapper
+from content.game_save.mappings.game_save_log_mapping import GameSaveLogMapper
 from constants.constants import GAME_SAVES_KEY
 
 class LoadMenuModel:

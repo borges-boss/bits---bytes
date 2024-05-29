@@ -1,4 +1,4 @@
-from game_save.models.game_save_log_model import GameSaveLogModel
+from content.game_save.models.game_save_log_model import GameSaveLogModel
 
 class GameSaveLogMapper:
     @staticmethod
