@@ -1,4 +1,4 @@
-from base.enchantment import Enchantment
+from python.base.enchantment import Enchantment
 from typing import List
 
 class Item:

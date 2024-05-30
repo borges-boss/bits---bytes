@@ -1,10 +1,21 @@
 class Ability:
 
-    def __init__(self, name, description,type,value):
+    def __init__(self, name, description, type:str, value, ability_cost):
         self._name = name
         self._description = description
         self._type = type
         self._value = value
+        self._ability_cost = ability_cost
+
+
+
+    @property
+    def ability_cost(self):
+        return self._ability_cost
+
+    @ability_cost.setter
+    def ability_cost(self, value):
+        self._ability_cost = value
 
     @property
     def name(self):

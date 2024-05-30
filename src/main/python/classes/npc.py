@@ -1,20 +1,11 @@
-from base.entity import Entity
+from python.base.entity import Entity
 
 class Npc(Entity):
 
     def __init__(self, health, defence, race, type,name,description,role):
-      super().__init__(health, defence, race, type)
-      self._name = name
+      super().__init__(name,health, defence, race, type)
       self._description = description
       self._role = role
-
-    @property
-    def name(self):
-        return self._name
-
-    @name.setter
-    def name(self, value):
-        self._name = value
 
     @property
     def description(self):

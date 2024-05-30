@@ -1,5 +1,5 @@
-from base.structure import Structure
-from classes.npc import Npc
+from python.base.structure import Structure
+from python.classes.npc import Npc
 from typing import List
 
 class PacificStructure(Structure):

@@ -1,4 +1,4 @@
-from base.structure import Structure
+from python.base.structure import Structure
 
 class DangerousStructure(Structure):
     def __init__(self, name, type, width, height, dificulty):
