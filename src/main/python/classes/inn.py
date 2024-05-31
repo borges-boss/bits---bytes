@@ -1,7 +1,7 @@
-from python.classes.npc import Npc
-from python.classes.pacific_structure import PacificStructure
-from python.classes.player import Player
-from python.utils.print_utils import PrintUtils
+from classes.npc import Npc
+from classes.pacific_structure import PacificStructure
+from classes.player import Player
+from utils.print_utils import PrintUtils
 
 class Inn(PacificStructure):
 

@@ -1,6 +1,6 @@
-from python.classes.pacific_structure import PacificStructure
-from python.classes.npc import Npc
-from python.base.item import Item
+from classes.pacific_structure import PacificStructure
+from classes.npc import Npc
+from base.item import Item
 from typing import List
 
 class Shop(PacificStructure):

@@ -1,12 +1,10 @@
-from python.base.entity import Entity
-from python.base.ability import Ability
-from python.classes.player import Player
-from python.constants.constants import ABILITY_TYPE_PHYSICAL
+from base.entity import Entity
+from constants.constants import ABILITY_TYPE_PHYSICAL
 
 class Monster(Entity):
 
-    def __init__(self, health, defence,stamina, race, type, name, mana, description, abilities, level):
-        super().__init__(name,health, defence, stamina, race, type)
+    def __init__(self, health, damage, defence, stamina, race, type, name, mana, description, abilities, level):
+        super().__init__(name,health, damage, defence, stamina, race, type)
         self._mana = mana
         self._description = description
         self._abilities = abilities
@@ -45,8 +43,8 @@ class Monster(Entity):
     def abilities(self, value):
         self._abilities = value
 
-    def dealDamage(self,ability:Ability, target:Player):
-        # Calcular dano baseado no nivel do player e o dano base da abilidade
+    def dealDamage(self,ability, target):
+        # Calcular dano baseado no nivel do monstro e o dano base da abilidade
         damage = self.level * ability.value
 
          # Calcular redução de dano baseado na defesa do alvo
@@ -59,7 +57,7 @@ class Monster(Entity):
         target.health -= net_damage
         print(f"{self.name} usou {ability.name}! {target.name} levou {net_damage} de dano!")
 
-    def useAbility(self, ability:Ability, target:Player):
+    def useAbility(self, ability, target):
         
         if ability.type == ABILITY_TYPE_PHYSICAL:
             self.dealDamage(ability,target)

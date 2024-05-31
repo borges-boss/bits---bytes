@@ -1,7 +1,7 @@
-from python.classes.dangerous_structure import DangerousStructure
-from python.base.item import Item
+from classes.dangerous_structure import DangerousStructure
+from base.item import Item
 from typing import List
-from python.classes.monster import Monster
+from classes.monster import Monster
 
 class OpenFields(DangerousStructure):
 

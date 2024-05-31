@@ -1,5 +1,5 @@
 import time
-from python.base.entity import Entity
+from base.entity import Entity
 
 class PrintUtils:
 

@@ -1,6 +1,6 @@
-from python.classes.npc import Npc
-from python.classes.pacific_structure import PacificStructure
-from python.base.quest import Quest
+from classes.npc import Npc
+from classes.pacific_structure import PacificStructure
+from base.quest import Quest
 from typing import List
 
 class Tavern(PacificStructure):

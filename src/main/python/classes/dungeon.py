@@ -1,4 +1,4 @@
-from python.classes.dangerous_structure import DangerousStructure
+from classes.dangerous_structure import DangerousStructure
 
 
 class Dungeon(DangerousStructure):

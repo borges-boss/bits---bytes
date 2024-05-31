@@ -1,5 +1,9 @@
-from python.base.enchantment import Enchantment
+from base.enchantment import Enchantment
 from typing import List
+from constants.constants import ITEM_TYPE_DAMAGE
+from constants.constants import ITEM_TYPE_UTILITY
+from constants.constants import  ITEM_TYPE_CONSUMABLE
+from constants.constants import ITEM_TYPE_WEARABLE
 
 class Item:
 
@@ -50,5 +54,16 @@ class Item:
     def enchantments(self, value):
         self._enchantments = value
 
+
     def apply_enchantments(self):
         print("apply")
+
+    def is_equippable(self):
+        return self.type == ITEM_TYPE_DAMAGE or self.type == ITEM_TYPE_WEARABLE
+    
+    def is_usable(self):
+        return self.type == ITEM_TYPE_UTILITY
+    
+    def is_consumable(self):
+        return self.type == ITEM_TYPE_CONSUMABLE
+

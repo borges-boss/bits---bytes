@@ -1,5 +1,5 @@
-from python.base.item import Item
-from python.constants.constants import REWARD_TYPE_ITEM
+from base.item import Item
+from constants.constants import REWARD_TYPE_ITEM
 
 class Quest:
 

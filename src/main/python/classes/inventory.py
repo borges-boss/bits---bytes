@@ -1,4 +1,4 @@
-from python.base.item import Item
+from base.item import Item
 from typing import List
 
 class Inventory:

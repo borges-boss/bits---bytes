@@ -1,4 +1,4 @@
-from python.base.scene import Scene
+from base.scene import Scene
 
 
 class City(Scene):

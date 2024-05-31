@@ -1,13 +1,23 @@
 class Entity:
 
-    def __init__(self,name,health,defence,stamina,race,type):
+    def __init__(self,name,health,damage:float,defence,stamina,race,type):
         self._name = name
         self._helth = health
+        self._damage = damage
         self._defence = defence
         self._stamina = stamina
         self._race = race
         self._type = type
 
+
+
+    @property
+    def damage(self):
+        return self._damage
+
+    @damage.setter
+    def damage(self, value):
+        self._damage = value
 
     @property
     def name(self):

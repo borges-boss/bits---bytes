@@ -1,12 +1,8 @@
-from python.classes.dangerous_structure import DangerousStructure
-from python.classes.monster import Monster
-from python.base.item import Item
-from typing import List
-
+from classes.dangerous_structure import DangerousStructure
 
 class Cave(DangerousStructure):
 
-    def __init__(self, name, type, dificulty, monsters:List[Monster], ores:List[Item]):
+    def __init__(self, name, type, dificulty, monsters, ores):
         super().__init__(name, type, dificulty)
         self._monsters = monsters
         self._ores = ores
