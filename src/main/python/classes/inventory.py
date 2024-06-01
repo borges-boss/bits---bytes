@@ -19,6 +19,7 @@ class Inventory:
     def add_item(self, item:Item):
         total_weight = sum([i.weight for i in self.items])
         if item.weight + total_weight <= self.max_weight:
+            print("\nVoce adicionou "+item.name+" ao seu inventario")
             self.items.append(item)
         else:
             print("Voce não consegue carregar mais itens.")

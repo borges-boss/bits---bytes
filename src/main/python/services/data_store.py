@@ -140,9 +140,15 @@ class DataStore:
 
         return True
 
-
-
     def find_saves(self):
         data = self.json_file_processor.read_file_contents("datastore\\saves.json")
         value = data["saves"]
         return value
+    
+    def find_items_by_rarity(self, rarity):
+        data = self.json_file_processor.read_file_contents("datastore\\items.json")
+        items_of_rarity = [item for item in data['items'] if item['_rarity'] == rarity]
+        return items_of_rarity
+
+    def find_locations_by_city(self):
+        pass

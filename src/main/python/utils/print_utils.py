@@ -5,7 +5,7 @@ from base.entity import Entity
 class PrintUtils:
 
     @staticmethod
-    def print_slowly(text,delay):
+    def print_slowly(text,delay=0.05):
         for character in text:
           print(character, end='', flush=True)
           time.sleep(delay)

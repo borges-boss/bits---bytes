@@ -1,3 +1,12 @@
 {
-    "item_types":[{"key": 0, "value": "sword"}, {"key": 1, "value": "axe"}, {"key": 2, "value": "bow"}, {"key": 3, "value": "staff"}, {"key": 4, "value": "armor"}]
+    "items": [
+        {
+            "_name": "Hands",
+            "_type": "damage_item",
+            "_rarity": "Common",
+            "_weight": 0,
+            "_enchantments": [],
+            "_damage": 1
+        }
+    ]
 }
