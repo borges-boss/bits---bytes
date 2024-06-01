@@ -9,7 +9,7 @@ class GameOpeningModel:
       self.file_reader = FileReader()
 
    def get_opening_text(self):
-        return self.data_store.find_by_key(GAME_START_INTRO_TEXT_KEY)
+        return self.data_store.find_data_by_key(GAME_START_INTRO_TEXT_KEY)
    
    def get_ascii_art(self):
        return self.file_reader.read_file_contents("src\main\\res\\demon_face.txt")

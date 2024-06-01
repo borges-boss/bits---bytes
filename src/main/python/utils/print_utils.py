@@ -1,4 +1,5 @@
 import time
+import os
 from base.entity import Entity
 
 class PrintUtils:
@@ -11,7 +12,23 @@ class PrintUtils:
 
           
     @staticmethod
-    def print_entity_dialog(self,entity:Entity,text):
-       self.print_slowly(entity.name+": "+text, 0.05)
+    def print_entity_dialog(entity:Entity,text:str):
+       PrintUtils.print_slowly(entity.name+": "+text, 0.05)
+       print("\n")
+
+    @staticmethod
+    def print_separator_line():
+        terminal_width = os.get_terminal_size().columns
+        print("-" * terminal_width)
+        print("\n")
+
+    @staticmethod
+    def print_centered(text):
+        terminal_width = os.get_terminal_size().columns
+        print(text.center(terminal_width))
+
+
+
+
        
     

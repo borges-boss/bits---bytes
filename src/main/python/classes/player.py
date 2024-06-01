@@ -7,6 +7,7 @@ from base.item import Item
 from classes.consumable_item import ConsumableItem
 from classes.wearable_item import WearableItem
 from classes.damage_item import DamageItem
+from base.journal import Journal
 from typing import List
 from constants.constants import ABILITY_TYPE_PHYSICAL
 from constants.constants import ABILITY_TYPE_MAGIC
@@ -32,10 +33,11 @@ from constants.constants import RACE_TYPE_LIZARDFOLK
 from constants.constants import RACE_TYPE_ORC
 
 
+
 class Player(Entity):
 
     def __init__(self, health, mana, player_id, name, race, game_class: str , abilities, level, xp, wallet:Wallet, inventory:Inventory, 
-                 equipped_item: DamageItem, equipped_armor:List[WearableItem]):
+                 equipped_item: DamageItem, equipped_armor:List[WearableItem], journal: Journal):
         self._player_id = player_id
         self._mana = mana
         self._game_class = game_class
@@ -46,9 +48,18 @@ class Player(Entity):
         self._inventory = inventory
         self._equipped_item = equipped_item
         self._equiped_armor = equipped_armor
+        self._journal = journal
         super().__init__(name, health, 0, 0, race, None)
 
 
+
+    @property
+    def journal(self):
+        return self._journal
+
+    @journal.setter
+    def journal(self, value):
+        self._journal = value
 
     @property
     def equipped_armor(self):
@@ -394,5 +405,27 @@ class Player(Entity):
     def use_consumable(self,item:ConsumableItem):
         if item.effect_type == CONSUMABLE_EFFECT_TYPE_MANA:
             pass
+
+    
+    def serialize(self, title):
+        # Serialize the player object to a dictionary
+        player_info = {
+            'player_id': self._player_id,
+            'mana': self._mana,
+            'game_class': self._game_class,
+            'abilities': self._abilities, 
+            'level': self._level,
+            'xp': self._xp,
+            'wallet': self._wallet.__dict__, 
+            'inventory': self._inventory.__dict__,  
+            'equipped_item': self._equipped_item.__dict__,  
+            'equipped_armor': [item.__dict__ for item in self._equiped_armor],  
+            'journal': self._journal.__dict__,  
+            'name': self.name,
+            'health': self.health,
+            'race': self.race
+        }
+
+        return player_info
 
 

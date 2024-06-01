@@ -38,7 +38,9 @@ class Inn(PacificStructure):
     def rest(self, player:Player):
         if player.wallet.coins >= self.price_per_stay:
             player.wallet.subtract_coins(self.price_per_stay)
-            player.helth(player.calculate_max_health()) #Restaurar vida completa do jogador
+            player.helth(player.get_player_base_health()) #Restaurar vida completa do jogador
+            player.stamina(player.get_player_base_stamina())
+            player.mana(player.get_player_mana())
             return player
         else:
             PrintUtils.print_entity_dialog(self.inkeeper,"Só volte aqui quando tiver grana pra pagar pelo quarto!")

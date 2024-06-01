@@ -1,0 +1,35 @@
+{
+    "quests": [
+        {
+            "name": "A strange quest",
+            "description": "This is a quest",
+            "reward": {
+                "type": "money",
+                "value": 500
+            },
+            "is_completed":false
+        },
+        {
+            "name": "Another quest",
+            "description": "This is another quest",
+            "is_completed":false,
+            "reward": {
+                "type": "item",
+                "value": {
+                    "name": "Cool Sword",
+                    "type": "damage_item",
+                    "rarity": "Common",
+                    "weight": 2.4,
+                    "enchantments": [
+                        {
+                            "name": "More Damage",
+                            "description": "",
+                            "type": "damage_enchantment",
+                            "value": 4
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}

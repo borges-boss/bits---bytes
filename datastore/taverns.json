@@ -1,0 +1,54 @@
+{
+    "taverns": [
+        {
+            "city":"City",
+            "name": "The Prancing Pony",
+            "type": "Tavern",
+            "width": 10,
+            "height": 20,
+            "tavern_keeper_dialog":"Sao tempos somrbrios...",
+            "tavern_keeper": {
+                "name": "Barliman Butterbur",
+                "health": 100,
+                "defence": 10,
+                "race": "Human",
+                "type": "Tavern Keeper",
+                "description": "The friendly and somewhat forgetful innkeeper.",
+                "role": "Tavern Keeper"
+            },
+            "quests": [
+                {
+                    "name": "A strange quest",
+                    "description": "This is a quest",
+                    "is_completed":false,
+                    "reward": {
+                        "type": "money",
+                        "value": 500
+                    }
+                },
+                {
+                    "name": "Another quest",
+                    "description": "This is another quest",
+                    "is_completed":false,
+                    "reward": {
+                        "type": "item",
+                        "value": {
+                            "name": "Cool Sword",
+                            "type": "damage_item",
+                            "rarity": "Common",
+                            "weight": 2.4,
+                            "enchantments": [
+                                {
+                                    "name": "More Damage",
+                                    "description": "",
+                                    "type": "damage_enchantment",
+                                    "value": 4
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

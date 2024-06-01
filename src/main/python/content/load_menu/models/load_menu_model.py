@@ -7,6 +7,6 @@ class LoadMenuModel:
         self.datastore = DataStore()
 
     def get_save_logs(self):
-       save_logs = self.datastore.find_by_key(GAME_SAVES_KEY)
+       save_logs = self.datastore.find_data_by_key(GAME_SAVES_KEY)
        return GameSaveLogMapper.map_to_model(save_logs)
 

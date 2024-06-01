@@ -2,8 +2,8 @@ from base.entity import Entity
 
 class Npc(Entity):
 
-    def __init__(self, health, defence, race, type,name,description,role):
-      super().__init__(name, health, 0, defence, race, type)
+    def __init__(self, health, defence, race, type, name,description,role):
+      super().__init__(name, health, 0, defence, 0, race, type)
       self._description = description
       self._role = role
 

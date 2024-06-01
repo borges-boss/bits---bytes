@@ -5,10 +5,6 @@ class Structure:
         self._width = width
         self._height = height
 
-    def __init__(self, name, type):
-        self._name = name
-        self._type = type
-
     @property
     def name(self):
         return self._name
