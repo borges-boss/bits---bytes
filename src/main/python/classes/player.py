@@ -37,7 +37,7 @@ from constants.constants import RACE_TYPE_ORC
 class Player(Entity):
 
     def __init__(self, health, mana, player_id, name, race, game_class: str , abilities, level, xp, wallet:Wallet, inventory:Inventory, 
-                 equipped_item: DamageItem, equipped_armor:List[WearableItem], journal: Journal):
+                 equipped_item: DamageItem, equipped_armor:List[WearableItem], journal: Journal, city):
         self._player_id = player_id
         self._mana = mana
         self._game_class = game_class
@@ -49,10 +49,18 @@ class Player(Entity):
         self._equipped_item = equipped_item
         self._equiped_armor = equipped_armor
         self._journal = journal
+        self._city = city
         super().__init__(name, health, 0, 0, race, None)
 
 
+    @property
+    def city(self):
+        return self._city
 
+    @city.setter
+    def city(self, value):
+        self._city = value
+        
     @property
     def journal(self):
         return self._journal

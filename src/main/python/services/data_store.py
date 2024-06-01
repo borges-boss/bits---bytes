@@ -108,7 +108,7 @@ class DataStore:
         data = self.find_data_by_key('saves')
 
         if len(data) >= 4:
-            # Delete the oldest save
+            data.sort(key=lambda x: x['last_save'])
             data.pop(0)
 
         player_info = {
@@ -125,7 +125,8 @@ class DataStore:
             'journal': {**vars(player._journal), 'quests': [vars(quest) for quest in player._journal._quests]},
             'name': player.name,
             'health': player.health,
-            'race': player.race
+            'race': player.race,
+            'city': vars(player.city) 
         }
 
         data.append({
@@ -133,5 +134,5 @@ class DataStore:
             'last_save': datetime.now().isoformat(),
             'player_info': player_info
         })
-        
+
         self.json_file_processor.write_to_file("datastore\\saves.json", {'saves': data})
