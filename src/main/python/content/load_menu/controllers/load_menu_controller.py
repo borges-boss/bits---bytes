@@ -1,10 +1,10 @@
-from content.load_menu.models.load_menu_model import LoadMenuModel
 from content.load_menu.views.load_menu_view import LoadMenuView
+from content.game_save.models.game_save_model import GameSaveModel
 from utils.console_utils import ConsoleUtils
 
 class LoadMenuController:
     def __init__(self,menu_controller):
-        self.model = LoadMenuModel()
+        self.model = GameSaveModel()
         self.view = LoadMenuView()
         self.menu_controller = menu_controller
 
@@ -36,8 +36,8 @@ class LoadMenuController:
         dashed_line = "-" * self.view.box_width
         header = f"{header_text:^{self.view.columns}}\n{' ' * self.view.margin}{dashed_line}\n"
 
-        game_saves = self.model.get_save_logs()
-        game_boxes = [self.view.create_box(f"{game_saves[i].title}", game_saves[i].last_save) for i in range(len(game_saves))]
+        game_saves = self.model.get_saves()
+        game_boxes = [self.view.create_box(f"{game_saves[i]['title']}", game_saves[i]['last_save']) for i in range(len(game_saves))]
 
         self.saves_count = len(game_saves)
         self.view.display(header, game_boxes)

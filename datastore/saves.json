@@ -1,3 +1,94 @@
 {
-    "saves": []
+    "saves": [
+        {
+            "title": "Save 1",
+            "last_save": "2024-06-01T14:51:24.927414",
+            "player_info": {
+                "player_id": 1,
+                "mana": 100,
+                "game_class": "Warrior",
+                "abilities": [],
+                "level": 10,
+                "xp": 2.2,
+                "wallet": {
+                    "_coins": 100
+                },
+                "inventory": {
+                    "_items": [],
+                    "max_weight": 500.0,
+                    "items": []
+                },
+                "equipped_item": {
+                    "_name": "Hands",
+                    "_type": "damage_item",
+                    "_rarity": "Common",
+                    "_weight": 0,
+                    "_enchantments": [],
+                    "_damage": 1
+                },
+                "equipped_armor": [],
+                "journal": {
+                    "_quests": [],
+                    "quests": []
+                },
+                "name": "Test",
+                "health": 100,
+                "race": "Human",
+                "location": {
+                    "_name": "Open",
+                    "_type": "open_fields",
+                    "_width": 100,
+                    "_height": 100,
+                    "_dificulty": 10,
+                    "_loot": [],
+                    "_monsters": []
+                }
+            }
+        },
+        {
+            "title": "Save 2",
+            "last_save": "2024-06-01T15:28:56.314641",
+            "player_info": {
+                "player_id": 1,
+                "mana": 100,
+                "game_class": "Warrior",
+                "abilities": [],
+                "level": 20,
+                "xp": 2.2,
+                "wallet": {
+                    "_coins": 100
+                },
+                "inventory": {
+                    "_items": [],
+                    "max_weight": 500.0,
+                    "items": []
+                },
+                "equipped_item": {
+                    "_name": "Hands",
+                    "_type": "damage_item",
+                    "_rarity": "Common",
+                    "_weight": 0,
+                    "_enchantments": [],
+                    "_damage": 1
+                },
+                "equipped_armor": [],
+                "journal": {
+                    "_quests": [],
+                    "quests": []
+                },
+                "name": "Test",
+                "health": 200,
+                "race": "Human",
+                "location": {
+                    "_name": "Open",
+                    "_type": "open_fields",
+                    "_width": 100,
+                    "_height": 100,
+                    "_dificulty": 10,
+                    "_loot": [],
+                    "_monsters": []
+                }
+            }
+        }
+    ]
 }

@@ -28,11 +28,11 @@ class Entity:
         self._name = value
         
     @property
-    def helth(self):
+    def health(self):
         return self._helth
 
-    @helth.setter
-    def helth(self, value):
+    @health.setter
+    def health(self, value):
         self._helth = value
 
     @property

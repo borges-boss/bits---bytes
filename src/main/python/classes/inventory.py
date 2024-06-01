@@ -21,7 +21,7 @@ class Inventory:
         if item.weight + total_weight <= self.max_weight:
             self.items.append(item)
         else:
-            print("You can't carry any more items.")
+            print("Voce não consegue carregar mais itens.")
 
     def remove_item(self,item:Item):
         self.items.remove(item)

@@ -37,7 +37,7 @@ from constants.constants import RACE_TYPE_ORC
 class Player(Entity):
 
     def __init__(self, health, mana, player_id, name, race, game_class: str , abilities, level, xp, wallet:Wallet, inventory:Inventory, 
-                 equipped_item: DamageItem, equipped_armor:List[WearableItem], journal: Journal, city):
+                 equipped_item: DamageItem, equipped_armor:List[WearableItem], journal: Journal, location):
         self._player_id = player_id
         self._mana = mana
         self._game_class = game_class
@@ -49,17 +49,34 @@ class Player(Entity):
         self._equipped_item = equipped_item
         self._equiped_armor = equipped_armor
         self._journal = journal
-        self._city = city
-        super().__init__(name, health, 0, 0, race, None)
+        self._location = location # Dungeon, Cave, OpenFiedl, Shop, Tavern, Inn
+        super().__init__(name, health, 0, 0, 0, race, None)
+
 
 
     @property
-    def city(self):
-        return self._city
+    def equiped_armor(self):
+        return self._equiped_armor
+    
+    @equiped_armor.setter
+    def equiped_armor(self, value):
+        self._equipped_armor = value
 
-    @city.setter
-    def city(self, value):
-        self._city = value
+    @property
+    def player_id(self):
+        return self._player_id
+
+    @player_id.setter
+    def player_id(self, value):
+        self._player_id = value
+
+    @property
+    def location(self):
+        return self._location
+
+    @location.setter
+    def location(self, value):
+        self._location = value
         
     @property
     def journal(self):
@@ -79,11 +96,11 @@ class Player(Entity):
 
     @property
     def xp(self):
-        return self.xp
+        return self._xp
 
     @xp.setter
     def xp(self, value):
-        self.xp = value
+        self._xp = value
 
     @property
     def equipped_item(self):
@@ -141,7 +158,6 @@ class Player(Entity):
     @property
     def defence(self):
         return self.get_player_defence()
-
 
 
     # Abilities
@@ -368,8 +384,8 @@ class Player(Entity):
     def get_player_damage(self):
         base_damage = self.get_base_damage() 
         damage_per_level = 10
-
-        return base_damage + (self.level * damage_per_level) + self.equipped_item.damage
+        extra_dmg_from_item = (self.equipped_item.damage if self.equipped_item != None else 0)
+        return base_damage + (self.level * damage_per_level) + extra_dmg_from_item
     
 
     def get_player_defence(self):
@@ -413,27 +429,5 @@ class Player(Entity):
     def use_consumable(self,item:ConsumableItem):
         if item.effect_type == CONSUMABLE_EFFECT_TYPE_MANA:
             pass
-
-    
-    def serialize(self, title):
-        # Serialize the player object to a dictionary
-        player_info = {
-            'player_id': self._player_id,
-            'mana': self._mana,
-            'game_class': self._game_class,
-            'abilities': self._abilities, 
-            'level': self._level,
-            'xp': self._xp,
-            'wallet': self._wallet.__dict__, 
-            'inventory': self._inventory.__dict__,  
-            'equipped_item': self._equipped_item.__dict__,  
-            'equipped_armor': [item.__dict__ for item in self._equiped_armor],  
-            'journal': self._journal.__dict__,  
-            'name': self.name,
-            'health': self.health,
-            'race': self.race
-        }
-
-        return player_info
 
 

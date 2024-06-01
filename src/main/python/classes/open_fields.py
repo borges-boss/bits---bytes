@@ -5,8 +5,8 @@ from classes.monster import Monster
 
 class OpenFields(DangerousStructure):
 
-    def __init__(self, name, type, dificulty, loot:List[Item],monsters:List[Monster]):
-        super().__init__(name, type, dificulty)
+    def __init__(self, name, type, width, height, dificulty, loot:List[Item],monsters:List[Monster]):
+        super().__init__(name, type, width, height, dificulty)
         self._loot = loot
         self._monsters = monsters
 

@@ -12,7 +12,7 @@ class DataStore:
 
 
     def find_data_by_key(self, key):
-        data = self.json_file_processor.read_file_contents("datastore\data.json")
+        data = self.json_file_processor.read_file_contents("datastore\\saves.json")
         if data and key in data:
             value = data[key]
             return value if isinstance(value, list) else [value]
@@ -104,35 +104,45 @@ class DataStore:
         return taverns
     
 
-    def save_game(self, player, title):
+    def save_game(self, player):
         data = self.find_data_by_key('saves')
+        
 
         if len(data) >= 4:
             data.sort(key=lambda x: x['last_save'])
             data.pop(0)
 
         player_info = {
-            'player_id': player._player_id,
-            'mana': player._mana,
-            'game_class': player._game_class,
-            'abilities': [vars(ability) for ability in player._abilities],
-            'level': player._level,
-            'xp': player._xp,
-            'wallet': vars(player._wallet),
-            'inventory': {**vars(player._inventory), 'items': [vars(item) for item in player._inventory._items]},
-            'equipped_item': vars(player._equipped_item),
-            'equipped_armor': [vars(item) for item in player._equiped_armor],
-            'journal': {**vars(player._journal), 'quests': [vars(quest) for quest in player._journal._quests]},
+            'player_id': player.player_id,
+            'mana': player.mana,
+            'game_class': player.game_class,
+            'abilities': [vars(ability) for ability in player.abilities],
+            'level': player.level,
+            'xp': player.xp,
+            'wallet': vars(player.wallet),
+            'inventory': {**vars(player.inventory), 'items': [vars(item) for item in player.inventory.items]},
+            'equipped_item': vars(player.equipped_item),
+            'equipped_armor': [vars(item) for item in player.equiped_armor],
+            'journal': {**vars(player.journal), 'quests': [vars(quest) for quest in player.journal.quests]},
             'name': player.name,
             'health': player.health,
             'race': player.race,
-            'city': vars(player.city) 
+            'location': vars(player.location) 
         }
 
         data.append({
-            'title': title,
-            'last_save': datetime.now().isoformat(),
+            'title': "Save "+str((len(data) + 1)),
+            'last_save': datetime.datetime.now().isoformat(),
             'player_info': player_info
         })
 
         self.json_file_processor.write_to_file("datastore\\saves.json", {'saves': data})
+
+        return True
+
+
+
+    def find_saves(self):
+        data = self.json_file_processor.read_file_contents("datastore\\saves.json")
+        value = data["saves"]
+        return value

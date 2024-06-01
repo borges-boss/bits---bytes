@@ -3,11 +3,11 @@ from base.scene import Scene
 
 class City(Scene):
     
-    def __init__(self, width, height, name, description, structure_count):
+    def __init__(self, width, height, name, description, structures):
         super().__init__(width, height)
         self._name = name
         self._description = description
-        self._structure_count = structure_count
+        self._structures = structures
 
     @property
     def name(self):
@@ -26,9 +26,9 @@ class City(Scene):
         self._description = value
 
     @property
-    def structure_count(self):
-        return self._structure_count
+    def structures(self):
+        return self._structures
 
-    @structure_count.setter
-    def structure_count(self, value):
-        self._structure_count = value
+    @structures.setter
+    def structures(self, value):
+        self._structures = value
