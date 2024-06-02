@@ -61,7 +61,7 @@ class GameSaveModel:
 
         player = Player(player_info['health'], player_info['mana'], player_info['player_id'], player_info['name'], player_info['race'],
                         player_info['game_class'], player_info['abilities'], player_info['level'], player_info['xp'], wallet, inventory,
-                        equipped_item, equipped_armor, journal, location)
+                        equipped_item, equipped_armor, journal, location, player_info['city'])
         return player
 
     def get_saves(self):

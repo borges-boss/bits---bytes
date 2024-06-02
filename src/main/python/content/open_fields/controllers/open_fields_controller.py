@@ -14,5 +14,5 @@ class OpenFieldsController:
     def open_journal(self):
         self.model.open_journal()
 
-    def leave(self):
+    def travel(self):
         self.model.leave()

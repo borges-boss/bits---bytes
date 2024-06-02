@@ -4,8 +4,8 @@ from content.journal.views.journal_view import JournalView
 
 
 class DungeonController:
-    def __init__(self, dungeon):
-        self.model = DungeonModel(dungeon)
+    def __init__(self):
+        self.model = DungeonModel()
 
     def explore(self):
         self.model.explore()

@@ -8,35 +8,23 @@ class TavernController:
         self.city_name = city_name
         self.model = TavernModel()
 
+    def get_taverns_by_city(self):
+        return self.model.get_taverns_by_city(self.city_name)
+
     def list_available_quests(self):
-        taverns = self.model.get_taverns_by_city(self.city_name)
-        if len(taverns) > 0:
-            view  = TavernView(taverns[0])
-            view.list_quests(taverns[0].tavern_keeper_dialog)
-        return taverns
+        return self.list_available_quests(self.city_name) 
     
 
-    def enter_tavern(self, player:Player):
-        taverns = self.list_available_quests(self.city_name) 
+    def explore(self):
+        self.model.explore()
 
-        if taverns:
-            print("Digite o numero da quest que voce quer adicionar ao seu journal: ")
-            for i, quest in enumerate(taverns[0].quests, start=1):
-                print(f"{i}. {quest.name}")
+    def open_inventory(self):
+        self.model.open_inventory()
 
-            while True:
-                try:
-                    quest_number = int(input())
-                    if 1 <= quest_number <= len(taverns[0].quests):
-                        break
-                    else:
-                        print("Numero invalido, por favor tente de novo")
-                except ValueError:
-                    print("Input invalido, por favor so digite numeros")
+    def open_journal(self):
+        self.model.open_journal()
 
-            quest_to_add = taverns[0].quests[quest_number - 1]
-            player.journal.add_quest(quest_to_add)
-            print(f"Quest '{quest_to_add.name}' foi adicionada ao seu journal.")
-        else:
-            print("Nenhuma taverna disponivel nessa cidade")
+    def leave(self):
+        self.model.leave()
 
+    

@@ -18,13 +18,7 @@ class LocationService:
         loot_probabilities = {1: 0.35, 2: 0.25, 3: 0.15, 4: 0.08}
 
         ConsoleUtils.clear_terminal()
-
-        for i in range(10):
-            for num_dots in range(4):  
-                print("\rExplorando" + "." * num_dots, end='')
-                sys.stdout.flush()  
-                time.sleep(0.5)  
-
+        PrintUtils.print_dot_loading_animation("Explorando")
         ConsoleUtils.clear_terminal()
 
         if random.random() < monster_probabilities[difficulty]:

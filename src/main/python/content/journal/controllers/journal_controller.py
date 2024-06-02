@@ -18,6 +18,6 @@ class JournalController:
         quest = next((q for q in self.model.get_all_active_quests() if q.name == quest_name), None)
         if quest is not None:
             self.model.complete_quest(quest)
-            print(f"Quest '{quest_name}' has been marked as completed.")
+            print(f"Quest '{quest_name}' foi completa!.")
         else:
-            print(f"No active quest found with name '{quest_name}'.")
+            print(f"Nenhuma quest ativa encontrada com o nome '{quest_name}'.")

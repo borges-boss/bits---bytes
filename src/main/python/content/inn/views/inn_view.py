@@ -9,31 +9,31 @@ class InnView:
         self.controller = InnController(inn)
 
     def display_options(self):
-        print("You are currently in the Inn.")
-        print("1. Rest")
-        print("2. Open Inventory")
-        print("3. Open Journal")
-        print("4. Leave")
+        PrintUtils.print_centered("Voce está em um Inn\n")
+        PrintUtils.print_separator_line()
+        print("1. Descansar")
+        print("2. Abrir inventario")
+        print("3. Abrir Journal")
+        print("4. Sair")
 
-    def handle_input(self, input):
-        if input == "1":
-            self.controller.rest()
-        elif input == "2":
-            self.controller.open_inventory()
-        elif input == "3":
-            self.controller.open_journal()
-        elif input == "4":
-            self.controller.leave()
-        else:
-            print("Invalid option.")
 
+    def handle_input(self):
+        while True:
+            input_value = input("Escolha uma opção: ")
+            if input_value == "1":
+                self.controller.rest()
+            elif input_value == "2":
+                self.controller.open_inventory()
+            elif input_value == "3":
+                self.controller.open_journal()
+            elif input_value == "4":
+                self.controller.leave()
+                break
+            else:
+                print("Invalid option.")
 
     def init_view(self):
         self.display_options()
-        input = None
-        input_valid  = False
         PrintUtils.print_separator_line()
         print("\n")
-        while input_valid == False:
-            input = input("Escolha uma opção: ")
-            input_valid = self.handle_input(input)
+        self.handle_input()

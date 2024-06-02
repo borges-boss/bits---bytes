@@ -1,8 +1,19 @@
+import sys
 import time
 import os
 from base.entity import Entity
 
 class PrintUtils:
+
+
+    @staticmethod
+    def print_dot_loading_animation(text):
+        print("\n")
+        for i in range(10):
+            for num_dots in range(4):  
+                print("\r"+text + "." * num_dots, end='')
+                sys.stdout.flush()  
+                time.sleep(0.5)  
 
     @staticmethod
     def print_slowly(text,delay=0.05):

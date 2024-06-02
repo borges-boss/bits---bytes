@@ -4,6 +4,7 @@ from base.quest import Quest
 from classes.npc import Npc
 from classes.tavern import Tavern
 from typing import List
+from classes.inn import Inn
 from services.json_file_proc import JsonFileProcessor
 
 class DataStore:
@@ -103,6 +104,25 @@ class DataStore:
 
         return taverns
     
+    def find_inns_by_city(self, city):
+        data = self.json_file_processor.read_file_contents("datastore\\inns.json")
+        inns = []
+
+        for inn_data in data['inns']:
+            if inn_data['city'] == city:
+                innkeeper_data = inn_data['innkeeper']
+                innkeeper = Npc(innkeeper_data['health'], innkeeper_data['defence'],
+                                innkeeper_data['race'], innkeeper_data['type'],
+                                innkeeper_data['name'], innkeeper_data['description'],
+                                innkeeper_data['role'])
+                rooms = inn_data['rooms']
+                price_per_stay = inn_data['price_per_stay']
+                inn = Inn(inn_data['name'], inn_data['type'], inn_data['width'],
+                        inn_data['height'], innkeeper, rooms, price_per_stay)
+                inns.append(inn)
+
+        return inns
+    
 
     def save_game(self, player):
         data = self.find_data_by_key('saves')
@@ -127,7 +147,8 @@ class DataStore:
             'name': player.name,
             'health': player.health,
             'race': player.race,
-            'location': vars(player.location) 
+            'location': vars(player.location) ,
+            'city': player.city
         }
 
         data.append({
@@ -149,6 +170,3 @@ class DataStore:
         data = self.json_file_processor.read_file_contents("datastore\\items.json")
         items_of_rarity = [item for item in data['items'] if item['_rarity'] == rarity]
         return items_of_rarity
-
-    def find_locations_by_city(self):
-        pass

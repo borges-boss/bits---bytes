@@ -1,5 +1,5 @@
 from content.shop.controllers.shop_controller import ShopController
-
+from utils.print_utils import PrintUtils
 
 class ShopView:
     def __init__(self, shop):
@@ -9,6 +9,15 @@ class ShopView:
         items = self.controller.get_items_for_sale()
         for item in items:
             print(f"Item: {item.name}, Type: {item.type}, Price: {item.price}")
+
+    def display_options(self):
+        PrintUtils.print_centered("Joja de Itens\n")
+        PrintUtils.print_separator_line()
+        print("1. Comprar")
+        print("2. Vender")
+        print("3. Open Journal")
+        print("4. Leave")
+
 
     def handle_input(self, input):
         if input == "1":
