@@ -35,20 +35,3 @@ class Inn(PacificStructure):
     def price_per_stay(self, value):
         self._price_per_stay = value
 
-    def rest(self, player:Player):
-        if player.wallet.coins >= self.price_per_stay:
-            player.wallet.subtract_coins(self.price_per_stay)
-            player.health(player.get_player_base_health()) #Restaurar vida completa do jogador
-            player.stamina(player.get_player_base_stamina())
-            player.mana(player.get_player_mana())
-            return player
-        else:
-            PrintUtils.print_entity_dialog(self.inkeeper,"Só volte aqui quando tiver grana pra pagar pelo quarto!")
-            print("Voce nao tem moedas o suficiente para pagar por um quarto")
-            return player
-
-    def print_inn_details(self):
-        print(f"Inn Name: {self.name}")
-        print(f"Inkeeper: {self.inkeeper.name}")
-        print(f"Price per Stay: {self.price_per_stay}")
-

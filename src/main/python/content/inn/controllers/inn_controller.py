@@ -17,5 +17,5 @@ class InnController:
         view = JournalView()
         view.show_my_quests()
 
-    def leave(self):
+    def leave(self, previous_structure_view):
         self.model.leave()

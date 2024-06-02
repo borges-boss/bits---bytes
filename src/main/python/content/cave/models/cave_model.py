@@ -13,6 +13,3 @@ class CaveModel:
     def open_journal(self):
         view = JournalView()
         view.show_my_quests()
-
-    def leave(self):
-       pass

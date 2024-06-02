@@ -64,8 +64,10 @@ class LocationService:
         ConsoleUtils.clear_terminal()
         current_view.init_view()
 
-    def travel(self, travel_destination):
-        pass
+    @staticmethod
+    def travel(travel_destination_view):
+        travel_destination_view.init_view()
 
-    def leave(self, structure_to_go_back_to):
-        pass
+    @staticmethod
+    def leave(structure_view_to_go_back_to):
+        structure_view_to_go_back_to.init_view()

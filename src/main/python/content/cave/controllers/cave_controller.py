@@ -1,8 +1,7 @@
 
 
 from content.cave.models.cave_model import CaveModel
-from content.inventory.views.inventory_view import InventoryView
-from content.journal.views.journal_view import JournalView
+from services.location_service import LocationService
 
 
 class CaveController:
@@ -18,5 +17,5 @@ class CaveController:
     def open_journal(self):
         self.model.open_journal()
 
-    def leave(self):
-        self.model.leave()
+    def leave(self,previous_structure_view):
+        LocationService.leave(previous_structure_view)

@@ -21,14 +21,12 @@ class InnModel:
             print("\nSua vida, mana e stamina foram renovados")
             
             player.wallet.subtract_coins(self.price_per_stay)
-            player.health(player.get_player_base_health()) #Restaurar vida completa do jogador
-            player.stamina(player.get_player_base_stamina())
-            player.mana(player.get_player_mana())
+            PlayerController.restore_full_health()
+            PlayerController.restore_full_mana()
+            PlayerController.restore_full_stamina()
 
             PlayerController.set_player_state(player)
             PlayerController.save_player_state()
-
-    
         else:
             PrintUtils.print_entity_dialog(inn.inkeeper,"Só volte aqui quando tiver grana pra pagar pelo quarto!\n")
             print("Voce nao tem moedas o suficiente para pagar por um quarto")

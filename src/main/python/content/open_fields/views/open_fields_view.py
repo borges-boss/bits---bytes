@@ -1,9 +1,12 @@
 from content.open_fields.controllers.open_fields_controller import OpenFieldsController
+from python.services.location_service import LocationService
+from utils.console_utils import ConsoleUtils
 from utils.print_utils import PrintUtils
 
 
 class OpenFieldsView:
     def __init__(self):
+        self.is_running = True
         self.controller = OpenFieldsController()
 
     def display_options(self):
@@ -17,6 +20,8 @@ class OpenFieldsView:
 
     def handle_input(self):
         while True:
+            ConsoleUtils.clear_terminal()
+            self.display_options()
             input_value = input("Escolha uma opção: ")
             if input_value == "1":
                 self.controller.explore()
@@ -25,13 +30,15 @@ class OpenFieldsView:
             elif input_value == "3":
                 self.controller.open_journal()
             elif input_value == "4":
-                self.controller.travel()
+                self.stop_view()
+                LocationService.travel()
                 break
             else:
                 print("Invalid option.")
 
     def init_view(self):
-        self.display_options()
-        PrintUtils.print_separator_line()
-        print("\n")
+        self.is_running = True
         self.handle_input()
+
+    def stop_view(self):
+        self.is_running = False

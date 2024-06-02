@@ -1,12 +1,12 @@
 from content.inn.controllers.inn_controller import InnController
-from content.inventory.views.inventory_view import InventoryView
-from content.journal.views.journal_view import JournalView
+from services.location_service import LocationService
 from utils.print_utils import PrintUtils
-
+from utils.console_utils import ConsoleUtils
 
 class InnView:
-    def __init__(self, inn):
-        self.controller = InnController(inn)
+    def __init__(self, previous_structure_view):
+        self.controller = InnController()
+        self.previous_structure_view = previous_structure_view
 
     def display_options(self):
         PrintUtils.print_centered("Voce está em um Inn\n")
@@ -19,6 +19,8 @@ class InnView:
 
     def handle_input(self):
         while True:
+            ConsoleUtils.clear_terminal()
+            self.display_options()
             input_value = input("Escolha uma opção: ")
             if input_value == "1":
                 self.controller.rest()
@@ -27,13 +29,11 @@ class InnView:
             elif input_value == "3":
                 self.controller.open_journal()
             elif input_value == "4":
-                self.controller.leave()
+                LocationService.leave(self.previous_structure_view)
                 break
             else:
                 print("Invalid option.")
 
     def init_view(self):
-        self.display_options()
-        PrintUtils.print_separator_line()
-        print("\n")
+        self.is_running = True
         self.handle_input()

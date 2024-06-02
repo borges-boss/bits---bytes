@@ -1,14 +1,11 @@
 from classes.pacific_structure import PacificStructure
 from classes.npc import Npc
-from base.item import Item
-from typing import List
 
 class Shop(PacificStructure):
 
-    def __init__(self, name, type, width, height, shopkeeper:Npc, type_of_goods: List[Item], items_for_sale: List[Item]):
+    def __init__(self, name, type, width, height, shopkeeper:Npc, items_for_sale):
         super().__init__(name, type, width, height, [])
         self._shopkeeper = shopkeeper
-        self._type_of_goods = type_of_goods
         self._items_for_sale = items_for_sale
 
     @property
@@ -18,14 +15,6 @@ class Shop(PacificStructure):
     @shopkeeper.setter
     def shopkeeper(self, value):
         self._shopkeeper = value
-
-    @property
-    def type_of_goods(self):
-        return self._type_of_goods
-
-    @type_of_goods.setter
-    def type_of_goods(self, value):
-        self._type_of_goods = value
 
     @property
     def items_for_sale(self):

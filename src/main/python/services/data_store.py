@@ -5,6 +5,16 @@ from classes.npc import Npc
 from classes.tavern import Tavern
 from typing import List
 from classes.inn import Inn
+from classes.shop import Shop
+from python.base.enchantment import Enchantment
+from python.classes.cave import Cave
+from python.classes.city import City
+from python.classes.consumable_item import ConsumableItem
+from python.classes.damage_item import DamageItem
+from python.classes.dungeon import Dungeon
+from python.classes.open_fields import OpenFields
+from python.classes.wearable_item import WearableItem
+from python.constants.constants import ITEM_TYPE_CONSUMABLE, ITEM_TYPE_DAMAGE, ITEM_TYPE_WEARABLE, STRUCTURE_TYPE_CAVE, STRUCTURE_TYPE_DUNGEON, STRUCTURE_TYPE_INN, STRUCTURE_TYPE_OPEN_FIELD, STRUCTURE_TYPE_SHOP, STRUCTURE_TYPE_TAVERN
 from services.json_file_proc import JsonFileProcessor
 
 class DataStore:
@@ -123,6 +133,66 @@ class DataStore:
 
         return inns
     
+    def find_shops_by_city(self, city):
+        data = self.json_file_processor.read_file_contents("datastore\\shops.json")
+        shops = []
+
+        for shop_data in data['shops']:
+            if shop_data['city'] == city:
+                shopkeeper_data = shop_data['shopkeeper']
+                shopkeeper = Npc(shopkeeper_data['health'], shopkeeper_data['defence'],
+                                shopkeeper_data['race'], shopkeeper_data['type'],
+                                shopkeeper_data['name'], shopkeeper_data['description'],
+                                shopkeeper_data['role'])
+                items = []
+                for item_data in shop_data['items']:
+                    enchantments = [Enchantment(**enchantment_data) for enchantment_data in item_data.get('enchantments', [])]
+                    if item_data['type'] == ITEM_TYPE_DAMAGE:
+                        item = DamageItem(item_data['name'], item_data['type'], item_data['rarity'], 
+                                        item_data['weight'], enchantments, item_data['damage'])
+                    elif item_data['type'] == ITEM_TYPE_WEARABLE:
+                        item = WearableItem(item_data['name'], item_data['type'], item_data['rarity'], 
+                                            item_data['weight'], enchantments, item_data['defence'], 
+                                            item_data['wearable_type'])
+                    elif item_data['type'] == ITEM_TYPE_CONSUMABLE:
+                        item = ConsumableItem(item_data['name'], item_data['type'], item_data['rarity'], 
+                                            item_data['weight'], item_data['consumable_type'], 
+                                            item_data['effect_value'], item_data['effect_type'])
+                    else:
+                        print(f"Tipo de item desconhecido: {item_data['type']}")
+                        continue
+                    items.append(item)
+
+                shop = Shop(shop_data['name'], shop_data['type'], shop_data['width'],
+                            shop_data['height'], shopkeeper, items)
+                shops.append(shop)
+
+        return shops
+    
+    def find_cities(self):
+        data = self.json_file_processor.read_file_contents("datastore\\cities.json")
+        cities = []
+
+        for city_data in data['cities']:
+            structures = []
+            for structure_data in city_data.get('structures', []):
+                if structure_data['type'] == STRUCTURE_TYPE_INN:
+                    structure = Inn(**structure_data)
+                elif structure_data['type'] == STRUCTURE_TYPE_TAVERN:
+                    structure = Tavern(**structure_data)
+                elif structure_data['type'] == STRUCTURE_TYPE_OPEN_FIELD:
+                    structure = OpenFields(**structure_data)
+                elif structure_data['type'] == STRUCTURE_TYPE_SHOP:
+                    structure = Shop(**structure_data)
+                else:
+                    print(f"Unknown structure type: {structure_data['type']}")
+                    continue
+                structures.append(structure)
+            city = City(city_data['width'], city_data['height'], city_data['name'], 
+                        city_data['description'], structures)
+            cities.append(city)
+
+        return cities
 
     def save_game(self, player):
         data = self.find_data_by_key('saves')

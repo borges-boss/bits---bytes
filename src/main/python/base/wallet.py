@@ -14,4 +14,4 @@ class Wallet:
         if self._coins >= value:
             self._coins -= value
         else:
-            print("You don't have enough coins.")
+            print("Voce nao tem coins suficientes")
