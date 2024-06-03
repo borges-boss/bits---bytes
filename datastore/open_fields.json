@@ -1,0 +1,58 @@
+{
+    "open_fields": [
+        {
+            "name": "Green Meadows",
+            "type": "field",
+            "width": 500,
+            "height": 300,
+            "dificulty": 1,
+            "monsters": [
+                {
+                    "health": 100,
+                    "damage": 10,
+                    "defence": 5,
+                    "stamina": 50,
+                    "race": "Goblin",
+                    "type": "monster",
+                    "name": "Goblin Warrior",
+                    "mana": 0,
+                    "description": "A weak goblin warrior.",
+                    "abilities": [{
+                        "_name": "Slash",
+                        "_description": "A basic sword attack.",
+                        "_type": "physical",
+                        "_value": 10,
+                        "_ability_cost": 5
+                    }],
+                    "level": 1
+                }
+            ],
+            "structures": [
+                {
+                    "name": "Dark Cave",
+                    "type": "cave",
+                    "width": 50,
+                    "height": 30,
+                    "dificulty": 2,
+                    "monsters": [
+                        {
+                            "health": 200,
+                            "damage": 20,
+                            "defence": 10,
+                            "stamina": 100,
+                            "race": "Troll",
+                            "type": "monster",
+                            "name": "Cave Troll",
+                            "mana": 0,
+                            "description": "A fearsome troll that lives in the cave.",
+                            "abilities": [],
+                            "level": 2
+                        }
+                    ],
+                    "ores": ["Iron", "Coal"]
+                }
+            ],
+            "city": "Townsville"
+        }
+    ]
+}

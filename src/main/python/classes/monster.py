@@ -55,7 +55,7 @@ class Monster(Entity):
 
         # Subtrair dano liquido da vida do alvo
         target.health -= net_damage
-        print(f"{self.name} usou {ability.name}! {target.name} levou {net_damage} de dano!")
+        print(f"\n{self.name} usou {ability.name}! {target.name} levou {net_damage} de dano!")
 
     def useAbility(self, ability, target):
         

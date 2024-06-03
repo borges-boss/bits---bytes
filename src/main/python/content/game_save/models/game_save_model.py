@@ -43,20 +43,20 @@ class GameSaveModel:
                             player_info['location']['_monsters'], player_info['location']['_ores'])
         elif location_type == STRUCTURE_TYPE_OPEN_FIELD:
             location = OpenFields(player_info['location']['_name'], location_type, player_info['location']['_width'],
-                                  player_info['location']['_height'], player_info['location']['_dificulty'],
-                                  player_info['location']['_loot'], player_info['location']['_monsters'])
+                                  player_info['location']['_height'], player_info['location']['_dificulty']
+                                  ,player_info['location']['_monsters'],player_info['location']['_structures'],player_info['city'])
         elif location_type == STRUCTURE_TYPE_SHOP:
             location = Shop(player_info['location']['_name'], location_type, player_info['location']['_width'],
                             player_info['location']['_height'], player_info['location']['_shopkeeper'],
-                            player_info['location']['_type_of_goods'], player_info['location']['_items_for_sale'])
+                            player_info['location']['_type_of_goods'], player_info['location']['_items_for_sale'],player_info['city'])
         elif location_type == STRUCTURE_TYPE_TAVERN:
             location = Tavern(player_info['location']['_name'], location_type, player_info['location']['_width'],
                               player_info['location']['_height'], player_info['location']['_tavern_keeper'],
-                              player_info['location']['_quests'], player_info['location']['_tavern_keeper_dialog'])
+                              player_info['location']['_quests'], player_info['location']['_tavern_keeper_dialog'],player_info['city'])
         elif location_type == STRUCTURE_TYPE_INN:
             location = Inn(player_info['location']['_name'], location_type, player_info['location']['_width'],
                            player_info['location']['_height'], player_info['location']['_inkeeper'],
-                           player_info['location']['_rooms'], player_info['location']['_price_per_stay'])
+                           player_info['location']['_rooms'], player_info['location']['_price_per_stay'],player_info['city'])
             
 
         player = Player(player_info['health'], player_info['mana'], player_info['player_id'], player_info['name'], player_info['race'],

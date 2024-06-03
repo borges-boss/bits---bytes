@@ -1,12 +1,10 @@
 from classes.npc import Npc
 from classes.pacific_structure import PacificStructure
-from classes.player import Player
-from utils.print_utils import PrintUtils
 
 class Inn(PacificStructure):
 
-    def __init__(self, name, type, width, height, inkeeper: Npc, rooms, price_per_stay):
-        super().__init__(name, type, width, height, [])
+    def __init__(self, name, type, width, height, inkeeper: Npc, rooms, price_per_stay, city):
+        super().__init__(name, type, width, height, [], city)
         self._inkeeper = inkeeper
         self._rooms = rooms
         self._price_per_stay = price_per_stay

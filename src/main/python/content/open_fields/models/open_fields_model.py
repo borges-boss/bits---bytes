@@ -1,11 +1,12 @@
 from content.inventory.views.inventory_view import InventoryView
 from content.journal.views.journal_view import JournalView
+from services.data_store import DataStore
 
 class OpenFieldsModel:
- 
-    def explore(self):
-        pass 
 
+    def __init__(self):
+        self.datastore = DataStore()
+ 
     def open_inventory(self):
         view = InventoryView()
         view.display_items()
@@ -14,5 +15,9 @@ class OpenFieldsModel:
         view = JournalView()
         view.show_my_quests()
 
-    def leave(self):
-        self.model.leave()
+    def find_open_fields_by_city(self, city):
+        return self.datastore.find_open_fields_by_city(city)
+
+
+    
+

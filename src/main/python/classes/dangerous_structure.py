@@ -7,8 +7,8 @@ class DangerousStructure(Structure):
 
     @property
     def dificulty(self):
-        return self.dificulty
+        return self._dificulty
 
     @dificulty.setter
     def dificulty(self, value):
-        self.dificulty = value
+        self._dificulty = value

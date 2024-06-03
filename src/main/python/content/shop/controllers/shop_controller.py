@@ -1,8 +1,8 @@
 from content.shop.models.shop_model import ShopModel
 
 class ShopController:
-    def __init__(self, shop):
-        self.model = ShopModel(shop)
+    def __init__(self):
+        self.model = ShopModel()
 
     def get_items_for_sale(self):
         return self.model.get_items_for_sale()

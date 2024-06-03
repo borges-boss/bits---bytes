@@ -5,15 +5,16 @@ from utils.console_utils import ConsoleUtils
 from utils.print_utils import PrintUtils
 
 class ShopView:
-    def __init__(self,previous_structure_view):
+    def __init__(self,previous_structure_view, shop):
         self.controller = ShopController()
         self.previous_structure_view = previous_structure_view
         self.is_running = True
+        self.shop = shop
 
     def display_items_for_sale(self):
         items = self.controller.get_items_for_sale()
-        for item in items:
-            print(f"Item: {item.name}, Preco: {self.controller.evaluate_item_price(item)}")
+        for i, item in enumerate(items, start=1):
+            print(f"{i}. Item: {item.name}, Preco: {self.controller.evaluate_item_price(item)}")
 
     def display_options(self):
         PrintUtils.print_centered("Loja de Itens\n")
@@ -32,13 +33,17 @@ class ShopView:
             input_value = input("Escolha uma opção: ")
             if input_value == "1":
                 self.display_items_for_sale()
-                item_number = int(input("\nDigite o numero do item que voce quer comprar: "))
+                item_number = int(input("\nDigite o numero do item que voce quer comprar (0 para voltar): "))
+                
+                if item_number == 0:
+                   pass
+
                 items = self.controller.get_items_for_sale()
                 if 1 <= item_number <= len(items):
                     item_to_buy = items[item_number - 1]
                     self.controller.buy_item(item_to_buy)
                 else:
-                    print("Invalid item number.")
+                    print("Numero de item invalido")
             elif input_value == "2":
                 player_items = PlayerController.get_player().inventory.items
                 for i, item in enumerate(player_items, start=1):

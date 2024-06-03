@@ -5,13 +5,21 @@ from classes.monster import Monster
 
 class OpenFields(DangerousStructure):
 
-    def __init__(self, name, type, width, height, dificulty, loot:List[Item],monsters:List[Monster], structures):
+    def __init__(self, name, type, width, height, dificulty,monsters:List[Monster], structures, city):
         super().__init__(name, type, width, height, dificulty)
-        self._loot = loot
         self._monsters = monsters
         self._structures = structures
+        self._city = city
 
 
+
+    @property
+    def city(self):
+        return self._city
+
+    @city.setter
+    def city(self, value):
+        self._city = value
 
     @property
     def structures(self):
@@ -20,14 +28,6 @@ class OpenFields(DangerousStructure):
     @structures.setter
     def structures(self, value):
         self._structures = value
-
-    @property
-    def loot(self):
-        return self._loot
-
-    @loot.setter
-    def loot(self, value):
-        self._loot = value
 
     @property
     def monsters(self):

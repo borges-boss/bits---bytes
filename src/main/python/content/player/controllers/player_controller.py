@@ -6,6 +6,20 @@ class PlayerController:
 
     global_player = None
 
+
+    @classmethod
+    def display_player_hud(cls):
+        player = cls.global_player
+        health_bar = '\033[31m' + '█' * int(player.health / 10) + '\033[0m'
+        mana_bar = '\033[34m' + '█' * int(player.mana / 10) + '\033[0m'
+        stamina_bar = '\033[32m' + '█' * int(player.stamina / 10) + '\033[0m'
+
+        print(f"\033[31mHealth: {player.health}\033[0m [{health_bar:<10}]")
+        print("")
+        print(f"\033[34mMana: {player.mana}\033[0m [{mana_bar:<10}]")
+        print("")
+        print(f"\033[32mStamina: {player.stamina}\033[0m [{stamina_bar:<10}]")
+
     @classmethod
     def load_player(cls):
         model = GameSaveModel()

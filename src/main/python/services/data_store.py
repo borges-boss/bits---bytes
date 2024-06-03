@@ -6,15 +6,16 @@ from classes.tavern import Tavern
 from typing import List
 from classes.inn import Inn
 from classes.shop import Shop
-from python.base.enchantment import Enchantment
-from python.classes.cave import Cave
-from python.classes.city import City
-from python.classes.consumable_item import ConsumableItem
-from python.classes.damage_item import DamageItem
-from python.classes.dungeon import Dungeon
-from python.classes.open_fields import OpenFields
-from python.classes.wearable_item import WearableItem
-from python.constants.constants import ITEM_TYPE_CONSUMABLE, ITEM_TYPE_DAMAGE, ITEM_TYPE_WEARABLE, STRUCTURE_TYPE_CAVE, STRUCTURE_TYPE_DUNGEON, STRUCTURE_TYPE_INN, STRUCTURE_TYPE_OPEN_FIELD, STRUCTURE_TYPE_SHOP, STRUCTURE_TYPE_TAVERN
+from base.enchantment import Enchantment
+from classes.cave import Cave
+from classes.city import City
+from classes.consumable_item import ConsumableItem
+from classes.damage_item import DamageItem
+from classes.dungeon import Dungeon
+from classes.monster import Monster
+from classes.open_fields import OpenFields
+from classes.wearable_item import WearableItem
+from constants.constants import ITEM_TYPE_CONSUMABLE, ITEM_TYPE_DAMAGE, ITEM_TYPE_WEARABLE, STRUCTURE_TYPE_CAVE, STRUCTURE_TYPE_DUNGEON, STRUCTURE_TYPE_INN, STRUCTURE_TYPE_OPEN_FIELD, STRUCTURE_TYPE_SHOP, STRUCTURE_TYPE_TAVERN
 from services.json_file_proc import JsonFileProcessor
 
 class DataStore:
@@ -109,7 +110,7 @@ class DataStore:
                     quest = Quest(quest_data['name'], quest_data['description'], reward, reward_type, quest_data['is_completed'])
                     quests.append(quest)
                 tavern = Tavern(tavern_data['name'], tavern_data['type'], tavern_data['width'],
-                                tavern_data['height'], tavern_keeper, quests, tavern_data['tavern_keeper_dialog'])
+                                tavern_data['height'], tavern_keeper, quests, tavern_data['tavern_keeper_dialog'],tavern_data['city'])
                 taverns.append(tavern)
 
         return taverns
@@ -128,7 +129,7 @@ class DataStore:
                 rooms = inn_data['rooms']
                 price_per_stay = inn_data['price_per_stay']
                 inn = Inn(inn_data['name'], inn_data['type'], inn_data['width'],
-                        inn_data['height'], innkeeper, rooms, price_per_stay)
+                        inn_data['height'], innkeeper, rooms, price_per_stay,inn_data['city'])
                 inns.append(inn)
 
         return inns
@@ -164,7 +165,7 @@ class DataStore:
                     items.append(item)
 
                 shop = Shop(shop_data['name'], shop_data['type'], shop_data['width'],
-                            shop_data['height'], shopkeeper, items)
+                            shop_data['height'], shopkeeper, items, shop_data['city'])
                 shops.append(shop)
 
         return shops
@@ -240,3 +241,40 @@ class DataStore:
         data = self.json_file_processor.read_file_contents("datastore\\items.json")
         items_of_rarity = [item for item in data['items'] if item['_rarity'] == rarity]
         return items_of_rarity
+    
+
+
+    def find_open_fields_by_city(self, city):
+        data = self.json_file_processor.read_file_contents("datastore\\open_fields.json")
+        open_fields = []
+
+        for field_data in data['open_fields']:
+            if field_data['city'] == city:
+                monsters = []
+                for monster_data in field_data['monsters']:
+                    monster = Monster(monster_data['health'], monster_data['damage'], monster_data['defence'],
+                                    monster_data['stamina'], monster_data['race'], monster_data['type'],
+                                    monster_data['name'], monster_data['mana'], monster_data['description'],
+                                    monster_data['abilities'], monster_data['level'])
+                    monsters.append(monster)
+
+                structures = []
+                for structure_data in field_data['structures']:
+                    if structure_data['type'] == STRUCTURE_TYPE_DUNGEON:
+                        structure = Dungeon(structure_data['name'], structure_data['type'], structure_data['dificulty'],
+                                            structure_data['chests_opened'], structure_data['layers'], 
+                                            structure_data['bosses'], structure_data['chest_count'], 
+                                            structure_data['monsters'])
+                    elif structure_data['type'] == STRUCTURE_TYPE_CAVE:
+                        structure = Cave(structure_data['name'], structure_data['type'], structure_data['dificulty'],
+                                        structure_data['monsters'], structure_data['ores'])
+                    else:
+                        print(f"Unknown structure type: {structure_data['type']}")
+                        continue
+                    structures.append(structure)
+
+                open_field = OpenFields(field_data['name'], field_data['type'], field_data['width'],
+                            field_data['height'], field_data['dificulty'], monsters, structures, field_data['city'])
+                open_fields.append(open_field)
+
+        return open_fields

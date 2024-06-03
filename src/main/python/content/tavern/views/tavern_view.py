@@ -7,10 +7,11 @@ from constants.constants import REWARD_TYPE_ITEM
 
 class TavernView:
 
-    def __init__(self, previous_structure_view):
+    def __init__(self, previous_structure_view,tavern):
         self.controller = TavernController()
         self.previous_structure_view = previous_structure_view
         self.is_running  = True
+        self.tavern = tavern
     
     def list_available_quests(self):
         taverns = self.controller.get_taverns_by_city()

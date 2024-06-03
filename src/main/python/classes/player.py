@@ -10,10 +10,11 @@ from typing import List
 
 class Player(Entity):
 
-    def __init__(self, health, mana, player_id, name, race, game_class: str , abilities, level, xp, wallet:Wallet, inventory:Inventory, 
-                 equipped_item: DamageItem, equipped_armor:List[WearableItem], journal: Journal, location,city):
+    def __init__(self, health, mana, stamina, player_id, name, race, game_class: str , abilities, level, xp, wallet:Wallet, inventory:Inventory, 
+                 equipped_item: DamageItem, equipped_armor:List[WearableItem], journal: Journal, location, city):
         self._player_id = player_id
         self._mana = mana
+        self._stamina = stamina
         self._game_class = game_class
         self._abilities = abilities
         self._level = level
@@ -25,7 +26,8 @@ class Player(Entity):
         self._journal = journal
         self._location = location # Dungeon, Cave, OpenFiedl, Shop, Tavern, Inn
         self._city = city
-        super().__init__(name, health, 0, 0, 0, race, None)
+        super().__init__(name, health, 0, 0, stamina, race, None)
+
 
 
     @property

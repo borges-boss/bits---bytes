@@ -45,7 +45,7 @@ class Entity:
 
     @property
     def stamina(self):
-        return self._defence
+        return self._stamina
 
     @stamina.setter
     def stamina(self, value):

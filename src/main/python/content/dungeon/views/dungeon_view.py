@@ -5,10 +5,11 @@ from utils.print_utils import PrintUtils
 
 
 class DungeonView:
-    def __init__(self,previous_structure_view):
+    def __init__(self,previous_structure_view,dungeon):
         self.controller = DungeonController()
         self.previous_structure_view = previous_structure_view
         self.is_running = True
+        self.dungeon = dungeon
 
     def display_options(self):
         PrintUtils.print_centered("Voce está explorando uma dangeon\n")

@@ -13,7 +13,7 @@ class PrintUtils:
             for num_dots in range(4):  
                 print("\r"+text + "." * num_dots, end='')
                 sys.stdout.flush()  
-                time.sleep(0.5)  
+                time.sleep(0.4)  
 
     @staticmethod
     def print_slowly(text,delay=0.05):

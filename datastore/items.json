@@ -7,6 +7,55 @@
             "_weight": 0,
             "_enchantments": [],
             "_damage": 1
+        },
+        {
+            "_name": "Iron Sword",
+            "_type": "damage_item",
+            "_rarity": "Common",
+            "_weight": 10,
+            "_enchantments": [],
+            "_damage": 10
+        },
+        {
+            "_name": "Steel Sword",
+            "_type": "damage_item",
+            "_rarity": "Rare",
+            "_weight": 15,
+            "_enchantments": [
+                {
+                    "_name": "Fire",
+                    "_description": "Adds fire damage.",
+                    "_value": 5
+                }
+            ],
+            "_damage": 20
+        },
+        {
+            "_name": "Healing Potion",
+            "_type": "consumable_item",
+            "_rarity": "Common",
+            "_weight": 1,
+            "_consumable_type": "healing",
+            "_effect_value": 50,
+            "_effect_type": "heal"
+        },
+        {
+            "_name": "Mana Potion",
+            "_type": "consumable_item",
+            "_rarity": "Rare",
+            "_weight": 1,
+            "_consumable_type": "mana",
+            "_effect_value": 50,
+            "_effect_type": "restore_mana"
+        },
+        {
+            "_name": "Leather Armor",
+            "_type": "wearable_item",
+            "_rarity": "Common",
+            "_weight": 15,
+            "_enchantments": [],
+            "_defence": 10,
+            "_wearable_type": "armor"
         }
     ]
 }

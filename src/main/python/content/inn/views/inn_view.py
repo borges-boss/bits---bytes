@@ -4,9 +4,11 @@ from utils.print_utils import PrintUtils
 from utils.console_utils import ConsoleUtils
 
 class InnView:
-    def __init__(self, previous_structure_view):
+    def __init__(self, previous_structure_view, inn):
         self.controller = InnController()
         self.previous_structure_view = previous_structure_view
+        self.inn = inn
+        self.is_running = True
 
     def display_options(self):
         PrintUtils.print_centered("Voce está em um Inn\n")
@@ -29,6 +31,7 @@ class InnView:
             elif input_value == "3":
                 self.controller.open_journal()
             elif input_value == "4":
+                self.stop_View()
                 LocationService.leave(self.previous_structure_view)
                 break
             else:
@@ -37,3 +40,6 @@ class InnView:
     def init_view(self):
         self.is_running = True
         self.handle_input()
+
+    def stop_View(self):
+     self.is_running = False

@@ -3,8 +3,8 @@ from classes.npc import Npc
 
 class Shop(PacificStructure):
 
-    def __init__(self, name, type, width, height, shopkeeper:Npc, items_for_sale):
-        super().__init__(name, type, width, height, [])
+    def __init__(self, name, type, width, height, shopkeeper:Npc, items_for_sale, city):
+        super().__init__(name, type, width, height, [], city)
         self._shopkeeper = shopkeeper
         self._items_for_sale = items_for_sale
 

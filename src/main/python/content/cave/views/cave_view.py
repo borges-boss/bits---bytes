@@ -6,10 +6,11 @@ from utils.print_utils import PrintUtils
 
 class CaveView:
 
-    def __init__(self, previous_structure_view):
+    def __init__(self, previous_structure_view, cave):
         self.controller = CaveController()
         self.previous_structure_view = previous_structure_view
         self.is_running = True
+        self.cave = cave
 
     def display_options(self):
         PrintUtils.print_centered("Voce está explorando uma caverna\n")

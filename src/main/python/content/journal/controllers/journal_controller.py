@@ -1,12 +1,9 @@
 from content.journal.models.journal_model import JournalModel
-from content.journal.views.journal_view import JournalView
-from utils.print_utils import PrintUtils
 
 
 class JournalController:
     def __init__(self):
         self.model = JournalModel()
-        self.view = JournalView()
 
     def get_active_quests(self):
         return self.model.get_all_active_quests()

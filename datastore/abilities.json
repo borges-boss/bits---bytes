@@ -1,3 +1,39 @@
 {
-    
+    "abilities": [
+        {
+            "_name": "Slash",
+            "_description": "A basic sword attack.",
+            "_type": "physical",
+            "_value": 10,
+            "_ability_cost": 5
+        },
+        {
+            "_name": "Fireball",
+            "_description": "A magical fire attack.",
+            "_type": "magic",
+            "_value": 20,
+            "_ability_cost": 10
+        },
+        {
+            "_name": "Heal",
+            "_description": "Restores health.",
+            "_type": "magic",
+            "_value": 50,
+            "_ability_cost": 15
+        },
+        {
+            "_name": "Power Strike",
+            "_description": "A powerful physical attack.",
+            "_type": "physical",
+            "_value": 30,
+            "_ability_cost": 20
+        },
+        {
+            "_name": "Ice Shard",
+            "_description": "A magical ice attack.",
+            "_type": "magic",
+            "_value": 25,
+            "_ability_cost": 15
+        }
+    ]
 }

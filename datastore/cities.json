@@ -1,3 +1,39 @@
 {
-    "cities": []
+    "cities": [
+        {
+            "name": "Townsville",
+            "description": "A bustling city full of life and adventure.",
+            "width": 1000,
+            "height": 1000,
+            "structures": [
+                {
+                    "name": "General Store",
+                    "type": "shop",
+                    "width": 10,
+                    "height": 10,
+                    "shopkeeper": {
+                        "health": 100,
+                        "defence": 10,
+                        "race": "Human",
+                        "type": "npc",
+                        "name": "Bob",
+                        "description": "A friendly shopkeeper.",
+                        "role": "shopkeeper"
+                    },
+                    "items_for_sale": [
+                        {
+                            "name": "Apple",
+                            "type": "consumable_item",
+                            "rarity": "Common",
+                            "weight": 1,
+                            "consumable_type": "food",
+                            "effect_value": 5,
+                            "effect_type": "heal"
+                        }
+                    ],
+                    "city": "Townsville"
+                }
+            ]
+        }
+    ]
 }

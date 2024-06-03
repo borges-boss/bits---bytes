@@ -5,8 +5,8 @@ from typing import List
 
 class Tavern(PacificStructure):
 
-    def __init__(self, name, type, width, height, tavern_keeper:Npc, quests: List[Quest],tavern_keeper_dialog):
-        super().__init__(name, type, width, height, [])
+    def __init__(self, name, type, width, height, tavern_keeper:Npc, quests: List[Quest],tavern_keeper_dialog, city):
+        super().__init__(name, type, width, height, [], city)
         self._tavern_keeper = tavern_keeper
         self._quests = quests
         self._tavern_keeper_dialog = tavern_keeper_dialog

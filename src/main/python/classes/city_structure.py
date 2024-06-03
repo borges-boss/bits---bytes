@@ -1,6 +1,6 @@
 from typing import List
 from classes.pacific_structure import PacificStructure
-from python.classes.npc import Npc
+from classes.npc import Npc
 
 
 class CityStructure(PacificStructure):

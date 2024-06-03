@@ -1,6 +1,4 @@
-from content.tavern.views.tavern_view import TavernView
 from content.tavern.models.tavern_model import TavernModel
-from classes.player import Player
 
 class TavernController:
 
