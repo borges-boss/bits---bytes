@@ -194,6 +194,30 @@ class DataStore:
             cities.append(city)
 
         return cities
+    
+    def find_city_by_name(self, city_name):
+        data = self.json_file_processor.read_file_contents("datastore\\cities.json")
+
+        for city_data in data['cities']:
+            if city_data['name'] == city_name:
+                structures = []
+                for structure_data in city_data.get('structures', []):
+                    if structure_data['type'] == STRUCTURE_TYPE_INN:
+                        structure = Inn(**structure_data)
+                    elif structure_data['type'] == STRUCTURE_TYPE_TAVERN:
+                        structure = Tavern(**structure_data)
+                    elif structure_data['type'] == STRUCTURE_TYPE_OPEN_FIELD:
+                        structure = OpenFields(**structure_data)
+                    elif structure_data['type'] == STRUCTURE_TYPE_SHOP:
+                        structure = Shop(**structure_data)
+                    else:
+                        print(f"Unknown structure type: {structure_data['type']}")
+                        continue
+                    structures.append(structure)
+                return City(city_data['width'], city_data['height'], city_data['name'], 
+                            city_data['description'], structures)
+
+        return None
 
     def save_game(self, player):
         data = self.find_data_by_key('saves')
@@ -243,7 +267,6 @@ class DataStore:
         return items_of_rarity
     
 
-
     def find_open_fields_by_city(self, city):
         data = self.json_file_processor.read_file_contents("datastore\\open_fields.json")
         open_fields = []
@@ -278,3 +301,28 @@ class DataStore:
                 open_fields.append(open_field)
 
         return open_fields
+    
+
+    def find_monsters(self):
+        data = self.json_file_processor.read_file_contents("datastore\\monsters.json")
+        monsters_data = data['monsters']
+
+        monsters = []
+        for monster_data in monsters_data:
+            monster = Monster(
+                health=monster_data['health'],
+                damage=monster_data['damage'],
+                defence=monster_data['defence'],
+                stamina=monster_data['stamina'],
+                race=monster_data['race'],
+                type=monster_data['type'],
+                name=monster_data['name'],
+                mana=monster_data['mana'],
+                description=monster_data['description'],
+                abilities=monster_data['abilities'],
+                level=monster_data['level']
+            )
+            monsters.append(monster)
+
+        return monsters
+    

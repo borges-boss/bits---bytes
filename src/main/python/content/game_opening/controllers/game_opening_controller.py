@@ -1,5 +1,7 @@
 from content.game_opening.models.game_opening_model import GameOpeningModel
 from content.game_opening.views.game_opening_view import GameOpeningView
+from content.player.controllers.player_controller import PlayerController
+from content.race_selection.views.race_selection_view import RaceSelectionView
 from utils.console_utils import ConsoleUtils
 import keyboard
 
@@ -10,7 +12,9 @@ class GameOpeningController:
       self.view = GameOpeningView()
 
     def start_game(self):
-       print("Game starts")
+       PlayerController.inti_new_player_instance()
+       ConsoleUtils.clear_terminal()
+       RaceSelectionView().init_view()
     
     def show_ascii_art(self):
        art = self.model.get_ascii_art()

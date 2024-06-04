@@ -1,4 +1,4 @@
-from constants.constants import ABILITY_TYPE_MAGIC, ABILITY_TYPE_PHYSICAL, ABILITY_TYPE_STATS_DAMAGE, ABILITY_TYPE_STATS_DEFENCE, ABILITY_TYPE_STATS_HEALTH, ABILITY_TYPE_STATS_STAMINA, ABILITY_TYPE_STATS_TARG_DAMAGE, ABILITY_TYPE_STATS_TARG_DEFENCE, ABILITY_TYPE_STATS_TARG_HEALTH, ABILITY_TYPE_STATS_TARG_STAMINA, CLASS_TYPE_WARRIOR, CONSUMABLE_EFFECT_TYPE_HEALTH, CONSUMABLE_EFFECT_TYPE_MANA, ITEM_TYPE_DAMAGE
+from constants.constants import ABILITY_TYPE_MAGIC, ABILITY_TYPE_PHYSICAL, ABILITY_TYPE_STATS_ALL, ABILITY_TYPE_STATS_DAMAGE, ABILITY_TYPE_STATS_DEFENCE, ABILITY_TYPE_STATS_HEALTH, ABILITY_TYPE_STATS_MANA, ABILITY_TYPE_STATS_STAMINA, ABILITY_TYPE_STATS_TARG_DAMAGE, ABILITY_TYPE_STATS_TARG_DEFENCE, ABILITY_TYPE_STATS_TARG_HEALTH, ABILITY_TYPE_STATS_TARG_STAMINA, CLASS_TYPE_WARRIOR, CONSUMABLE_EFFECT_TYPE_HEALTH, CONSUMABLE_EFFECT_TYPE_MANA, ITEM_TYPE_DAMAGE
 from constants.constants import CLASS_TYPE_ASSASIN
 from constants.constants import CLASS_TYPE_MAGE
 from constants.constants import CLASS_TYPE_BATTLE_MAGE
@@ -25,6 +25,7 @@ class PlayerModel:
             base_health += 30
         elif player.game_class == CLASS_TYPE_BERSERKER:
             base_health += 60
+            
 
         if player.race == RACE_TYPE_HUMAN:
             base_health += 10
@@ -244,6 +245,8 @@ class PlayerModel:
                 player.health += ability.effect_value
             elif ability.type == ABILITY_TYPE_STATS_STAMINA:
                 player.stamina += ability.effect_value
+            elif ability.type == ABILITY_TYPE_STATS_MANA:
+                player.mana += ability.effect_value
             elif ability.type == ABILITY_TYPE_STATS_DAMAGE:
                 player.damage += ability.effect_value
             elif ability.type == ABILITY_TYPE_STATS_DEFENCE:
@@ -256,10 +259,18 @@ class PlayerModel:
                 target.damage -= ability.effect_value
             elif ability.type == ABILITY_TYPE_STATS_TARG_DEFENCE:
                 target.defence -= ability.effect_value
+            elif ability.type == ABILITY_TYPE_STATS_ALL:
+                player.defence += ability.effect_value
+                player.damage += ability.effect_value
+                player.health+= ability.effect_value
+                player.stamina+= ability.effect_value
+                player.mana+= ability.effect_value
             else:
                 print("Invalid ability type.")
-            
-            player.mana(player.mana - ability.ability_cost)
+            if ability.type == ABILITY_TYPE_STATS_MANA:
+                player.health-= ability.ability_cost
+            else:
+                player.mana-= ability.ability_cost
         else:
             print("Not enough mana to use this ability.")
 

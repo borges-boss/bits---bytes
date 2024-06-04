@@ -26,7 +26,7 @@ class CaveView:
             self.display_options()
             input_value = input("Escolha uma opção: ")
             if input_value == "1":
-                self.controller.explore()
+                LocationService.explore(self.cave,self)
             elif input_value == "2":
                 self.controller.open_inventory()
             elif input_value == "3":

@@ -2,6 +2,8 @@ import random
 import time
 from constants.constants import ITEM_RARITY_COMMON, ITEM_RARITY_EPIC, ITEM_RARITY_LEGENDARY, ITEM_RARITY_RARE
 from content.player.controllers.player_controller import PlayerController
+from content.battle.views.battle_view import BattleView
+from services.monster_service import MonsterService
 from services.item_service import ItemService
 from services.data_store import DataStore
 from utils.print_utils import PrintUtils
@@ -22,7 +24,7 @@ class LocationService:
 
         if random.random() < monster_probabilities[difficulty]:
             print("Voce encontrou um monstro!")
-            # Modo de batalha
+            BattleView(MonsterService.spawn_monster_by_difficulty(difficulty),current_structure).init_view()
         elif random.random() < loot_probabilities[difficulty]:
             datastore = DataStore()
             rarity = None

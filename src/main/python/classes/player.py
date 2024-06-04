@@ -10,8 +10,8 @@ from typing import List
 
 class Player(Entity):
 
-    def __init__(self, health, mana, stamina, player_id, name, race, game_class: str , abilities, level, xp, wallet:Wallet, inventory:Inventory, 
-                 equipped_item: DamageItem, equipped_armor:List[WearableItem], journal: Journal, location, city):
+    def __init__(self, health=100, mana=100, stamina=100, player_id=0, name="", race="", game_class="", abilities=[], level=1, xp=0, wallet:Wallet=None, inventory:Inventory=None, 
+                 equipped_item: DamageItem=None, equipped_armor:List[WearableItem]=[], journal: Journal=None, location=None, city=""):
         self._player_id = player_id
         self._mana = mana
         self._stamina = stamina

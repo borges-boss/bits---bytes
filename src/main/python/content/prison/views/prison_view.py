@@ -1,0 +1,80 @@
+import time
+from base.ability import Ability
+from classes.damage_item import DamageItem
+from classes.dungeon import Dungeon
+from classes.monster import Monster
+from constants.constants import ITEM_RARITY_COMMON, ITEM_TYPE_DAMAGE, RACE_TYPE_DEMON, STRUCTURE_TYPE_DUNGEON
+from content.battle.views.battle_view import BattleView
+from content.city_structure.views.city_structure_view import CityStructureView
+from content.open_fields.controllers.open_fields_controller import OpenFieldsController
+from content.player.controllers.player_controller import PlayerController
+from services.data_store import DataStore
+from utils.console_utils import ConsoleUtils
+from utils.print_utils import PrintUtils
+
+
+class PrisonView:
+
+    def __init__(self):
+        PlayerController.init_player_abilities()
+        PlayerController.init_player_attributes()
+        PlayerController.save_player_state()
+        ConsoleUtils.clear_terminal()
+        self.prison = Dungeon("Prisao",STRUCTURE_TYPE_DUNGEON,1,0,1,[],1,[])
+        PlayerController.get_player().location = self.prison
+        PlayerController.get_player().city = "Torralta"
+        self.is_battle_finished = False
+
+    
+
+    def wake_up(self):
+        PrintUtils.print_slowly("A escuridão da cela de prisão é interrompida abruptamente por um estrondo ensurdecedor. O chão frio e úmido treme sob você enquanto sons de luta e gritos ecoam pelos corredores de pedra.\n"+
+                                "Você se levanta, os olhos lutando para se ajustar à fraca luz que se infiltra através das barras enferrujadas da cela. O ar está carregado com uma tensão palpável, uma sensação de medo e urgência que faz seu coração acelerar.\n"
+                                +"De repente, a porta da sua cela é arremessada aberta com um estrondo. Um guarda da prisão entra, ofegante e coberto de suor.\n")
+        
+        PrintUtils.print_slowly("Guarda: Os exércitos do rei demônio estão aqui! Eles estão matando todos...")
+        PrintUtils.print_slowly("Guarda: Fuja!")
+
+        PrintUtils.print_slowly("Você pega as chaves, a realidade da situação começando a afundar. A prisão está sendo invadida. E se você não agir rápido, pode ser o próximo.\nCom um ultimo olhar para a cela que foi sua casa por tanto tempo, voce sai correndo para o corredor, pronto para enfrentar o desconhecido. A aventura esta apenas começando.")
+        time.seep(2)
+        name = None
+        ConsoleUtils.clear_terminal()
+        while name == None:
+             print("\nDigite o seu nome:")
+             name = str(input())
+             print(f"\nEntao voce quer ser chamado de {name}? (s/n)")
+             confirm = str(input())
+             if confirm.lower() == "s":
+                 PlayerController.get_player().name = name
+                 PlayerController.save_player_state()
+                 ConsoleUtils.clear_terminal()
+             else:
+                 ConsoleUtils.clear_terminal()
+                 name = None
+
+        PrintUtils.print_slowly("Passando pelos corredores da prisão voce se depara com dois corpos mutilados e um Soldado Infernal que acabou de fazer mais uma vitima bem na sua frente!")
+        print("\n")
+        PrintUtils.print_slowly("A visão do Soldado Infernal é assustadora. Ele é uma criatura imponente, com chifres retorcidos e olhos que brilham com um fogo maligno. Seu corpo é coberto por uma armadura negra e ele empunha uma espada que parece feita de sombras sólidas.")
+        print("\n")
+        PrintUtils.print_slowly("Você sente o medo se infiltrar em seu peito, mas sabe que não pode se dar ao luxo de hesitar. Você tem que lutar. Com as mãos trêmulas, você pega uma espada caída ao lado de um dos corpos e se prepara para o confronto...")
+        PlayerController.get_player().inventory.add_item(DamageItem("Espada de Ferro",ITEM_TYPE_DAMAGE,ITEM_RARITY_COMMON,4.0,[],3.4))
+
+        monster = Monster(180,80,60,50,RACE_TYPE_DEMON,RACE_TYPE_DEMON,"Soldado Infernal",70,"Um soldado dos exercitos do rei demonio",[],5)
+        slash = Ability("Corte", "Um ataque básico com a espada.", "physical", 20, 5)
+        fireball = Ability("Bola de Fogo", "Um ataque mágico de fogo.", "magic", 30, 10)
+        monster.abilities.append(slash)
+        monster.abilities.append(fireball)
+        
+        datastore = DataStore()
+        city = datastore.find_city_by_name(PlayerController.get_player().city)
+        city_open_fields = datastore.find_open_fields_by_city(PlayerController.get_player().city) # Lembrar de cadastrar essa cidade nos arquivos json
+
+        BattleView(monster, CityStructureView(city_open_fields[0],city.structures)).init_view()
+            
+                 
+     
+                 
+    
+
+
+    

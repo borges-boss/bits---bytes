@@ -3,6 +3,7 @@ import time
 from classes.monster import Monster
 from content.player.controllers.player_controller import PlayerController
 from content.inventory.views.inventory_view import InventoryView
+from constants.constants import ABILITY_TYPE_PHYSICAL, ABILITY_TYPE_MAGIC
 from services.loot_service import LootService
 from utils.console_utils import ConsoleUtils
 from utils.print_utils import PrintUtils
@@ -16,6 +17,15 @@ class BattleView:
         self.is_running = True
         self.player_turn = True 
         self.is_player_defending = False
+
+    def display_abilities(self):
+        print("\nAbilities:")
+        for i, ability in enumerate(PlayerController.get_player().abilities, start=1):
+            cost_type = 'Stamina' if ability.type == ABILITY_TYPE_PHYSICAL else 'Mana'
+            if ability.type == ABILITY_TYPE_PHYSICAL or ability.type == ABILITY_TYPE_MAGIC:
+                print(f"{i}. {ability.name} - {ability.description} (Dano: {ability.value}, Custo: {ability.ability_cost} {cost_type})")
+            else:
+                print(f"{i}. {ability.name} - {ability.description} (Efeito: {ability.value}, Custo: {ability.ability_cost} {cost_type})")
 
     def display_options(self):
         PrintUtils.print_centered(f"Voce esta em batalha contra {self.target.name} de nivel {self.target.level}\n")
@@ -41,30 +51,41 @@ class BattleView:
                         self.player_turn = False  
                     except (IndexError, ValueError):
                         print("Abilidade invalida.")
+
                 elif input_value == "2":
                     self.is_player_defending = True
                     self.player_turn = False  
+
                 elif input_value == "3":
                     InventoryView().init_view()
+
                 elif input_value == "4":
                     ConsoleUtils.clear_terminal()
                     print("Voce fugiu da batalha como um covarde, mas pelo menos ainda esta vivo...")
+                    PlayerController.init_player_attributes() # Resetar atributos do player depois da batalha
+                    PlayerController.save_player_state()
                     self.out_of_battle_view.init_view()
+
                 else:
                     print("Opcao invalida")
+
             else:
                 print(f"E a vez do {self.target.name} (Level:{self.target.level})")
                 PrintUtils.print_dot_loading_animation(f"{self.target.name} esta prestes a atacar")
 
+                initial_defence = PlayerController.get_player().defence
+
+                if self.is_player_defending:
+                    PlayerController.get_player().defence = PlayerController.get_player().defence * 1.5
+
                 if self.target.abilities: 
                     chosen_ability = random.choice(self.target.abilities)
+                    self.target.useAbility(chosen_ability, PlayerController.get_player()) 
+                    
                     if self.is_player_defending:
-                        initial_defence = PlayerController.get_player().defence
-                        PlayerController.get_player().defence = initial_defence * 2
-                        self.target.useAbility(chosen_ability, PlayerController.get_player()) 
+                        #Resetar atributo de defesa do player depois de defender
                         PlayerController.get_player().defence = initial_defence
-                    else: 
-                        self.target.useAbility(chosen_ability, PlayerController.get_player()) 
+                        self.is_player_defending = False
 
                     time.sleep(2)
                 self.player_turn = True  
@@ -76,6 +97,7 @@ class BattleView:
                 time.sleep(3)
                 self.stop_view()
                 self.out_of_battle_view.init_view()
+
             elif self.target.health <= 0:
                 print(f"\nVoce derrotou o {self.target.name}!")
                 loot = LootService.get_random_loot_from_monster(self.target)
@@ -84,7 +106,7 @@ class BattleView:
 
                 xp_amount = (self.target.level * 10) + PlayerController.get_player().xp
                 print(f"\nVoce ganhou {xp_amount} de xp")
-                PlayerController.get_player().xp(xp_amount)
+                PlayerController.add_exp(xp_amount)
                 self.stop_view()
                 self.out_of_battle_view.init_view()
 

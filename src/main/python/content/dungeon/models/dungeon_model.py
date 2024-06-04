@@ -3,9 +3,6 @@ from content.journal.views.journal_view import JournalView
 
 class DungeonModel:
 
-    def explore(self):
-        pass 
-
     def open_inventory(self):
         view = InventoryView()
         view.display_items()

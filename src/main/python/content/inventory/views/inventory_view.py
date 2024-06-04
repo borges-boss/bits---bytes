@@ -18,7 +18,7 @@ class InventoryView:
               "\t|\tCoins: "+ str(PlayerController.get_player().wallet.coins))
         print("\n")
         for i, item in enumerate(items, start=1):
-            print(f"{i}. Item: {item.name}, Peso: {item.weight} Kg")
+            print(f"{i}. Item: {item.name}, Peso: {item.weight}")
             
 
     def handle_input(self):
