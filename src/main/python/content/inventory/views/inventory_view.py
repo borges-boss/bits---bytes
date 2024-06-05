@@ -36,6 +36,7 @@ class InventoryView:
                     item = items[item_number - 1]
                     self.controller.use_item(item)
                     self.controller.equip_item(item)
+                    PlayerController.init_player_attributes() #Re-calcular player stats para considerar o item que voce acabou de equipar
                 else:
                     print("\nNumero de item invalido.")
             except ValueError:

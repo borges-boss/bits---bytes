@@ -1,4 +1,5 @@
 from content.inn.controllers.inn_controller import InnController
+from content.player.controllers.player_controller import PlayerController
 from services.location_service import LocationService
 from utils.print_utils import PrintUtils
 from utils.console_utils import ConsoleUtils
@@ -16,7 +17,8 @@ class InnView:
         print("1. Descansar")
         print("2. Abrir inventario")
         print("3. Abrir Journal")
-        print("4. Sair")
+        print("4. Salvar Jogo")
+        print("5. Sair")
 
 
     def handle_input(self):
@@ -31,11 +33,13 @@ class InnView:
             elif input_value == "3":
                 self.controller.open_journal()
             elif input_value == "4":
+                PlayerController.save_player_state()
+            elif input_value == "5":
                 self.stop_View()
                 LocationService.leave(self.previous_structure_view)
                 break
             else:
-                print("Invalid option.")
+                print("Opcao invalida")
 
     def init_view(self):
         self.is_running = True

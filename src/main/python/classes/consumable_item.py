@@ -1,4 +1,3 @@
-from typing import List
 from base.item import Item
 
 class ConsumableItem(Item):
@@ -36,3 +35,14 @@ class ConsumableItem(Item):
 
 
 
+    def to_dict(self):
+        return {
+            'name': self._name,
+            'type': self._type,
+            'rarity': self._rarity,
+            'weight': self._weight,
+            'enchantments': [],
+            'consumable_type': self._consumable_type,
+            'effect_value': self._effect_value,
+            'effect_type': self._effect_type
+        }

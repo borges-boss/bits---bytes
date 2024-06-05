@@ -24,7 +24,7 @@ class LocationService:
 
         if random.random() < monster_probabilities[difficulty]:
             print("Voce encontrou um monstro!")
-            BattleView(MonsterService.spawn_monster_by_difficulty(difficulty),current_structure).init_view()
+            BattleView(MonsterService.spawn_monster(difficulty,current_structure.monsters),current_structure).init_view()
         elif random.random() < loot_probabilities[difficulty]:
             datastore = DataStore()
             rarity = None

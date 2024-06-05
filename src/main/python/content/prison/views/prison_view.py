@@ -6,7 +6,6 @@ from classes.monster import Monster
 from constants.constants import ITEM_RARITY_COMMON, ITEM_TYPE_DAMAGE, RACE_TYPE_DEMON, STRUCTURE_TYPE_DUNGEON
 from content.battle.views.battle_view import BattleView
 from content.city_structure.views.city_structure_view import CityStructureView
-from content.open_fields.controllers.open_fields_controller import OpenFieldsController
 from content.player.controllers.player_controller import PlayerController
 from services.data_store import DataStore
 from utils.console_utils import ConsoleUtils
@@ -18,25 +17,25 @@ class PrisonView:
     def __init__(self):
         PlayerController.init_player_abilities()
         PlayerController.init_player_attributes()
-        PlayerController.save_player_state()
-        ConsoleUtils.clear_terminal()
         self.prison = Dungeon("Prisao",STRUCTURE_TYPE_DUNGEON,1,0,1,[],1,[])
         PlayerController.get_player().location = self.prison
-        PlayerController.get_player().city = "Torralta"
+        PlayerController.get_player().city = "Rivendell"
+        PlayerController.save_player_state()
+        ConsoleUtils.clear_terminal()
         self.is_battle_finished = False
 
     
 
     def wake_up(self):
-        PrintUtils.print_slowly("A escuridão da cela de prisão é interrompida abruptamente por um estrondo ensurdecedor. O chão frio e úmido treme sob você enquanto sons de luta e gritos ecoam pelos corredores de pedra.\n"+
-                                "Você se levanta, os olhos lutando para se ajustar à fraca luz que se infiltra através das barras enferrujadas da cela. O ar está carregado com uma tensão palpável, uma sensação de medo e urgência que faz seu coração acelerar.\n"
-                                +"De repente, a porta da sua cela é arremessada aberta com um estrondo. Um guarda da prisão entra, ofegante e coberto de suor.\n")
+        #PrintUtils.print_slowly("A escuridão da cela de prisão é interrompida abruptamente por um estrondo ensurdecedor. O chão frio e úmido treme sob você enquanto sons de luta e gritos ecoam pelos corredores de pedra.\n"+
+                            #    "Você se levanta, os olhos lutando para se ajustar à fraca luz que se infiltra através das barras enferrujadas da cela. O ar está carregado com uma tensão palpável, uma sensação de medo e urgência que faz seu coração acelerar.\n"
+                           #     +"De repente, a porta da sua cela é arremessada aberta com um estrondo. Um guarda da prisão entra, ofegante e coberto de suor.\n")
         
-        PrintUtils.print_slowly("Guarda: Os exércitos do rei demônio estão aqui! Eles estão matando todos...")
-        PrintUtils.print_slowly("Guarda: Fuja!")
+        #PrintUtils.print_slowly("\nGuarda: Os exércitos do rei demônio estão aqui! Eles estão matando todos...")
+        #PrintUtils.print_slowly("\nGuarda: Fuja!")
 
-        PrintUtils.print_slowly("Você pega as chaves, a realidade da situação começando a afundar. A prisão está sendo invadida. E se você não agir rápido, pode ser o próximo.\nCom um ultimo olhar para a cela que foi sua casa por tanto tempo, voce sai correndo para o corredor, pronto para enfrentar o desconhecido. A aventura esta apenas começando.")
-        time.seep(2)
+        #PrintUtils.print_slowly("\nVocê pega as chaves, a realidade da situação começando a afundar. A prisão está sendo invadida. E se você não agir rápido, pode ser o próximo.\nCom um ultimo olhar para a cela que foi sua casa por tanto tempo, voce sai correndo para o corredor, pronto para enfrentar o desconhecido. A aventura esta apenas começando.")
+        #time.sleep(2)
         name = None
         ConsoleUtils.clear_terminal()
         while name == None:

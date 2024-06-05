@@ -23,7 +23,8 @@ class ShopView:
         print("2. Vender")
         print("3. Abrir Inventario")
         print("4. Abrir Journal")
-        print("5. Leave")
+        print("5. Salvar jogo")
+        print("6. Sair")
 
 
     def handle_input(self):
@@ -60,6 +61,9 @@ class ShopView:
             elif input_value == "4":
                 self.controller.open_journal()
             elif input_value == "5":
+                self.stop_view()
+                PlayerController.save_player_state()
+            elif input_value == "6":
                 self.stop_view()
                 LocationService.leave(self.previous_structure_view)
                 break

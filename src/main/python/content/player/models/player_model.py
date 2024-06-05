@@ -1,4 +1,4 @@
-from constants.constants import ABILITY_TYPE_MAGIC, ABILITY_TYPE_PHYSICAL, ABILITY_TYPE_STATS_ALL, ABILITY_TYPE_STATS_DAMAGE, ABILITY_TYPE_STATS_DEFENCE, ABILITY_TYPE_STATS_HEALTH, ABILITY_TYPE_STATS_MANA, ABILITY_TYPE_STATS_STAMINA, ABILITY_TYPE_STATS_TARG_DAMAGE, ABILITY_TYPE_STATS_TARG_DEFENCE, ABILITY_TYPE_STATS_TARG_HEALTH, ABILITY_TYPE_STATS_TARG_STAMINA, CLASS_TYPE_WARRIOR, CONSUMABLE_EFFECT_TYPE_HEALTH, CONSUMABLE_EFFECT_TYPE_MANA, ITEM_TYPE_DAMAGE
+from constants.constants import ABILITY_TYPE_MAGIC, ABILITY_TYPE_PHYSICAL, ABILITY_TYPE_STATS_ALL, ABILITY_TYPE_STATS_DAMAGE, ABILITY_TYPE_STATS_DEFENCE, ABILITY_TYPE_STATS_HEALTH, ABILITY_TYPE_STATS_MANA, ABILITY_TYPE_STATS_STAMINA, ABILITY_TYPE_STATS_TARG_DAMAGE, ABILITY_TYPE_STATS_TARG_DEFENCE, ABILITY_TYPE_STATS_TARG_HEALTH, ABILITY_TYPE_STATS_TARG_STAMINA, CLASS_TYPE_WARRIOR, CONSUMABLE_EFFECT_TYPE_DAMAGE, CONSUMABLE_EFFECT_TYPE_HEALTH, CONSUMABLE_EFFECT_TYPE_MANA, CONSUMABLE_EFFECT_TYPE_STAMINA, ITEM_TYPE_DAMAGE
 from constants.constants import CLASS_TYPE_ASSASIN
 from constants.constants import CLASS_TYPE_MAGE
 from constants.constants import CLASS_TYPE_BATTLE_MAGE
@@ -150,21 +150,21 @@ class PlayerModel:
 
  
     def get_player_max_health(self, player):
-        base_health = player.get_base_health() 
+        base_health = self.get_base_health(player) 
         health_per_level = 10
 
         return base_health + (player.level * health_per_level)
     
 
     def get_player_max_mana(self, player):
-        base_mana = player.get_base_mana() 
+        base_mana = self.get_base_mana(player) 
         mana_per_level = 10
 
         return base_mana + (player.level * mana_per_level)
     
 
     def get_player_max_stamina(self, player):
-        base_stamina = player.get_base_stamina() 
+        base_stamina = self.get_base_stamina(player) 
         stamina_per_level = 10
 
         return base_stamina + (player.level * stamina_per_level)
@@ -188,7 +188,7 @@ class PlayerModel:
     def equip_item(self,item,player):
         if item.is_equippable():
             if item.type == ITEM_TYPE_DAMAGE:
-                player.equipped_item(item)
+                player.equipped_item = item
             else:
                 self.equip_piece_of_armor(item,player)
         else:
@@ -200,9 +200,9 @@ class PlayerModel:
             new_mana = (player.mana + item.effect_value)
 
             if new_mana <= self.get_player_max_mana(player):
-             player.mana(player.mana + item.effect_value)
+             player.mana = player.mana + item.effect_value
             else:
-                player.mana(self.get_player_max_mana(player))
+                player.mana = self.get_player_max_mana(player)
 
         elif  item.effect_type == CONSUMABLE_EFFECT_TYPE_HEALTH:
             new_health = (player.health + item.effect_value)
@@ -210,22 +210,28 @@ class PlayerModel:
             if new_health <= self.get_player_max_health(player):
                     player.health(new_health)
             else:
-                 player.health(self.get_player_max_health(player))
+                 player.health = self.get_player_max_health(player)
 
-        else:
+        elif item.effect_type == CONSUMABLE_EFFECT_TYPE_STAMINA:
             new_stamina = (player.stamina + item.effect_value)
             
             if new_stamina <= self.get_player_max_stamina(player):
-                    player.stamina(new_stamina)
+                    player.stamina = new_stamina
             else:
-                 player.stamina(self.get_player_max_stamina(player))
+                 player.stamina = self.get_player_max_stamina(player)
+
+        elif item.effect_type == CONSUMABLE_EFFECT_TYPE_DAMAGE:
+           player.damage+= item.effect_value
+        else:
+            player.defence+= item.effect_value
+            
 
         return player
     
 
-    def deal_damage(self, ability, target):
+    def deal_damage(self, ability, target, player):
         # Calcular dano baseado no nivel do player e o dano base da abilidade
-        damage = ability.value + self.damage
+        damage = ability.value + player.damage
 
          # Calcular redução de dano baseado na defesa do alvo
         damage_reduction = target.defence / 100.0 
@@ -234,8 +240,8 @@ class PlayerModel:
         net_damage = damage * (1 - damage_reduction)
 
         # Subtrair dano liquido da vida do alvo
-        target.health(target.health - net_damage)
-        print(f"{self.name} usou {ability.name}! {target.name} levou {net_damage} de dano!")
+        target.health = target.health - net_damage
+        print(f"{player.name} usou {ability.name}! {target.name} levou {net_damage} de dano!")
         return target
 
 
@@ -272,22 +278,20 @@ class PlayerModel:
             else:
                 player.mana-= ability.ability_cost
         else:
-            print("Not enough mana to use this ability.")
-
-        return player
+            print(f"Voce nao tem mana o suficiente para usar a abilidade {ability.name}")
 
 
     def useAbility(self, ability, target, player):
         if ability.type == ABILITY_TYPE_PHYSICAL:
             if player.stamina >= ability.ability_cost:
-                target = self.deal_damage(ability,target)
-                player.stamina(player.stamina - ability.ability_cost)
+                target = self.deal_damage(ability,target, player)
+                player.stamina = player.stamina - ability.ability_cost
             else:
                 print("Voce não tem stamina o suficiente para usar essa abilidade")
         elif ability.type == ABILITY_TYPE_MAGIC:
             if player.mana >= ability.ability_cost:
-                self.deal_damage(ability,target)
-                player.mana(player.mana - ability.ability_cost)
+                self.deal_damage(ability,target, player)
+                player.mana = player.mana - ability.ability_cost
             else:
                 print("Voce não tem mana o suficiente para usar essa abilidade")
         else:

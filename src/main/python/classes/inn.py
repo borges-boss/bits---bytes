@@ -33,3 +33,16 @@ class Inn(PacificStructure):
     def price_per_stay(self, value):
         self._price_per_stay = value
 
+
+
+    def to_dict(self):
+        return {
+            'name': self.name,
+            'type': self.type,
+            'width': self.width,
+            'height': self.height,
+            'inkeeper': self._inkeeper.to_dict(),
+            'rooms': self.rooms,
+            'price_per_stay': self.price_per_stay,
+            'city': self.city
+        }

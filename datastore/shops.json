@@ -1,31 +1,136 @@
 {
     "shops": [
         {
-            "name": "General Store",
-            "type": "shop",
-            "width": 10,
-            "height": 10,
+            "name": "A Forja de Ferro",
+            "type": "Shop",
+            "width": 20,
+            "height": 15,
             "shopkeeper": {
+                "name": "Borin",
                 "health": 100,
                 "defence": 10,
-                "race": "Human",
-                "type": "npc",
-                "name": "Bob",
-                "description": "A friendly shopkeeper.",
-                "role": "shopkeeper"
+                "race": "Dwarf",
+                "type": "Civilian",
+                "description": "Um anão robusto com uma barba bem cuidada.",
+                "role": "Shopkeeper"
             },
-            "items": [
+            "items_for_sale": [
                 {
-                    "name": "Apple",
-                    "type": "consumable_item",
-                    "rarity": "Common",
-                    "weight": 1,
-                    "consumable_type": "food",
-                    "effect_value": 5,
-                    "effect_type": "heal"
+                    "name": "Espada Longa",
+                    "type": "damage_item",
+                    "rarity": "common",
+                    "weight": 5,
+                    "enchantments": [],
+                    "damage": 10.0
                 }
             ],
-            "city": "Townsville"
+            "city": "Gondolin"
+        },
+        {
+            "name": "O Arco e Flecha",
+            "type": "Shop",
+            "width": 25,
+            "height": 20,
+            "shopkeeper": {
+                "name": "Eldarion",
+                "health": 80,
+                "defence": 5,
+                "race": "Elf",
+                "type": "Civilian",
+                "description": "Um elfo de aparência sábia com olhos brilhantes.",
+                "role": "Shopkeeper"
+            },
+            "items_for_sale": [
+                {
+                    "name": "Arco Longo",
+                    "type": "damage_item",
+                    "rarity": "uncommon",
+                    "weight": 3,
+                    "enchantments": [],
+                    "damage": 15.0
+                }
+            ],
+            "city": "Rivendell"
+        },
+        {
+            "name": "A Armadura Resistente",
+            "type": "Shop",
+            "width": 30,
+            "height": 25,
+            "shopkeeper": {
+                "name": "Hilda",
+                "health": 90,
+                "defence": 8,
+                "race": "Human",
+                "type": "Civilian",
+                "description": "Uma mulher humana forte com um sorriso acolhedor.",
+                "role": "Shopkeeper"
+            },
+            "items_for_sale": [
+                {
+                    "name": "Armadura de Couro",
+                    "type": "wearable_item",
+                    "rarity": "common",
+                    "weight": 15,
+                    "enchantments": [],
+                    "defence": 10.0,
+                    "wearable_type": "chestplate"
+                }
+            ],
+            "city": "Bree"
+        },
+        {
+            "name": "O Caldeirão Mágico",
+            "type": "Shop",
+            "width": 35,
+            "height": 30,
+            "shopkeeper": {
+                "name": "Frodo",
+                "health": 70,
+                "defence": 6,
+                "race": "Hobbit",
+                "type": "Civilian",
+                "description": "Um hobbit amigável com um brilho aventureiro nos olhos.",
+                "role": "Shopkeeper"
+            },
+            "items_for_sale": [
+                {
+                    "name": "Poção de Cura",
+                    "type": "consumable_item",
+                    "rarity": "common",
+                    "weight": 1,
+                    "consumable_type": "potion",
+                    "effect_value": 20,
+                    "effect_type": "health"
+                }
+            ],
+            "city": "The Shire"
+        },
+        {
+            "name": "O Mercado Místico",
+            "type": "Shop",
+            "width": 40,
+            "height": 35,
+            "shopkeeper": {
+                "name": "Théoden",
+                "health": 90,
+                "defence": 8,
+                "race": "Human",
+                "type": "Civilian",
+                "description": "Um homem humano de aparência nobre com uma voz profunda e acolhedora.",
+                "role": "Shopkeeper"
+            },
+            "items_for_sale": [
+                {
+                    "name": "Cajado Arcano",
+                    "type": "damage_item",
+                    "rarity": "rare",
+                    "weight": 8,
+                    "enchantments": [],
+                    "damage": 25.0
+                }
+            ],
+            "city": "Rohan"
         }
     ]
 }

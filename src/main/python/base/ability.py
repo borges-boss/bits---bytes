@@ -7,6 +7,14 @@ class Ability:
         self._value = value
         self._ability_cost = ability_cost
 
+    def to_dict(self):
+        return {
+            'name': self._name,
+            'type': self._type,
+            'description': self._description,
+            'value': self._value,
+            'ability_cost': self._ability_cost
+        }
 
 
     @property

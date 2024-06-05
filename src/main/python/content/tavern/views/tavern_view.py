@@ -1,5 +1,6 @@
 import time
 from content.tavern.controllers.tavern_controller import TavernController
+from content.player.controllers.player_controller import PlayerController
 from services.location_service import LocationService
 from utils.print_utils import PrintUtils
 from utils.console_utils import ConsoleUtils
@@ -81,7 +82,8 @@ class TavernView:
         print("1. Ver quests disponiveis")
         print("2. Abrir Inventario")
         print("3. Abrir Journal")
-        print("4. Sair")
+        print("4. Salvar jogo")
+        print("5. Sair")
 
 
     def handle_input(self):
@@ -96,11 +98,13 @@ class TavernView:
             elif input_value == "3":
                 self.controller.open_journal()
             elif input_value == "4":
+                PlayerController.save_player_state()
+            elif input_value == "5":
                 self.stop_view()
                 LocationService.leave(self.previous_structure_view)
                 break
             else:
-                print("Invalid option.")
+                print("Opcao invalida")
 
     def init_view(self):
         self.is_running = True

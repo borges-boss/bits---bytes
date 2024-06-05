@@ -6,11 +6,13 @@ from classes.damage_item import DamageItem
 from base.journal import Journal
 from typing import List
 
+from base.ability import Ability
+
 
 
 class Player(Entity):
 
-    def __init__(self, health=100, mana=100, stamina=100, player_id=0, name="", race="", game_class="", abilities=[], level=1, xp=0, wallet:Wallet=None, inventory:Inventory=None, 
+    def __init__(self, health=100, mana=100, stamina=100, player_id=0, name="", race="", game_class="", abilities:List[Ability]=[], level=1, xp=0, wallet:Wallet=None, inventory:Inventory=None, 
                  equipped_item: DamageItem=None, equipped_armor:List[WearableItem]=[], journal: Journal=None, location=None, city=""):
         self._player_id = player_id
         self._mana = mana
@@ -29,6 +31,37 @@ class Player(Entity):
         super().__init__(name, health, 0, 0, stamina, race, None)
 
 
+
+    def to_dict(self):
+        return {
+            'player_id': self._player_id,
+            'mana': self._mana,
+            'stamina': self._stamina,
+            'game_class': self._game_class,
+            'abilities': [ability.to_dict() for ability in self.abilities],
+            'level': self._level,
+            'xp': self._xp,
+            'wallet': self._wallet.to_dict(),
+            'inventory': self._inventory.to_dict(),
+            'equipped_item': self._equipped_item.to_dict(),
+            'equipped_armor': [item.to_dict() for item in self._equiped_armor],
+            'journal': self._journal.to_dict(),
+            'name': self.name,
+            'health': self.health,
+            'race': self.race,
+            'location': self._location.to_dict(),
+            'city': self._city
+        }
+
+
+    def abilities_to_dict(self):
+            return [{
+            'name': ability.name,
+            'type': ability.type,
+            'description': ability.description,
+            'value': ability.value,
+            'ability_cost': ability.ability_cost
+        } for ability in self.abilities]
 
     @property
     def city(self):

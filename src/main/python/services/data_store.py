@@ -24,6 +24,15 @@ class DataStore:
 
 
     def find_data_by_key(self, key):
+        data = self.json_file_processor.read_file_contents("datastore\\data.json")
+        if data and key in data:
+            value = data[key]
+            return value if isinstance(value, list) else [value]
+        else:
+            return []
+        
+
+    def find_save_by_key(self, key):
         data = self.json_file_processor.read_file_contents("datastore\\saves.json")
         if data and key in data:
             value = data[key]
@@ -220,31 +229,14 @@ class DataStore:
         return None
 
     def save_game(self, player):
-        data = self.find_data_by_key('saves')
+        data = self.find_save_by_key("saves")
         
 
         if len(data) >= 4:
             data.sort(key=lambda x: x['last_save'])
             data.pop(0)
 
-        player_info = {
-            'player_id': player.player_id,
-            'mana': player.mana,
-            'game_class': player.game_class,
-            'abilities': [vars(ability) for ability in player.abilities],
-            'level': player.level,
-            'xp': player.xp,
-            'wallet': vars(player.wallet),
-            'inventory': {**vars(player.inventory), 'items': [vars(item) for item in player.inventory.items]},
-            'equipped_item': vars(player.equipped_item),
-            'equipped_armor': [vars(item) for item in player.equiped_armor],
-            'journal': {**vars(player.journal), 'quests': [vars(quest) for quest in player.journal.quests]},
-            'name': player.name,
-            'health': player.health,
-            'race': player.race,
-            'location': vars(player.location) ,
-            'city': player.city
-        }
+        player_info = player.to_dict()
 
         data.append({
             'title': "Save "+str((len(data) + 1)),

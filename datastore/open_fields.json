@@ -1,58 +1,398 @@
 {
     "open_fields": [
         {
-            "name": "Green Meadows",
-            "type": "field",
+            "name": "Planícies de Gondolin",
+            "type": "OpenFields",
             "width": 500,
-            "height": 300,
-            "dificulty": 1,
+            "height": 500,
+            "dificulty": 2,
             "monsters": [
                 {
-                    "health": 100,
+                    "name": "Goblin Saqueador",
+                    "health": 50,
                     "damage": 10,
                     "defence": 5,
-                    "stamina": 50,
+                    "stamina": 20,
                     "race": "Goblin",
-                    "type": "monster",
-                    "name": "Goblin Warrior",
+                    "type": "Saqueador",
                     "mana": 0,
-                    "description": "A weak goblin warrior.",
-                    "abilities": [{
-                        "_name": "Slash",
-                        "_description": "A basic sword attack.",
-                        "_type": "physical",
-                        "_value": 10,
-                        "_ability_cost": 5
-                    }],
+                    "description": "Um goblin pequeno e ágil, conhecido por saquear viajantes desavisados.",
+                    "abilities": [
+                        {
+                            "name": "Golpe Duplo",
+                            "description": "Um ataque físico que atinge o alvo duas vezes.",
+                            "type": "physical",
+                            "value": 20,
+                            "ability_cost": 15
+                        }
+                    ],
                     "level": 1
                 }
             ],
             "structures": [
                 {
-                    "name": "Dark Cave",
+                    "name": "Caverna Escura",
                     "type": "cave",
-                    "width": 50,
-                    "height": 30,
+                    "dificulty": 3,
+                    "monsters": [
+                        {
+                            "name": "Troll da Floresta",
+                            "health": 100,
+                            "damage": 20,
+                            "defence": 15,
+                            "stamina": 30,
+                            "race": "Troll",
+                            "type": "Floresta",
+                            "mana": 0,
+                            "description": "Um troll grande e forte que habita as florestas profundas.",
+                            "abilities": [
+                                {
+                                    "name": "Golpe Poderoso",
+                                    "description": "Um ataque físico poderoso que causa danos significativos.",
+                                    "type": "physical",
+                                    "value": 35,
+                                    "ability_cost": 15
+                                },
+                                {
+                                    "name": "Fúria Selvagem",
+                                    "description": "Aumenta o dano dos seus ataques por um curto período de tempo.",
+                                    "type": "stats_damage",
+                                    "value": 30,
+                                    "ability_cost": 10
+                                }
+                            ],
+                            "level": 3
+                        }
+                    ],
+                    "ores": [
+                        "Iron",
+                        "Gold"
+                    ]
+                }
+            ],
+            "city": "Gondolin"
+        },
+        {
+            "name": "Bosque de Rivendell",
+            "type": "OpenFields",
+            "width": 600,
+            "height": 600,
+            "dificulty": 1,
+            "monsters": [
+                {
+                    "name": "Lobo Sombrio",
+                    "health": 80,
+                    "damage": 15,
+                    "defence": 10,
+                    "stamina": 30,
+                    "race": "Lobo",
+                    "type": "Sombrio",
+                    "mana": 0,
+                    "description": "Um lobo grande e feroz que habita as partes mais escuras da floresta.",
+                    "abilities": [
+                        {
+                            "name": "Ataque Furtivo",
+                            "description": "Um ataque rápido e silencioso que pega o alvo de surpresa.",
+                            "type": "physical",
+                            "value": 25,
+                            "ability_cost": 10
+                        }
+                    ],
+                    "level": 2
+                }
+            ],
+            "structures": [
+                {
+                    "name": "Dungeon das Profundezas",
+                    "type": "dungeon",
+                    "dificulty": 3,
+                    "chests_opened": 0,
+                    "layers": 3,
+                    "bosses": [
+                        "Golem de Pedra"
+                    ],
+                    "chest_count": 5,
+                    "monsters": [
+                        {
+                            "name": "Elemental de Fogo",
+                            "health": 120,
+                            "damage": 30,
+                            "defence": 20,
+                            "stamina": 40,
+                            "race": "Elemental",
+                            "type": "Fogo",
+                            "mana": 60,
+                            "description": "Uma criatura mágica feita inteiramente de chamas ardentes.",
+                            "abilities": [
+                                {
+                                    "name": "Bola de Fogo",
+                                    "description": "Um ataque mágico de fogo que causa danos significativos.",
+                                    "type": "magic",
+                                    "value": 35,
+                                    "ability_cost": 25
+                                },
+                                {
+                                    "name": "Escudo de Chamas",
+                                    "description": "Cria um escudo de fogo que causa dano a qualquer um que se aproxime.",
+                                    "type": "magic",
+                                    "value": 30,
+                                    "ability_cost": 20
+                                }
+                            ],
+                            "level": 4
+                        }
+                    ]
+                }
+            ],
+            "city": "Rivendell"
+        },
+        {
+            "name": "Planícies de Bree",
+            "type": "OpenFields",
+            "width": 700,
+            "height": 700,
+            "dificulty": 2,
+            "monsters": [
+                {
+                    "name": "Goblin Saqueador",
+                    "health": 50,
+                    "damage": 10,
+                    "defence": 5,
+                    "stamina": 20,
+                    "race": "Goblin",
+                    "type": "Saqueador",
+                    "mana": 0,
+                    "description": "Um goblin pequeno e ágil, conhecido por saquear viajantes desavisados.",
+                    "abilities": [
+                        {
+                            "name": "Golpe Duplo",
+                            "description": "Um ataque físico que atinge o alvo duas vezes.",
+                            "type": "physical",
+                            "value": 20,
+                            "ability_cost": 15
+                        }
+                    ],
+                    "level": 1
+                }
+            ],
+            "structures": [
+                {
+                    "name": "Caverna do Eco",
+                    "type": "cave",
                     "dificulty": 2,
                     "monsters": [
                         {
-                            "health": 200,
+                            "name": "Troll da Floresta",
+                            "health": 100,
                             "damage": 20,
-                            "defence": 10,
-                            "stamina": 100,
+                            "defence": 15,
+                            "stamina": 30,
                             "race": "Troll",
-                            "type": "monster",
-                            "name": "Cave Troll",
+                            "type": "Floresta",
                             "mana": 0,
-                            "description": "A fearsome troll that lives in the cave.",
-                            "abilities": [],
-                            "level": 2
+                            "description": "Um troll grande e forte que habita as florestas profundas.",
+                            "abilities": [
+                                {
+                                    "name": "Golpe Poderoso",
+                                    "description": "Um ataque físico poderoso que causa danos significativos.",
+                                    "type": "physical",
+                                    "value": 35,
+                                    "ability_cost": 15
+                                },
+                                {
+                                    "name": "Fúria Selvagem",
+                                    "description": "Aumenta o dano dos seus ataques por um curto período de tempo.",
+                                    "type": "stats_damage",
+                                    "value": 30,
+                                    "ability_cost": 10
+                                }
+                            ],
+                            "level": 3
                         }
                     ],
-                    "ores": ["Iron", "Coal"]
+                    "ores": [
+                        "Iron",
+                        "Gold",
+                        "Diamond"
+                    ]
                 }
             ],
-            "city": "Townsville"
+            "city": "Bree"
+        },
+        {
+            "name": "Floresta do Shire",
+            "type": "OpenFields",
+            "width": 800,
+            "height": 800,
+            "dificulty": 1,
+            "monsters": [
+                {
+                    "name": "Lobo Sombrio",
+                    "health": 80,
+                    "damage": 15,
+                    "defence": 10,
+                    "stamina": 30,
+                    "race": "Lobo",
+                    "type": "Sombrio",
+                    "mana": 0,
+                    "description": "Um lobo grande e feroz que habita as partes mais escuras da floresta.",
+                    "abilities": [
+                        {
+                            "name": "Ataque Furtivo",
+                            "description": "Um ataque rápido e silencioso que pega o alvo de surpresa.",
+                            "type": "physical",
+                            "value": 25,
+                            "ability_cost": 10
+                        }
+                    ],
+                    "level": 2
+                }
+            ],
+            "structures": [
+                {
+                    "name": "Dungeon das Profundezas",
+                    "type": "dungeon",
+                    "dificulty": 3,
+                    "chests_opened": 0,
+                    "layers": 3,
+                    "bosses": [
+                        "Golem de Pedra"
+                    ],
+                    "chest_count": 5,
+                    "monsters": [
+                        {
+                            "name": "Elemental de Fogo",
+                            "health": 120,
+                            "damage": 30,
+                            "defence": 20,
+                            "stamina": 40,
+                            "race": "Elemental",
+                            "type": "Fogo",
+                            "mana": 60,
+                            "description": "Uma criatura mágica feita inteiramente de chamas ardentes.",
+                            "abilities": [
+                                {
+                                    "name": "Bola de Fogo",
+                                    "description": "Um ataque mágico de fogo que causa danos significativos.",
+                                    "type": "magic",
+                                    "value": 35,
+                                    "ability_cost": 25
+                                },
+                                {
+                                    "name": "Escudo de Chamas",
+                                    "description": "Cria um escudo de fogo que causa dano a qualquer um que se aproxime.",
+                                    "type": "magic",
+                                    "value": 30,
+                                    "ability_cost": 20
+                                }
+                            ],
+                            "level": 4
+                        }
+                    ]
+                }
+            ],
+            "city": "The Shire"
+        },
+        {
+            "name": "Planícies de Rohan",
+            "type": "OpenFields",
+            "width": 900,
+            "height": 900,
+            "dificulty": 3,
+            "monsters": [
+                {
+                    "name": "Goblin Saqueador",
+                    "health": 50,
+                    "damage": 10,
+                    "defence": 5,
+                    "stamina": 20,
+                    "race": "Goblin",
+                    "type": "Saqueador",
+                    "mana": 0,
+                    "description": "Um goblin pequeno e ágil, conhecido por saquear viajantes desavisados.",
+                    "abilities": [
+                        {
+                            "name": "Golpe Duplo",
+                            "description": "Um ataque físico que atinge o alvo duas vezes.",
+                            "type": "physical",
+                            "value": 20,
+                            "ability_cost": 15
+                        }
+                    ],
+                    "level": 1
+                },
+                {
+                    "name": "Troll da Floresta",
+                    "health": 100,
+                    "damage": 20,
+                    "defence": 15,
+                    "stamina": 30,
+                    "race": "Troll",
+                    "type": "Floresta",
+                    "mana": 0,
+                    "description": "Um troll grande e forte que habita as florestas profundas.",
+                    "abilities": [
+                        {
+                            "name": "Golpe Poderoso",
+                            "description": "Um ataque físico poderoso que causa danos significativos.",
+                            "type": "physical",
+                            "value": 35,
+                            "ability_cost": 15
+                        },
+                        {
+                            "name": "Fúria Selvagem",
+                            "description": "Aumenta o dano dos seus ataques por um curto período de tempo.",
+                            "type": "stats_damage",
+                            "value": 30,
+                            "ability_cost": 10
+                        }
+                    ],
+                    "level": 3
+                }
+            ],
+            "structures": [
+                {
+                    "name": "Caverna do Eco",
+                    "type": "cave",
+                    "dificulty": 2,
+                    "monsters": [
+                        {
+                            "name": "Elemental de Fogo",
+                            "health": 120,
+                            "damage": 30,
+                            "defence": 20,
+                            "stamina": 40,
+                            "race": "Elemental",
+                            "type": "Fogo",
+                            "mana": 60,
+                            "description": "Uma criatura mágica feita inteiramente de chamas ardentes.",
+                            "abilities": [
+                                {
+                                    "name": "Bola de Fogo",
+                                    "description": "Um ataque mágico de fogo que causa danos significativos.",
+                                    "type": "magic",
+                                    "value": 35,
+                                    "ability_cost": 25
+                                },
+                                {
+                                    "name": "Escudo de Chamas",
+                                    "description": "Cria um escudo de fogo que causa dano a qualquer um que se aproxime.",
+                                    "type": "magic",
+                                    "value": 30,
+                                    "ability_cost": 20
+                                }
+                            ],
+                            "level": 4
+                        }
+                    ],
+                    "ores": [
+                        "Iron",
+                        "Gold",
+                        "Diamond"
+                    ]
+                }
+            ],
+            "city": "Rohan"
         }
     ]
 }

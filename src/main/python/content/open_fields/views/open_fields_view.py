@@ -23,7 +23,7 @@ class OpenFieldsView:
         print("4. Viajar")
 
         if self.open_field.structures:
-            print("\nStructures:")
+            print("\nEstruturas:")
             for i, structure in enumerate(self.open_field.structures, start=5):
               difficulty = 'Facil' if structure.dificulty == 1 else 'Normal' if structure.dificulty == 2 else 'Dificil'
               print(f"{i}. Explore {structure.type.capitalize()} (Dificuldade: {difficulty})")

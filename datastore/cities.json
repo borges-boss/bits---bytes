@@ -1,37 +1,409 @@
 {
     "cities": [
         {
-            "name": "Townsville",
-            "description": "A bustling city full of life and adventure.",
             "width": 1000,
             "height": 1000,
+            "name": "Gondolin",
+            "description": "Uma cidade prospera conhecida por suas belas construcoes de pedra branca.",
             "structures": [
                 {
-                    "name": "General Store",
-                    "type": "shop",
-                    "width": 10,
-                    "height": 10,
+                    "name": "A Forja de Ferro",
+                    "type": "Shop",
+                    "width": 20,
+                    "height": 15,
                     "shopkeeper": {
+                        "name": "Borin",
                         "health": 100,
                         "defence": 10,
-                        "race": "Human",
-                        "type": "npc",
-                        "name": "Bob",
-                        "description": "A friendly shopkeeper.",
-                        "role": "shopkeeper"
+                        "race": "Dwarf",
+                        "type": "Civilian",
+                        "description": "Um anao robusto com uma barba bem cuidada.",
+                        "role": "Shopkeeper"
                     },
                     "items_for_sale": [
                         {
-                            "name": "Apple",
-                            "type": "consumable_item",
-                            "rarity": "Common",
-                            "weight": 1,
-                            "consumable_type": "food",
-                            "effect_value": 5,
-                            "effect_type": "heal"
+                            "name": "Espada Longa",
+                            "type": "damage_item",
+                            "rarity": "common",
+                            "weight": 5,
+                            "enchantments": [],
+                            "damage": 10.0
                         }
                     ],
-                    "city": "Townsville"
+                    "city": "Gondolin"
+                },
+                {
+                    "name": "A Aguia Dourada",
+                    "type": "Inn",
+                    "width": 20,
+                    "height": 15,
+                    "inkeeper": {
+                        "name": "Borin",
+                        "health": 100,
+                        "defence": 10,
+                        "race": "Dwarf",
+                        "type": "Civilian",
+                        "description": "Um anao robusto com uma barba bem cuidada.",
+                        "role": "Innkeeper"
+                    },
+                    "rooms": 10,
+                    "price_per_stay": 5,
+                    "city": "Gondolin"
+                },
+                {
+                    "name": "A Caneca de Prata",
+                    "type": "Tavern",
+                    "width": 20,
+                    "height": 15,
+                    "tavern_keeper": {
+                        "name": "Borin",
+                        "health": 100,
+                        "defence": 10,
+                        "race": "Dwarf",
+                        "type": "Civilian",
+                        "description": "Um anao robusto com uma barba bem cuidada.",
+                        "role": "Tavern Keeper"
+                    },
+                    "quests": [
+                        {
+                            "name": "O Ladrao de Joias",
+                            "description": "Encontre o ladrao que esta roubando as joias da cidade.",
+                            "reward": 200,
+                            "reward_type": "money",
+                            "is_completed": false
+                        }
+                    ],
+                    "tavern_keeper_dialog": "Ola, viajante! Estamos tendo alguns problemas com um ladrao. Voce poderia nos ajudar?",
+                    "city": "Gondolin"
+                }
+            ]
+        },
+        {
+            "width": 1200,
+            "height": 1200,
+            "name": "Rivendell",
+            "description": "Uma cidade elfica escondida, famosa por sua beleza e sabedoria.",
+            "structures": [
+                {
+                    "name": "O Arco e Flecha",
+                    "type": "Shop",
+                    "width": 25,
+                    "height": 20,
+                    "shopkeeper": {
+                        "name": "Eldarion",
+                        "health": 80,
+                        "defence": 5,
+                        "race": "Elf",
+                        "type": "Civilian",
+                        "description": "Um elfo de aparencia sabia com olhos brilhantes.",
+                        "role": "Shopkeeper"
+                    },
+                    "items_for_sale": [
+                        {
+                            "name": "Arco Longo",
+                            "type": "damage_item",
+                            "rarity": "uncommon",
+                            "weight": 3,
+                            "enchantments": [],
+                            "damage": 15.0
+                        }
+                    ],
+                    "city": "Rivendell"
+                },
+                {
+                    "name": "O Dragao Adormecido",
+                    "type": "Inn",
+                    "width": 25,
+                    "height": 20,
+                    "inkeeper": {
+                        "name": "Eldarion",
+                        "health": 80,
+                        "defence": 5,
+                        "race": "Elf",
+                        "type": "Civilian",
+                        "description": "Um elfo de aparencia sAbia com olhos brilhantes.",
+                        "role": "Innkeeper"
+                    },
+                    "rooms": 15,
+                    "price_per_stay": 7,
+                    "city": "Rivendell"
+                },
+                {
+                    "name": "O Pônei Saltitante",
+                    "type": "Tavern",
+                    "width": 25,
+                    "height": 20,
+                    "tavern_keeper": {
+                        "name": "Eldarion",
+                        "health": 80,
+                        "defence": 5,
+                        "race": "Elf",
+                        "type": "Civilian",
+                        "description": "Um elfo de aparencia sAbia com olhos brilhantes.",
+                        "role": "Tavern Keeper"
+                    },
+                    "quests": [
+                        {
+                            "name": "A Floresta Sombria",
+                            "description": "Explore a Floresta Sombria e mapeie seus perigos.",
+                            "reward": 300,
+                            "reward_type": "money",
+                            "is_completed": false
+                        }
+                    ],
+                    "tavern_keeper_dialog": "Saudacoes, viajante! Nos precisamos de alguem para explorar a Floresta Sombria. Voce se interessa?",
+                    "city": "Rivendell"
+                }
+            ]
+        },
+        {
+            "width": 1400,
+            "height": 1400,
+            "name": "Bree",
+            "description": "Uma cidade humana acolhedora, conhecida por suas estalagens e tabernas.",
+            "structures": [
+                {
+                    "name": "A Armadura Resistente",
+                    "type": "Shop",
+                    "width": 30,
+                    "height": 25,
+                    "shopkeeper": {
+                        "name": "Hilda",
+                        "health": 90,
+                        "defence": 8,
+                        "race": "Human",
+                        "type": "Civilian",
+                        "description": "Uma mulher humana forte com um sorriso acolhedor.",
+                        "role": "Shopkeeper"
+                    },
+                    "items_for_sale": [
+                        {
+                            "name": "Armadura de Couro",
+                            "type": "wearable_item",
+                            "rarity": "common",
+                            "weight": 15,
+                            "enchantments": [],
+                            "defence": 10.0,
+                            "wearable_type": "chestplate"
+                        }
+                    ],
+                    "city": "Bree"
+                },
+                {
+                    "name": "O Javali Feroz",
+                    "type": "Inn",
+                    "width": 30,
+                    "height": 25,
+                    "inkeeper": {
+                        "name": "Hilda",
+                        "health": 90,
+                        "defence": 8,
+                        "race": "Human",
+                        "type": "Civilian",
+                        "description": "Uma mulher humana forte com um sorriso acolhedor.",
+                        "role": "Innkeeper"
+                    },
+                    "rooms": 20,
+                    "price_per_stay": 10,
+                    "city": "Bree"
+                },
+                {
+                    "name": "O Corvo Negro",
+                    "type": "Tavern",
+                    "width": 30,
+                    "height": 25,
+                    "tavern_keeper": {
+                        "name": "Hilda",
+                        "health": 90,
+                        "defence": 8,
+                        "race": "Human",
+                        "type": "Civilian",
+                        "description": "Uma mulher humana forte com um sorriso acolhedor.",
+                        "role": "Tavern Keeper"
+                    },
+                    "quests": [
+                        {
+                            "name": "O Dragao do Pico da Montanha",
+                            "description": "Derrote o dragao que estA aterrorizando a cidade.",
+                            "reward": 500,
+                            "reward_type": "money",
+                            "is_completed": false
+                        }
+                    ],
+                    "tavern_keeper_dialog": "Ola, viajante! Temos um problema com um dragao. Voce pode nos ajudar?",
+                    "city": "Bree"
+                }
+            ]
+        },
+        {
+            "width": 1600,
+            "height": 1600,
+            "name": "The Shire",
+            "description": "Um lugar pacifico habitado por hobbits, conhecido por suas belas colinas e campos verdes.",
+            "structures": [
+                {
+                    "name": "O Caldeirao MAgico",
+                    "type": "Shop",
+                    "width": 35,
+                    "height": 30,
+                    "shopkeeper": {
+                        "name": "Frodo",
+                        "health": 70,
+                        "defence": 6,
+                        "race": "Hobbit",
+                        "type": "Civilian",
+                        "description": "Um hobbit amigavel com um brilho aventureiro nos olhos.",
+                        "role": "Shopkeeper"
+                    },
+                    "items_for_sale": [
+                        {
+                            "name": "Pocao de Cura",
+                            "type": "consumable_item",
+                            "rarity": "common",
+                            "weight": 1,
+                            "consumable_type": "potion",
+                            "effect_value": 20,
+                            "effect_type": "health"
+                        }
+                    ],
+                    "city": "The Shire"
+                },
+                {
+                    "name": "O Unicornio Prateado",
+                    "type": "Inn",
+                    "width": 35,
+                    "height": 30,
+                    "inkeeper": {
+                        "name": "Frodo",
+                        "health": 70,
+                        "defence": 6,
+                        "race": "Hobbit",
+                        "type": "Civilian",
+                        "description": "Um hobbit amigavel com um brilho aventureiro nos olhos.",
+                        "role": "Innkeeper"
+                    },
+                    "rooms": 25,
+                    "price_per_stay": 12,
+                    "city": "The Shire"
+                },
+                {
+                    "name": "O Pônei Saltitante",
+                    "type": "Tavern",
+                    "width": 35,
+                    "height": 30,
+                    "tavern_keeper": {
+                        "name": "Frodo",
+                        "health": 70,
+                        "defence": 6,
+                        "race": "Hobbit",
+                        "type": "Civilian",
+                        "description": "Um hobbit amigavel com um brilho aventureiro nos olhos.",
+                        "role": "Tavern Keeper"
+                    },
+                    "quests": [
+                        {
+                            "name": "A Espada Perdida",
+                            "description": "Encontre a espada perdida do rei no calabouco.",
+                            "reward": 100,
+                            "reward_type": "money",
+                            "is_completed": false
+                        }
+                    ],
+                    "tavern_keeper_dialog": "OlA, viajante! Nos estamos procurando uma espada perdida. Voce poderia nos ajudar a amigavel-la?",
+                    "city": "The Shire"
+                }
+            ]
+        },
+        {
+            "width": 1800,
+            "height": 1800,
+            "name": "Rohan",
+            "description": "Uma cidade humana conhecida por seus cavaleiros valentes e cavalos rapidos.",
+            "structures": [
+                {
+                    "name": "O Mercado Mistico",
+                    "type": "Shop",
+                    "width": 40,
+                    "height": 35,
+                    "shopkeeper": {
+                        "name": "Theoden",
+                        "health": 90,
+                        "defence": 8,
+                        "race": "Human",
+                        "type": "Civilian",
+                        "description": "Um homem humano de aparencia nobre com uma voz profunda e acolhedora.",
+                        "role": "Shopkeeper"
+                    },
+                    "items_for_sale": [
+                        {
+                            "name": "Cajado Arcano",
+                            "type": "damage_item",
+                            "rarity": "rare",
+                            "weight": 8,
+                            "enchantments": [
+                                {
+                                    "name": "Fireball",
+                                    "description": "Lanca uma bola de fogo",
+                                    "type": "damage",
+                                    "value": 40
+                                }
+                            ],
+                            "damage": 25.0
+                        }
+                    ],
+                    "city": "Rohan"
+                },
+                {
+                    "name": "O Cavalo Branco",
+                    "type": "Inn",
+                    "width": 40,
+                    "height": 35,
+                    "inkeeper": {
+                        "name": "Theoden",
+                        "health": 90,
+                        "defence": 8,
+                        "race": "Human",
+                        "type": "Civilian",
+                        "description": "Um homem humano de aparencia nobre com uma voz profunda e acolhedora.",
+                        "role": "Innkeeper"
+                    },
+                    "rooms": 30,
+                    "price_per_stay": 15,
+                    "city": "Rohan"
+                },
+                {
+                    "name": "O Corvo Negro",
+                    "type": "Tavern",
+                    "width": 40,
+                    "height": 35,
+                    "tavern_keeper": {
+                        "name": "Theoden",
+                        "health": 90,
+                        "defence": 8,
+                        "race": "Human",
+                        "type": "Civilian",
+                        "description": "Um homem humano de aparencia nobre com uma voz profunda e acolhedora.",
+                        "role": "Tavern Keeper"
+                    },
+                    "quests": [
+                        {
+                            "name": "O Elixir da Vida",
+                            "description": "Traga o Elixir da Vida da floresta encantada.",
+                            "reward": {
+                                "name": "Elixir da Vida",
+                                "type": "consumable_item",
+                                "rarity": "legendary",
+                                "weight": 1,
+                                "consumable_type": "elixir",
+                                "effect_value": 100,
+                                "effect_type": "health"
+                            },
+                            "reward_type": "item",
+                            "is_completed": false
+                        }
+                    ],
+                    "tavern_keeper_dialog": "Saudacoes, viajante! Nos estamos procurando o Elixir da Vida. Voce poderia nos ajudar a amigavel-lo?",
+                    "city": "Rohan"
                 }
             ]
         }

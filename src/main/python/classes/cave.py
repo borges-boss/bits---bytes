@@ -22,3 +22,14 @@ class Cave(DangerousStructure):
     @ores.setter
     def ores(self, value):
         self._ores = value
+
+
+
+    def to_dict(self):
+        return {
+            'name': self.name,
+            'type': self.type,
+            'dificulty': self.dificulty,
+            'monsters': [monster.to_dict() for monster in self._monsters],
+            'ores': self.ores
+        }

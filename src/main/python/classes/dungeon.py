@@ -4,7 +4,7 @@ from classes.dangerous_structure import DangerousStructure
 class Dungeon(DangerousStructure):
 
     def __init__(self, name, type, dificulty, chests_opened, layers, bosses, chest_count, monsters):
-        super().__init__(name, type, dificulty)
+        super().__init__(name, type, 0, 0, dificulty)
         self._chests_opened = chests_opened
         self._layers = layers
         self._bosses = bosses
@@ -52,4 +52,17 @@ class Dungeon(DangerousStructure):
     def chest_count(self, value):
         self._chest_count = value
 
+
+
+    def to_dict(self):
+        return {
+            'name': self._name,
+            'type': self._type,
+            'dificulty': self._dificulty,
+            'chests_opened': self._chests_opened,
+            'layers': self._layers,
+            'bosses': self._bosses,
+            'chest_count': self._chest_count,
+            'monsters': [monster.to_dict() for monster in self._monsters]
+        }
 

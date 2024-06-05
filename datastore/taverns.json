@@ -1,54 +1,142 @@
 {
     "taverns": [
         {
-            "city":"City",
-            "name": "The Prancing Pony",
+            "name": "A Caneca de Prata",
             "type": "Tavern",
-            "width": 10,
-            "height": 20,
-            "tavern_keeper_dialog":"Sao tempos somrbrios...",
+            "width": 20,
+            "height": 15,
             "tavern_keeper": {
-                "name": "Barliman Butterbur",
+                "name": "Brom",
                 "health": 100,
                 "defence": 10,
                 "race": "Human",
-                "type": "Tavern Keeper",
-                "description": "The friendly and somewhat forgetful innkeeper.",
+                "type": "Civilian",
+                "description": "Um homem robusto com um sorriso amigável.",
                 "role": "Tavern Keeper"
             },
             "quests": [
                 {
-                    "name": "A strange quest",
-                    "description": "This is a quest",
-                    "is_completed":false,
-                    "reward": {
-                        "type": "money",
-                        "value": 500
-                    }
-                },
-                {
-                    "name": "Another quest",
-                    "description": "This is another quest",
-                    "is_completed":false,
-                    "reward": {
-                        "type": "item",
-                        "value": {
-                            "name": "Cool Sword",
-                            "type": "damage_item",
-                            "rarity": "Common",
-                            "weight": 2.4,
-                            "enchantments": [
-                                {
-                                    "name": "More Damage",
-                                    "description": "",
-                                    "type": "damage_enchantment",
-                                    "value": 4
-                                }
-                            ]
-                        }
-                    }
+                    "name": "O Ladrão de Joias",
+                    "description": "Encontre o ladrão que está roubando as joias da cidade.",
+                    "reward": 200,
+                    "reward_type": "money",
+                    "is_completed": false
                 }
-            ]
+            ],
+            "tavern_keeper_dialog": "Olá, viajante! Estamos tendo alguns problemas com um ladrão. Você poderia nos ajudar?",
+            "city": "Gondolin"
+        },
+        {
+            "name": "O Javali Feliz",
+            "type": "Tavern",
+            "width": 25,
+            "height": 20,
+            "tavern_keeper": {
+                "name": "Eldarion",
+                "health": 80,
+                "defence": 5,
+                "race": "Elf",
+                "type": "Civilian",
+                "description": "Um elfo de aparência sábia com olhos brilhantes.",
+                "role": "Tavern Keeper"
+            },
+            "quests": [
+                {
+                    "name": "A Floresta Sombria",
+                    "description": "Explore a Floresta Sombria e mapeie seus perigos.",
+                    "reward": 300,
+                    "reward_type": "money",
+                    "is_completed": false
+                }
+            ],
+            "tavern_keeper_dialog": "Saudações, viajante! Nós precisamos de alguém para explorar a Floresta Sombria. Você se interessa?",
+            "city": "Rivendell"
+        },
+        {
+            "name": "O Dragão Cervejeiro",
+            "type": "Tavern",
+            "width": 30,
+            "height": 25,
+            "tavern_keeper": {
+                "name": "Hilda",
+                "health": 90,
+                "defence": 8,
+                "race": "Human",
+                "type": "Civilian",
+                "description": "Uma mulher humana forte com um sorriso acolhedor.",
+                "role": "Tavern Keeper"
+            },
+            "quests": [
+                {
+                    "name": "O Dragão do Pico da Montanha",
+                    "description": "Derrote o dragão que está aterrorizando a cidade.",
+                    "reward": 500,
+                    "reward_type": "money",
+                    "is_completed": false
+                }
+            ],
+            "tavern_keeper_dialog": "Olá, viajante! Temos um problema com um dragão. Você pode nos ajudar?",
+            "city": "Bree"
+        },
+        {
+            "name": "O Unicórnio Rosa",
+            "type": "Tavern",
+            "width": 35,
+            "height": 30,
+            "tavern_keeper": {
+                "name": "Frodo",
+                "health": 70,
+                "defence": 6,
+                "race": "Hobbit",
+                "type": "Civilian",
+                "description": "Um hobbit amigável com um brilho aventureiro nos olhos.",
+                "role": "Tavern Keeper"
+            },
+            "quests": [
+                {
+                    "name": "A Espada Perdida",
+                    "description": "Encontre a espada perdida do rei no calabouço.",
+                    "reward": 100,
+                    "reward_type": "money",
+                    "is_completed": false
+                }
+            ],
+            "tavern_keeper_dialog": "Olá, viajante! Nós estamos procurando uma espada perdida. Você poderia nos ajudar a encontrá-la?",
+            "city": "The Shire"
+        },
+        {
+            "name": "O Corvo Negro",
+            "type": "Tavern",
+            "width": 40,
+            "height": 35,
+            "tavern_keeper": {
+                "name": "Théoden",
+                "health": 90,
+                "defence": 8,
+                "race": "Human",
+                "type": "Civilian",
+                "description": "Um homem humano de aparência nobre com uma voz profunda e acolhedora.",
+                "role": "Tavern Keeper"
+            },
+            "quests": [
+                {
+                    "name": "O Elixir da Vida",
+                    "description": "Traga o Elixir da Vida da floresta encantada.",
+                    "reward": {
+                        "name": "Elixir da Vida",
+                        "type": "consumable_item",
+                        "rarity": "legendary",
+                        "weight": 1,
+                        "consumable_type": "elixir",
+                        "effect_value": 100,
+                        "effect_type": "health"
+                    },
+                    "reward_type": "item",
+                    "is_completed": false
+                }
+            ],
+            "tavern_keeper_dialog": "Saudações, viajante! Nós estamos procurando o Elixir da Vida. Você poderia nos ajudar a encontrá-lo?",
+            "city": "Rohan"
         }
     ]
 }

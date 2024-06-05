@@ -37,10 +37,14 @@ class PlayerController:
     def save_player_state(cls):
         model = GameSaveModel()
         cls.global_player = model.save_game(cls.global_player)
-        print("O jogo foi salvo.")
+        print("O seu jogo foi salvo!")
 
     @classmethod
     def get_player(cls):
+        cls.load_player()
+        if cls.get_player == None:
+            cls.load_player()
+
         return cls.global_player
     
     @classmethod
@@ -50,17 +54,17 @@ class PlayerController:
     @classmethod
     def restore_full_health(cls):
         player_model = PlayerModel()
-        cls.global_player.health(player_model.get_player_max_health(cls.global_player)) #Restaurar vida completa do jogador
+        cls.global_player.health = player_model.get_player_max_health(cls.global_player) #Restaurar vida completa do jogador
 
     @classmethod
     def restore_full_mana(cls):
         player_model = PlayerModel()
-        cls.global_player.mana(player_model.get_player_max_mana(cls.global_player)) 
+        cls.global_player.mana = player_model.get_player_max_mana(cls.global_player)
 
     @classmethod
     def restore_full_stamina(cls):
         player_model = PlayerModel()
-        cls.global_player.stamina(player_model.get_player_max_stamina(cls.global_player)) 
+        cls.global_player.stamina = player_model.get_player_max_stamina(cls.global_player)
 
     @classmethod
     def equip_piece_of_armor(cls,wearable_item):
@@ -102,8 +106,9 @@ class PlayerController:
 
     @classmethod
     def inti_new_player_instance(cls):
-        initial_item = DamageItem("Punhos",ITEM_TYPE_DAMAGE,ITEM_RARITY_COMMON,0,[],1)
-        cls.global_player = Player(0,0,0,0,"","","",[],1,0,Wallet(0),Inventory([initial_item],500.0),initial_item,[],Journal([]),None,"")
+        initial_item = DamageItem("Punhos",ITEM_TYPE_DAMAGE,ITEM_RARITY_COMMON,0,[],1.0)
+        cls.global_player = Player(0,0,0,0,"","","",[],1,0,Wallet(0),Inventory([],500.0),initial_item,[],Journal([]),None,"")
+        cls.global_player.inventory.add_item(initial_item)
 
     @classmethod
     def init_player_attributes(cls):
@@ -186,8 +191,8 @@ class PlayerController:
 
             # Aumenta a quantidade de XP necessária para o próximo nível
             xp_to_level_up = 100 * player.level
-
-        print(f"\nVoce subiu de nivel {player.level}!")
+            print(f"\nVoce subiu de nivel {player.level}!")
+            cls.init_player_attributes() #Re-caulcular player stats
             
 
 

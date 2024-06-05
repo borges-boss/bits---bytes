@@ -17,3 +17,8 @@ class Journal:
         self.quests.append(quest)
 
 
+    def to_dict(self):
+        return {
+            'quests': [quest.to_dict() for quest in self._quests]
+        }
+

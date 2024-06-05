@@ -40,5 +40,17 @@ class Tavern(PacificStructure):
 
 
 
+    def to_dict(self):
+        return {
+            'name': self._name,
+            'type': self._type,
+            'width': self._width,
+            'height': self._height,
+            'tavern_keeper': self._tavern_keeper.to_dict(),
+            'quests': [quest.to_dict() for quest in self._quests],
+            'tavern_keeper_dialog': self._tavern_keeper_dialog,
+            'city': self._city
+        }
+
 
         

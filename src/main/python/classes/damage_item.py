@@ -1,13 +1,21 @@
-from typing import List
-from base.enchantment import Enchantment
 from base.item import Item
 
 class DamageItem(Item):
 
-    def __init__(self, name, type, rarity, weight, enchantments: List[Enchantment], damage: float = 0.0):
+    def __init__(self, name, type: str, rarity: str, weight, enchantments, damage: float = 0.0):
         super().__init__(name, type, rarity, weight, enchantments)
         self._damage = damage
 
+
+    def to_dict(self):
+        return {
+            'name': self._name,
+            'type': self._type,
+            'rarity': self._rarity,
+            'weight': self._weight,
+            'enchantments': [e.to_dict() for e in self._enchantments],
+            'damage': self.damage
+        }
 
     @property
     def damage(self):

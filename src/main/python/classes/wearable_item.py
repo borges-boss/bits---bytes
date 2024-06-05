@@ -28,3 +28,14 @@ class WearableItem(Item):
 
 
 
+    def to_dict(self):
+        return {
+            'name': self._name,
+            'type': self._type,
+            'rarity': self._rarity,
+            'weight': self._weight,
+            'enchantments': [],
+            'defence': self._defence,
+            'wearable_type': self._wearable_type
+        }
+

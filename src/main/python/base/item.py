@@ -1,13 +1,10 @@
-from base.enchantment import Enchantment
-from typing import List
 from constants.constants import ITEM_TYPE_DAMAGE
-from constants.constants import ITEM_TYPE_UTILITY
 from constants.constants import  ITEM_TYPE_CONSUMABLE
 from constants.constants import ITEM_TYPE_WEARABLE
 
 class Item:
 
-    def __init__(self,name,type,rarity,weight,enchantments:List[Enchantment]):
+    def __init__(self,name,type,rarity,weight,enchantments):
         self._name = name
         self._type = type
         self._rarity = rarity
@@ -60,9 +57,6 @@ class Item:
 
     def is_equippable(self):
         return self.type == ITEM_TYPE_DAMAGE or self.type == ITEM_TYPE_WEARABLE
-    
-    def is_usable(self):
-        return self.type == ITEM_TYPE_UTILITY
     
     def is_consumable(self):
         return self.type == ITEM_TYPE_CONSUMABLE

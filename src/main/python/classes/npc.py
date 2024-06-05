@@ -27,3 +27,15 @@ class Npc(Entity):
     def interact_with(self):
         print("Interact")
 
+
+    def to_dict(self):
+        return {
+            'name': self.name,
+            'health': self.health,
+            'defence': self.defence,
+            'race': self.race,
+            'type': self.type,
+            'description': self.description,
+            'role': self.role
+        }
+

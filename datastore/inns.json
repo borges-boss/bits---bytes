@@ -1,3 +1,94 @@
 {
-    "inns":[]
+    "inns": [
+        {
+            "name": "A Águia Dourada",
+            "type": "Inn",
+            "width": 20,
+            "height": 15,
+            "inkeeper": {
+                "name": "Borin",
+                "health": 100,
+                "defence": 10,
+                "race": "Dwarf",
+                "type": "Civilian",
+                "description": "Um anão robusto com uma barba bem cuidada.",
+                "role": "Innkeeper"
+            },
+            "rooms": 10,
+            "price_per_stay": 5,
+            "city": "Gondolin"
+        },
+        {
+            "name": "O Dragão Adormecido",
+            "type": "Inn",
+            "width": 25,
+            "height": 20,
+            "inkeeper": {
+                "name": "Eldarion",
+                "health": 80,
+                "defence": 5,
+                "race": "Elf",
+                "type": "Civilian",
+                "description": "Um elfo de aparência sábia com olhos brilhantes.",
+                "role": "Innkeeper"
+            },
+            "rooms": 15,
+            "price_per_stay": 7,
+            "city": "Rivendell"
+        },
+        {
+            "name": "O Javali Feroz",
+            "type": "Inn",
+            "width": 30,
+            "height": 25,
+            "inkeeper": {
+                "name": "Hilda",
+                "health": 90,
+                "defence": 8,
+                "race": "Human",
+                "type": "Civilian",
+                "description": "Uma mulher humana forte com um sorriso acolhedor.",
+                "role": "Innkeeper"
+            },
+            "rooms": 20,
+            "price_per_stay": 10,
+            "city": "Bree"
+        },
+        {
+            "name": "O Unicórnio Prateado",
+            "type": "Inn",
+            "width": 35,
+            "height": 30,
+            "inkeeper": {
+                "name": "Frodo",
+                "health": 70,
+                "defence": 6,
+                "race": "Hobbit",
+                "type": "Civilian",
+                "description": "Um hobbit amigável com um brilho aventureiro nos olhos.",
+                "role": "Innkeeper"
+            },
+            "rooms": 25,
+            "price_per_stay": 12,
+            "city": "The Shire"
+        },
+        {
+            "name": "O Cavalo Branco",
+            "type": "Inn",
+            "width": 40,
+            "height": 35,
+            "inkeeper": {
+                "name": "Théoden",
+                "health": 90,
+                "defence": 8,
+                "race": "Human",
+                "type": "Civilian",
+                "description": "Um homem humano de aparência nobre com uma voz profunda e acolhedora.",
+                "role": "Innkeeper"
+            },
+            "rooms": 30,
+            "price_per_stay": 15,
+            "city": "Rohan"
+        }
+    ]
 }

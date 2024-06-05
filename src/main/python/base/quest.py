@@ -65,3 +65,13 @@ class Quest:
             
         else:
             print(f'You have already completed the quest "{self.name}".')
+
+
+    def to_dict(self):
+            return {
+                'name': self._name,
+                'description': self._description,
+                'reward': self._reward,
+                'reward_type': self._reward_type,
+                'is_completed': self._is_completed
+            }

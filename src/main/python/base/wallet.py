@@ -15,3 +15,10 @@ class Wallet:
             self._coins -= value
         else:
             print("Voce nao tem coins suficientes")
+
+
+
+    def to_dict(self):
+        return {
+            'coins': self._coins
+        }

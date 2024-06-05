@@ -1,9 +1,6 @@
-from base.item import Item
-from typing import List
-
 class Inventory:
 
-    def __init__(self,items:List[Item],max_weight):
+    def __init__(self,items,max_weight):
         self._items = items
         self.max_weight = max_weight
 
@@ -16,7 +13,7 @@ class Inventory:
     def items(self, value):
         self._items = value
 
-    def add_item(self, item:Item):
+    def add_item(self, item):
         total_weight = sum([i.weight for i in self.items])
         if item.weight + total_weight <= self.max_weight:
             print("\nVoce adicionou "+item.name+" ao seu inventario")
@@ -25,8 +22,15 @@ class Inventory:
         else:
             print("Voce não consegue carregar mais itens.")
             return False
+        
 
-    def remove_item(self,item:Item):
+    def to_dict(self):
+        return {
+            'items': [item.to_dict() for item in self.items],
+            'max_weight': self.max_weight
+        }
+
+    def remove_item(self,item):
         self.items.remove(item)
         return True
 

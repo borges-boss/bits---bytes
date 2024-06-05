@@ -1,35 +1,206 @@
 {
     "quests": [
         {
-            "name": "A strange quest",
-            "description": "This is a quest",
-            "reward": {
-                "type": "money",
-                "value": 500
-            },
-            "is_completed":false
+            "name": "A Espada Perdida",
+            "description": "Encontre a espada perdida do rei no calabouço.",
+            "reward": 100,
+            "reward_type": "money",
+            "is_completed": false
         },
         {
-            "name": "Another quest",
-            "description": "This is another quest",
-            "is_completed":false,
+            "name": "O Elixir da Vida",
+            "description": "Traga o Elixir da Vida da floresta encantada.",
             "reward": {
-                "type": "item",
-                "value": {
-                    "name": "Cool Sword",
-                    "type": "damage_item",
-                    "rarity": "Common",
-                    "weight": 2.4,
-                    "enchantments": [
-                        {
-                            "name": "More Damage",
-                            "description": "",
-                            "type": "damage_enchantment",
-                            "value": 4
-                        }
-                    ]
-                }
-            }
+                "name": "Elixir da Vida",
+                "type": "consumable_item",
+                "rarity": "legendary",
+                "weight": 1,
+                "consumable_type": "elixir",
+                "effect_value": 100,
+                "effect_type": "health"
+            },
+            "reward_type": "item",
+            "is_completed": false
+        },
+        {
+            "name": "O Dragão do Pico da Montanha",
+            "description": "Derrote o dragão que está aterrorizando a cidade.",
+            "reward": 500,
+            "reward_type": "money",
+            "is_completed": false
+        },
+        {
+            "name": "O Cajado Arcano",
+            "description": "Recupere o Cajado Arcano do mago maligno.",
+            "reward": {
+                "name": "Cajado Arcano",
+                "type": "damage_item",
+                "rarity": "epic",
+                "weight": 8,
+                "enchantments": [
+                    {
+                        "name": "Fireball",
+                        "description": "Lança uma bola de fogo",
+                        "type": "damage",
+                        "value": 40
+                    }
+                ],
+                "damage": 50.0
+            },
+            "reward_type": "item",
+            "is_completed": false
+        },
+        {
+            "name": "A Armadura Encantada",
+            "description": "Recupere a Armadura Encantada do cavaleiro caído.",
+            "reward": {
+                "name": "Armadura Encantada",
+                "type": "wearable_item",
+                "rarity": "epic",
+                "weight": 15,
+                "enchantments": [
+                    {
+                        "name": "Protection",
+                        "description": "Aumenta a defesa",
+                        "type": "defence",
+                        "value": 5
+                    }
+                ],
+                "defence": 30.0,
+                "wearable_type": "chestplate"
+            },
+            "reward_type": "item",
+            "is_completed": false
+        },
+        {
+            "name": "O Ladrão de Joias",
+            "description": "Encontre o ladrão que está roubando as joias da cidade.",
+            "reward": 200,
+            "reward_type": "money",
+            "is_completed": false
+        },
+        {
+            "name": "A Poção Rara",
+            "description": "Colete os ingredientes para a poção rara.",
+            "reward": {
+                "name": "Poção Rara",
+                "type": "consumable_item",
+                "rarity": "rare",
+                "weight": 1,
+                "consumable_type": "potion",
+                "effect_value": 30,
+                "effect_type": "mana"
+            },
+            "reward_type": "item",
+            "is_completed": false
+        },
+        {
+            "name": "A Floresta Sombria",
+            "description": "Explore a Floresta Sombria e mapeie seus perigos.",
+            "reward": 300,
+            "reward_type": "money",
+            "is_completed": false
+        },
+        {
+            "name": "A Chave Mestra",
+            "description": "Encontre a Chave Mestra que abre todas as portas do castelo.",
+            "reward": 150,
+            "reward_type": "money",
+            "is_completed": false
+        },
+        {
+            "name": "O Livro de Feitiços",
+            "description": "Recupere o Livro de Feitiços da bruxa da floresta.",
+            "reward": {
+                "name": "Livro de Feitiços",
+                "type": "knowledge_item",
+                "rarity": "legendary",
+                "weight": 3,
+                "knowledge_type": "magic",
+                "effect_value": 50,
+                "effect_type": "mana"
+            },
+            "reward_type": "item",
+            "is_completed": false
+        },
+        {
+            "name": "O Monstro do Lago",
+            "description": "Derrote o monstro que está aterrorizando os pescadores do lago.",
+            "reward": 400,
+            "reward_type": "money",
+            "is_completed": false
+        },
+        {
+            "name": "A Flecha Sagrada",
+            "description": "Recupere a Flecha Sagrada do arqueiro desaparecido.",
+            "reward": {
+                "name": "Flecha Sagrada",
+                "type": "damage_item",
+                "rarity": "epic",
+                "weight": 1,
+                "enchantments": [
+                    {
+                        "name": "Lightning Strike",
+                        "description": "Lança um raio",
+                        "type": "damage",
+                        "value": 60
+                    }
+                ],
+                "damage": 40.0
+            },
+            "reward_type": "item",
+            "is_completed": false
+        },
+        {
+            "name": "O Escudo Divino",
+            "description": "Recupere o Escudo Divino do guerreiro sagrado.",
+            "reward": {
+                "name": "Escudo Divino",
+                "type": "wearable_item",
+                "rarity": "legendary",
+                "weight": 10,
+                "enchantments": [
+                    {
+                        "name": "Divine Protection",
+                        "description": "Aumenta a defesa",
+                        "type": "defence",
+                        "value": 10
+                    }
+                ],
+                "defence": 50.0,
+                "wearable_type": "shield"
+            },
+            "reward_type": "item",
+            "is_completed": false
+        },
+        {
+            "name": "O Fantasma do Teatro",
+            "description": "Encontre o fantasma que está assombrando o teatro da cidade.",
+            "reward": 250,
+            "reward_type": "money",
+            "is_completed": false
+        },
+        {
+            "name": "O Elixir de Força",
+            "description": "Colete os ingredientes para o Elixir de Força.",
+            "reward": {
+                "name": "Elixir de Força",
+                "type": "consumable_item",
+                "rarity": "rare",
+                "weight": 1,
+                "consumable_type": "elixir",
+                "effect_value": 40,
+                "effect_type": "damage"
+            },
+            "reward_type": "item",
+            "is_completed": false
+        },
+        {
+            "name": "A Caverna Perdida",
+            "description": "Explore a Caverna Perdida e mapeie seus perigos.",
+            "reward": 350,
+            "reward_type": "money",
+            "is_completed": false
         }
     ]
 }

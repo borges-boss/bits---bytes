@@ -1,5 +1,15 @@
 from content.load_menu.views.load_menu_view import LoadMenuView
 from content.game_save.models.game_save_model import GameSaveModel
+from constants.constants import STRUCTURE_TYPE_CAVE, STRUCTURE_TYPE_DUNGEON, STRUCTURE_TYPE_INN, STRUCTURE_TYPE_OPEN_FIELD, STRUCTURE_TYPE_SHOP, STRUCTURE_TYPE_TAVERN
+from content.cave.views.cave_view import CaveView
+from content.city_structure.views.city_structure_view import CityStructureView
+from content.dungeon.views.dungeon_view import DungeonView
+from content.inn.views.inn_view import InnView
+from content.open_fields.views.open_fields_view import OpenFieldsView
+from content.player.controllers.player_controller import PlayerController
+from content.shop.views.shop_view import ShopView
+from content.tavern.views.tavern_view import TavernView
+from services.data_store import DataStore
 from utils.console_utils import ConsoleUtils
 
 class LoadMenuController:
@@ -19,8 +29,30 @@ class LoadMenuController:
               print("S - Sim")
               print("N - Não")
               decision = str(input())
-              if decision == "S":
-                print("Loaded option: ",option)
+              if decision.lower() == "s":
+                PlayerController.load_player()
+                datastore = DataStore()
+                
+                current_player_location = PlayerController.get_player().location
+                print("Player city: "+PlayerController.get_player().city)
+                city_open_field = datastore.find_open_fields_by_city(PlayerController.get_player().city)
+                city = datastore.find_city_by_name(PlayerController.get_player().city)
+                
+                if current_player_location.type == STRUCTURE_TYPE_DUNGEON:
+                    DungeonView(OpenFieldsView(city_open_field),current_player_location).init_view()
+                elif current_player_location.type == STRUCTURE_TYPE_CAVE:
+                    CaveView(CityStructureView(city_open_field,city.structures),current_player_location).init_view()
+                elif current_player_location.type == STRUCTURE_TYPE_INN:
+                    InnView(CityStructureView(city_open_field,city.structures),current_player_location).init_view()
+                elif current_player_location.type == STRUCTURE_TYPE_OPEN_FIELD:
+                    OpenFieldsView(city_open_field).init_view()
+                elif current_player_location.type == STRUCTURE_TYPE_SHOP:
+                    ShopView(CityStructureView(city_open_field,city.structures),current_player_location).init_view()
+                elif current_player_location.type == STRUCTURE_TYPE_TAVERN:
+                    TavernView(CityStructureView(city_open_field,city.structures),current_player_location).init_view()
+                else:
+                    print("Local desconhecido")
+
                 break
               else:
                   ConsoleUtils.clear_terminal()

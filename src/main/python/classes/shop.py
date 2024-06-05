@@ -32,4 +32,13 @@ class Shop(PacificStructure):
         return True
 
 
-        
+    def to_dict(self):
+        return {
+            'name': self._name,
+            'type': self._type,
+            'width': self._width,
+            'height': self._height,
+            'shopkeeper': self._shopkeeper.to_dict(),
+            'items_for_sale': [item.to_dict() for item in self._items_for_sale],
+            'city': self._city
+        }

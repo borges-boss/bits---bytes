@@ -6,7 +6,8 @@ class GameOpeningView:
     def display_intro_text(self,text):
         terminal_width = os.get_terminal_size().columns
 
-        PrintUtils.print_slowly("\n".join(textwrap.wrap(text, width=terminal_width)),0.06)
+        wrapped_text = "\n".join(textwrap.wrap(text, width=terminal_width))
+        PrintUtils.print_slowly(wrapped_text.expandtabs(),0.06)
 
     def display_ascii_art(self,art):
         print(art)

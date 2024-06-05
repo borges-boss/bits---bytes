@@ -36,3 +36,17 @@ class OpenFields(DangerousStructure):
     @monsters.setter
     def monsters(self, value):
         self._monsters = value
+
+
+
+    def to_dict(self):
+        return {
+            'name': self._name,
+            'type': self._type,
+            'width': self._width,
+            'height': self._height,
+            'dificulty': self._dificulty,
+            'monsters': [monster.to_dict() for monster in self._monsters],
+            'structures': [structure.to_dict() for structure in self._structures],
+            'city': self._city
+        }

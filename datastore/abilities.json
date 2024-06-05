@@ -1,39 +1,172 @@
 {
     "abilities": [
         {
-            "_name": "Slash",
-            "_description": "A basic sword attack.",
-            "_type": "physical",
-            "_value": 10,
-            "_ability_cost": 5
+            "name": "Golpe Poderoso",
+            "description": "Um ataque físico poderoso que causa danos significativos.",
+            "type": "physical",
+            "value": 30,
+            "ability_cost": 10
         },
         {
-            "_name": "Fireball",
-            "_description": "A magical fire attack.",
-            "_type": "magic",
-            "_value": 20,
-            "_ability_cost": 10
+            "name": "Toque de Cura",
+            "description": "Uma habilidade mágica que restaura a saúde.",
+            "type": "magic",
+            "value": 20,
+            "ability_cost": 15
         },
         {
-            "_name": "Heal",
-            "_description": "Restores health.",
-            "_type": "magic",
-            "_value": 50,
-            "_ability_cost": 15
+            "name": "Impulso de Stamina",
+            "description": "Aumenta sua stamina por um curto período de tempo.",
+            "type": "stats_stamina",
+            "value": 25,
+            "ability_cost": 5
         },
         {
-            "_name": "Power Strike",
-            "_description": "A powerful physical attack.",
-            "_type": "physical",
-            "_value": 30,
-            "_ability_cost": 20
+            "name": "Surto de Mana",
+            "description": "Restaura uma parte da sua mana.",
+            "type": "stats_mana",
+            "value": 20,
+            "ability_cost": 10
         },
         {
-            "_name": "Ice Shard",
-            "_description": "A magical ice attack.",
-            "_type": "magic",
-            "_value": 25,
-            "_ability_cost": 15
+            "name": "Postura Defensiva",
+            "description": "Aumenta sua defesa por um curto período de tempo.",
+            "type": "stats_defence",
+            "value": 15,
+            "ability_cost": 10
+        },
+        {
+            "name": "Enfraquecer",
+            "description": "Reduz o dano do alvo por um curto período de tempo.",
+            "type": "stats_target_damage",
+            "value": 10,
+            "ability_cost": 15
+        },
+        {
+            "name": "Debilitar",
+            "description": "Reduz a defesa do alvo por um curto período de tempo.",
+            "type": "stats_target_defence",
+            "value": 10,
+            "ability_cost": 15
+        },
+        {
+            "name": "Berserk",
+            "description": "Aumenta todas as suas estatísticas, mas diminui sua saúde por um curto período de tempo.",
+            "type": "stats_all",
+            "value": 10,
+            "ability_cost": 20
+        },
+        {
+            "name": "Drenar Vida",
+            "description": "Rouba saúde do alvo.",
+            "type": "stats_target_health",
+            "value": 15,
+            "ability_cost": 20
+        },
+        {
+            "name": "Bola de Fogo",
+            "description": "Um ataque mágico de fogo que causa danos significativos.",
+            "type": "magic",
+            "value": 35,
+            "ability_cost": 25
+        },
+        {
+            "name": "Escudo de Força",
+            "description": "Cria um escudo de força que absorve uma quantidade significativa de dano.",
+            "type": "magic",
+            "value": 40,
+            "ability_cost": 20
+        },
+        {
+            "name": "Recuperação Rápida",
+            "description": "Aumenta a taxa de recuperação de sua saúde por um curto período de tempo.",
+            "type": "stats_health",
+            "value": 30,
+            "ability_cost": 15
+        },
+        {
+            "name": "Energia Infinita",
+            "description": "Restaura toda a sua stamina imediatamente.",
+            "type": "stats_stamina",
+            "value": 100,
+            "ability_cost": 30
+        },
+        {
+            "name": "Rajada de Vento",
+            "description": "Um ataque mágico que causa dano e empurra o alvo para trás.",
+            "type": "magic",
+            "value": 25,
+            "ability_cost": 15
+        },
+        {
+            "name": "Golpe Crítico",
+            "description": "Um ataque físico poderoso com uma alta chance de causar dano crítico.",
+            "type": "physical",
+            "value": 50,
+            "ability_cost": 30
+        },
+        {
+            "name": "Regeneração de Mana",
+            "description": "Aumenta a taxa de recuperação de sua mana por um curto período de tempo.",
+            "type": "stats_mana",
+            "value": 30,
+            "ability_cost": 15
+        },
+        {
+            "name": "Desarmar",
+            "description": "Reduz o dano do alvo ao mínimo por um curto período de tempo.",
+            "type": "stats_target_damage",
+            "value": 90,
+            "ability_cost": 30
+        },
+        {
+            "name": "Golpe Duplo",
+            "description": "Um ataque físico que atinge o alvo duas vezes.",
+            "type": "physical",
+            "value": 20,
+            "ability_cost": 15
+        },
+        {
+            "name": "Fúria Selvagem",
+            "description": "Aumenta o dano dos seus ataques por um curto período de tempo.",
+            "type": "stats_damage",
+            "value": 30,
+            "ability_cost": 10
+        },
+        {
+            "name": "Raio Congelante",
+            "description": "Um ataque mágico que causa dano e diminui a velocidade do alvo.",
+            "type": "magic",
+            "value": 25,
+            "ability_cost": 15
+        },
+        {
+            "name": "Fortaleza",
+            "description": "Aumenta drasticamente sua defesa, mas reduz seu dano por um curto período de tempo.",
+            "type": "stats_defence",
+            "value": 50,
+            "ability_cost": 20
+        },
+        {
+            "name": "Soco Poderoso",
+            "description": "Um golpe poderoso que causa dano e tem chance de atordoar o alvo.",
+            "type": "physical",
+            "value": 35,
+            "ability_cost": 15
+        },
+        {
+            "name": "Revigorar",
+            "description": "Restaura uma pequena quantidade de stamina ao longo do tempo.",
+            "type": "stats_stamina",
+            "value": 10,
+            "ability_cost": 5
+        },
+        {
+            "name": "Veneno",
+            "description": "Envenena o alvo, causando dano ao longo do tempo.",
+            "type": "magic",
+            "value": 15,
+            "ability_cost": 10
         }
     ]
 }
