@@ -8,7 +8,7 @@
             "structures": [
                 {
                     "name": "A Forja de Ferro",
-                    "type": "Shop",
+                    "type": "shop",
                     "width": 20,
                     "height": 15,
                     "shopkeeper": {
@@ -34,7 +34,7 @@
                 },
                 {
                     "name": "A Aguia Dourada",
-                    "type": "Inn",
+                    "type": "inn",
                     "width": 20,
                     "height": 15,
                     "inkeeper": {
@@ -52,7 +52,7 @@
                 },
                 {
                     "name": "A Caneca de Prata",
-                    "type": "Tavern",
+                    "type": "tavern",
                     "width": 20,
                     "height": 15,
                     "tavern_keeper": {
@@ -86,7 +86,7 @@
             "structures": [
                 {
                     "name": "O Arco e Flecha",
-                    "type": "Shop",
+                    "type": "shop",
                     "width": 25,
                     "height": 20,
                     "shopkeeper": {
@@ -112,7 +112,7 @@
                 },
                 {
                     "name": "O Dragao Adormecido",
-                    "type": "Inn",
+                    "type": "inn",
                     "width": 25,
                     "height": 20,
                     "inkeeper": {
@@ -130,7 +130,7 @@
                 },
                 {
                     "name": "O Pônei Saltitante",
-                    "type": "Tavern",
+                    "type": "tavern",
                     "width": 25,
                     "height": 20,
                     "tavern_keeper": {
@@ -164,7 +164,7 @@
             "structures": [
                 {
                     "name": "A Armadura Resistente",
-                    "type": "Shop",
+                    "type": "shop",
                     "width": 30,
                     "height": 25,
                     "shopkeeper": {
@@ -191,7 +191,7 @@
                 },
                 {
                     "name": "O Javali Feroz",
-                    "type": "Inn",
+                    "type": "inn",
                     "width": 30,
                     "height": 25,
                     "inkeeper": {
@@ -209,7 +209,7 @@
                 },
                 {
                     "name": "O Corvo Negro",
-                    "type": "Tavern",
+                    "type": "tavern",
                     "width": 30,
                     "height": 25,
                     "tavern_keeper": {
@@ -243,7 +243,7 @@
             "structures": [
                 {
                     "name": "O Caldeirao MAgico",
-                    "type": "Shop",
+                    "type": "shop",
                     "width": 35,
                     "height": 30,
                     "shopkeeper": {
@@ -270,7 +270,7 @@
                 },
                 {
                     "name": "O Unicornio Prateado",
-                    "type": "Inn",
+                    "type": "inn",
                     "width": 35,
                     "height": 30,
                     "inkeeper": {
@@ -288,7 +288,7 @@
                 },
                 {
                     "name": "O Pônei Saltitante",
-                    "type": "Tavern",
+                    "type": "tavern",
                     "width": 35,
                     "height": 30,
                     "tavern_keeper": {
@@ -322,7 +322,7 @@
             "structures": [
                 {
                     "name": "O Mercado Mistico",
-                    "type": "Shop",
+                    "type": "shop",
                     "width": 40,
                     "height": 35,
                     "shopkeeper": {
@@ -355,7 +355,7 @@
                 },
                 {
                     "name": "O Cavalo Branco",
-                    "type": "Inn",
+                    "type": "inn",
                     "width": 40,
                     "height": 35,
                     "inkeeper": {
@@ -373,7 +373,7 @@
                 },
                 {
                     "name": "O Corvo Negro",
-                    "type": "Tavern",
+                    "type": "tavern",
                     "width": 40,
                     "height": 35,
                     "tavern_keeper": {

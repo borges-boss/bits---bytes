@@ -14,16 +14,13 @@ class TavernModel:
     def get_taverns_by_city(self,city):
         return self.datastore.find_taverns_by_city(city)
 
-    def explore(self):
-        pass 
-
     def open_inventory(self):
         view = InventoryView()
-        view.display_items()
+        view.init_view()
 
     def open_journal(self):
         view = JournalView()
-        view.show_my_quests()
+        view.init_view()
 
     def leave(self):
        pass

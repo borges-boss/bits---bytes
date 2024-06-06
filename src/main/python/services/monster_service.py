@@ -1,6 +1,7 @@
 import random
 from classes.monster import Monster
 from services.data_store import DataStore
+import curses
 
 
 class MonsterService:
@@ -34,3 +35,19 @@ class MonsterService:
             monster.level = random.randint(11, 30)
 
         return monster
+    
+    @staticmethod
+    def display_monster_hud(monster):
+        health_bar = '\033[31m' + '█' * int(monster.health / 10) + '\033[0m'
+        mana_bar = '\033[34m' + '█' * int(monster.mana / 10) + '\033[0m'
+        stamina_bar = '\033[32m' + '█' * int(monster.stamina / 10) + '\033[0m'
+
+        stdscr = curses.initscr()
+        _, term_width = stdscr.getmaxyx()
+        curses.endwin()
+
+        print(f"\033[31mHealth: {monster.health}\033[0m [{health_bar:<10}]".rjust(term_width))
+        print("")
+        print(f"\033[34mMana: {monster.mana}\033[0m [{mana_bar:<10}]".rjust(term_width))
+        print("")
+        print(f"\033[32mStamina: {monster.stamina}\033[0m [{stamina_bar:<10}]".rjust(term_width))

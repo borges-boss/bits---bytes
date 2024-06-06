@@ -45,7 +45,15 @@ class Monster(Entity):
     def abilities(self, value):
         self._abilities = value
 
+    @property
+    def damage(self):
+        damage_per_level = 10
+        return self._damage + (self._level * damage_per_level)
+
     def use_stats_ability(self, ability, target):
+        target_abilities = [ABILITY_TYPE_STATS_TARG_HEALTH, ABILITY_TYPE_STATS_TARG_STAMINA, 
+                        ABILITY_TYPE_STATS_TARG_DAMAGE, ABILITY_TYPE_STATS_TARG_DEFENCE]
+        
         if self.mana >= ability.ability_cost:
             if ability.type == ABILITY_TYPE_STATS_HEALTH:
                 self.health += ability.effect_value
@@ -80,9 +88,14 @@ class Monster(Entity):
         else:
             print(f"{self.name} nao tem mana o suficiente para usar a abilidade {ability.name}")
 
-    def dealDamage(self,ability, target):
+        if ability.type in target_abilities:
+         return target
+        else:
+         return self
+
+    def dealDamage(self, ability, target):
         # Calcular dano baseado no nivel do monstro e o dano base da abilidade
-        damage = self.level * (ability.value + self.damage)
+        damage = ability.value + self.damage
 
          # Calcular redução de dano baseado na defesa do alvo
         damage_reduction = target.defence / 100.0 
@@ -93,17 +106,18 @@ class Monster(Entity):
         # Subtrair dano liquido da vida do alvo
         target.health -= net_damage
         print(f"\n{self.name} usou {ability.name}! {target.name} levou {net_damage} de dano.")
+        return target
 
     def useAbility(self, ability, target):
         
         if ability.type == ABILITY_TYPE_PHYSICAL:
-            self.dealDamage(ability,target)
+            target = self.dealDamage(ability,target)
             self.stamina-= ability.ability_cost
         elif ability.type == ABILITY_TYPE_MAGIC:
             self.dealDamage(ability,target)
             self.mana-= ability.ability_cost   
         else:
-            self.use_stats_ability(ability,target) 
+            target = self.use_stats_ability(ability,target) 
             
         return target
     

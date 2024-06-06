@@ -2,7 +2,7 @@
     "inns": [
         {
             "name": "A Águia Dourada",
-            "type": "Inn",
+            "type": "inn",
             "width": 20,
             "height": 15,
             "inkeeper": {
@@ -20,7 +20,7 @@
         },
         {
             "name": "O Dragão Adormecido",
-            "type": "Inn",
+            "type": "inn",
             "width": 25,
             "height": 20,
             "inkeeper": {
@@ -38,7 +38,7 @@
         },
         {
             "name": "O Javali Feroz",
-            "type": "Inn",
+            "type": "inn",
             "width": 30,
             "height": 25,
             "inkeeper": {
@@ -56,7 +56,7 @@
         },
         {
             "name": "O Unicórnio Prateado",
-            "type": "Inn",
+            "type": "inn",
             "width": 35,
             "height": 30,
             "inkeeper": {
@@ -74,7 +74,7 @@
         },
         {
             "name": "O Cavalo Branco",
-            "type": "Inn",
+            "type": "inn",
             "width": 40,
             "height": 35,
             "inkeeper": {

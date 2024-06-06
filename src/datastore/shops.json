@@ -2,7 +2,7 @@
     "shops": [
         {
             "name": "A Forja de Ferro",
-            "type": "Shop",
+            "type": "shop",
             "width": 20,
             "height": 15,
             "shopkeeper": {
@@ -28,7 +28,7 @@
         },
         {
             "name": "O Arco e Flecha",
-            "type": "Shop",
+            "type": "shop",
             "width": 25,
             "height": 20,
             "shopkeeper": {
@@ -44,7 +44,7 @@
                 {
                     "name": "Arco Longo",
                     "type": "damage_item",
-                    "rarity": "uncommon",
+                    "rarity": "common",
                     "weight": 3,
                     "enchantments": [],
                     "damage": 15.0
@@ -54,7 +54,7 @@
         },
         {
             "name": "A Armadura Resistente",
-            "type": "Shop",
+            "type": "shop",
             "width": 30,
             "height": 25,
             "shopkeeper": {
@@ -81,7 +81,7 @@
         },
         {
             "name": "O Caldeirão Mágico",
-            "type": "Shop",
+            "type": "shop",
             "width": 35,
             "height": 30,
             "shopkeeper": {
@@ -108,7 +108,7 @@
         },
         {
             "name": "O Mercado Místico",
-            "type": "Shop",
+            "type": "shop",
             "width": 40,
             "height": 35,
             "shopkeeper": {

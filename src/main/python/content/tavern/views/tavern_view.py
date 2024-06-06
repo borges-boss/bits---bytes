@@ -8,18 +8,17 @@ from constants.constants import REWARD_TYPE_ITEM
 
 class TavernView:
 
-    def __init__(self, previous_structure_view,tavern):
-        self.controller = TavernController()
+    def __init__(self, previous_structure_view, tavern):
+        self.player = PlayerController.get_player()
+        self.controller = TavernController(self.player.city)
         self.previous_structure_view = previous_structure_view
         self.is_running  = True
         self.tavern = tavern
+        self.player.location = tavern
     
     def list_available_quests(self):
-        taverns = self.controller.get_taverns_by_city()
-        if len(taverns) > 0:
-            self.list_quests(taverns[0].tavern_keeper_dialog)
-            self.input_quest()
-        return taverns
+        self.list_quests(self.tavern.tavern_keeper_dialog, self.tavern)
+        self.input_quest()
 
     def list_quests(self,tavern_keeper_dialog: str, tavern):
         PrintUtils.print_slowly(tavern.tavern_keeper.name+" o "+tavern.tavern_keeper.role+" diz: "+tavern_keeper_dialog,0.05)
@@ -41,31 +40,30 @@ class TavernView:
             print(f'Quest Name: {quest.name}\nDescription: {quest.description}\nReward: {quest.reward} coins\nStatus: {status}')
 
 
-    def input_quest(self, player):
-        taverns = self.controller.get_taverns_by_city()
-
-        if taverns:
+    def input_quest(self):
+        if self.tavern:
             print("Digite o numero da quest que voce quer adicionar ao seu journal: ")
-            for i, quest in enumerate(taverns[0].quests, start=1):
+            for i, quest in enumerate(self.tavern.quests, start=1):
                 print(f"{i}. {quest.name}")
 
             while True:
                 try:
                     quest_number = int(input())
-                    if 1 <= quest_number <= len(taverns[0].quests):
+                    if 1 <= quest_number <= len(self.tavern.quests):
                         break
                     else:
                         print("Numero invalido, por favor tente de novo")
                 except ValueError:
                     print("Input invalido, por favor so digite numeros")
 
-            quest_to_add = taverns[0].quests[quest_number - 1]
+            quest_to_add = self.tavern.quests[quest_number - 1]
 
-            if any(quest.name == quest_to_add.name for quest in player.journal.quests):
+            if any(quest.name == quest_to_add.name for quest in self.player.journal.quests):
                 print(f"Quest '{quest_to_add.name}' ja esta no seu journal.")
             else:
-                player.journal.add_quest(quest_to_add)
+                self.player.journal.add_quest(quest_to_add)
                 print(f"Quest '{quest_to_add.name}' foi adicionada ao seu journal.")
+                PlayerController.save_player(self.player)
         else:
             print("Nenhuma taverna disponivel nessa cidade")
 
@@ -98,7 +96,7 @@ class TavernView:
             elif input_value == "3":
                 self.controller.open_journal()
             elif input_value == "4":
-                PlayerController.save_player_state()
+                PlayerController.save_player_state(self.player)
             elif input_value == "5":
                 self.stop_view()
                 LocationService.leave(self.previous_structure_view)

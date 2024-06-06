@@ -13,6 +13,7 @@ class OpenFieldsView:
         self.is_running = True
         self.controller = OpenFieldsController()
         self.open_field = open_field
+        self.player = PlayerController.get_player()
 
     def display_options(self):
         PrintUtils.print_centered(f"Voce esta em um campo aberto fora da cidade de {PlayerController.get_player().city}\n")

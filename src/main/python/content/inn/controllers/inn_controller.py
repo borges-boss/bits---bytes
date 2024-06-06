@@ -6,16 +6,13 @@ class InnController:
     def __init__(self, inn):
         self.model = InnModel(inn)
 
-    def rest(self):
-        self.model.rest()
+    def rest(self, player):
+        self.model.rest(player)
 
     def open_inventory(self):
         view = InventoryView()
-        view.display_items()
+        view.init_view()
 
     def open_journal(self):
         view = JournalView()
         view.show_my_quests()
-
-    def leave(self, previous_structure_view):
-        self.model.leave()

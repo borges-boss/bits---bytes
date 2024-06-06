@@ -1,4 +1,5 @@
 import datetime
+import os
 from base.item import Item
 from base.quest import Quest
 from classes.npc import Npc
@@ -16,6 +17,7 @@ from classes.monster import Monster
 from classes.open_fields import OpenFields
 from classes.wearable_item import WearableItem
 from constants.constants import ITEM_TYPE_CONSUMABLE, ITEM_TYPE_DAMAGE, ITEM_TYPE_WEARABLE, STRUCTURE_TYPE_CAVE, STRUCTURE_TYPE_DUNGEON, STRUCTURE_TYPE_INN, STRUCTURE_TYPE_OPEN_FIELD, STRUCTURE_TYPE_SHOP, STRUCTURE_TYPE_TAVERN
+from base.ability import Ability
 from services.json_file_proc import JsonFileProcessor
 
 class DataStore:
@@ -23,8 +25,17 @@ class DataStore:
       self.json_file_processor = JsonFileProcessor()
 
 
+    def get_path(self,file_name):
+        base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+        file_path = os.path.join(base_dir, 'datastore', file_name)
+        return file_path
+    
+    def read_file_content(self,file_name):
+        return self.json_file_processor.read_file_contents(self.get_path(file_name))
+    
+
     def find_data_by_key(self, key):
-        data = self.json_file_processor.read_file_contents("datastore\\data.json")
+        data = self.read_file_content("data.json")
         if data and key in data:
             value = data[key]
             return value if isinstance(value, list) else [value]
@@ -33,7 +44,7 @@ class DataStore:
         
 
     def find_save_by_key(self, key):
-        data = self.json_file_processor.read_file_contents("datastore\\saves.json")
+        data = self.read_file_content("saves.json")
         if data and key in data:
             value = data[key]
             return value if isinstance(value, list) else [value]
@@ -42,14 +53,21 @@ class DataStore:
         
     
     def find_quests_by_city(self, city):
-        data = self.json_file_processor.read_file_contents("datastore\quests.json")
+        data = self.read_file_content("quests.json")
         quests = []
         for quest_data in data['quests']:
             if quest_data['city'] == city:
-                reward_type = quest_data['reward']['type']
-                reward = quest_data['reward']['value']
+                reward_type = quest_data['reward_type']
+                reward = quest_data['reward']
                 if reward_type == 'item':
-                    reward = Item(**reward)
+                        item_type = reward['type']
+                        if item_type == ITEM_TYPE_DAMAGE:
+                            reward = DamageItem(**reward)
+                        elif item_type == ITEM_TYPE_CONSUMABLE:
+                            reward = ConsumableItem(**reward)
+                        elif item_type == ITEM_TYPE_WEARABLE:
+                            reward = WearableItem(**reward)
+                            
                 quest = Quest(quest_data['name'], quest_data['description'], reward, reward_type, quest_data['is_completed'])
                 quests.append(quest)
 
@@ -58,21 +76,30 @@ class DataStore:
 
 
     def find_active_quests(self):
-        data = self.json_file_processor.read_file_contents("datastore\quests.json")
-        quests = []
-        for quest_data in data['quests']:
-                if quest_data['is_completed'] == False:
-                    reward_type = quest_data['reward']['type']
-                    reward = quest_data['reward']['value']
-                    if reward_type == 'item':
-                        reward = Item(**reward)
-                    quest = Quest(quest_data['name'], quest_data['description'], reward, reward_type, quest_data['is_completed'])
-                    quests.append(quest)
+        data = self.read_file_content("saves.json")
+        active_quests = []
+        for save in data['saves']:
+            for quest in save['player_info']['journal']['quests']:
+                if not quest['is_completed']:
+                    reward_type = quest['reward_type']
+                    reward = quest['reward']
 
-        return quests
+                    if reward_type == 'item':
+                        item_type = reward['type']
+                        if item_type == ITEM_TYPE_DAMAGE:
+                            reward = DamageItem(**reward)
+                        elif item_type == ITEM_TYPE_CONSUMABLE:
+                            reward = ConsumableItem(**reward)
+                        elif item_type == ITEM_TYPE_WEARABLE:
+                            reward = WearableItem(**reward)
+
+                active_quests.append(Quest(quest['name'], quest['description'], reward, reward_type, quest['is_completed']))
+                    
+        return active_quests
+
     
     def find_completed_quests(self):
-        data = self.json_file_processor.read_file_contents("datastore\quests.json")
+        data = self.read_file_content("quests.json")
         quests = []
         for quest_data in data['quests']:
                 if quest_data['is_completed'] == True:
@@ -88,19 +115,19 @@ class DataStore:
 
     def update_quest_status(self, quest_name, new_status):
       
-        data = self.json_file_processor.read_file_contents("datastore\\quests.json")
+        data = self.read_file_content("quests.json")
 
         for quest in data['quests']:
             if quest['name'] == quest_name:
                 quest['is_completed'] = new_status
                 break
 
-        self.json_file_processor.write_to_file("datastore\\quests.json", data)
+        self.json_file_processor.write_to_file(self.get_path("quests.json"), data)
     
 
 
     def find_taverns_by_city(self, city):
-        data = self.json_file_processor.read_file_contents("datastore\\taverns.json")
+        data = self.read_file_content("taverns.json")
         taverns: List[Tavern] = []
 
         for tavern_data in data['taverns']:
@@ -112,10 +139,17 @@ class DataStore:
                                     tavern_keeper_data['role'])
                 quests = []
                 for quest_data in tavern_data['quests']:
-                    reward_type = quest_data['reward']['type']
-                    reward = quest_data['reward']['value']
+                    reward_type = quest_data['reward_type']
+                    reward = quest_data['reward']
                     if reward_type == 'item':
-                        reward = Item(**reward)
+                        item_type = reward['type']
+                        if item_type == ITEM_TYPE_DAMAGE:
+                            reward = DamageItem(**reward)
+                        elif item_type == ITEM_TYPE_CONSUMABLE:
+                            reward = ConsumableItem(**reward)
+                        elif item_type == ITEM_TYPE_WEARABLE:
+                            reward = WearableItem(**reward)
+
                     quest = Quest(quest_data['name'], quest_data['description'], reward, reward_type, quest_data['is_completed'])
                     quests.append(quest)
                 tavern = Tavern(tavern_data['name'], tavern_data['type'], tavern_data['width'],
@@ -125,7 +159,7 @@ class DataStore:
         return taverns
     
     def find_inns_by_city(self, city):
-        data = self.json_file_processor.read_file_contents("datastore\\inns.json")
+        data = self.read_file_content("inns.json")
         inns = []
 
         for inn_data in data['inns']:
@@ -144,7 +178,7 @@ class DataStore:
         return inns
     
     def find_shops_by_city(self, city):
-        data = self.json_file_processor.read_file_contents("datastore\\shops.json")
+        data = self.read_file_content("shops.json")
         shops = []
 
         for shop_data in data['shops']:
@@ -155,7 +189,7 @@ class DataStore:
                                 shopkeeper_data['name'], shopkeeper_data['description'],
                                 shopkeeper_data['role'])
                 items = []
-                for item_data in shop_data['items']:
+                for item_data in shop_data['items_for_sale']:
                     enchantments = [Enchantment(**enchantment_data) for enchantment_data in item_data.get('enchantments', [])]
                     if item_data['type'] == ITEM_TYPE_DAMAGE:
                         item = DamageItem(item_data['name'], item_data['type'], item_data['rarity'], 
@@ -180,7 +214,7 @@ class DataStore:
         return shops
     
     def find_cities(self):
-        data = self.json_file_processor.read_file_contents("datastore\\cities.json")
+        data = self.read_file_content("cities.json")
         cities = []
 
         for city_data in data['cities']:
@@ -205,19 +239,45 @@ class DataStore:
         return cities
     
     def find_city_by_name(self, city_name):
-        data = self.json_file_processor.read_file_contents("datastore\\cities.json")
+        data = self.read_file_content("cities.json")
 
         for city_data in data['cities']:
             if city_data['name'] == city_name:
                 structures = []
                 for structure_data in city_data.get('structures', []):
                     if structure_data['type'] == STRUCTURE_TYPE_INN:
+                        innkeeper = Npc(**structure_data['inkeeper'])
+                        structure_data['inkeeper'] = innkeeper
                         structure = Inn(**structure_data)
                     elif structure_data['type'] == STRUCTURE_TYPE_TAVERN:
+                        tavern_keeper = Npc(**structure_data['tavern_keeper'])
+                        quests = [Quest(**q) for q in structure_data['quests']]
+                        structure_data['tavern_keeper'] = tavern_keeper
+                        structure_data['quests'] = quests
                         structure = Tavern(**structure_data)
                     elif structure_data['type'] == STRUCTURE_TYPE_OPEN_FIELD:
+                        monsters = []
+                        for monster_data in structure_data['monsters']:
+                            abilities = [Ability(**a) for a in monster_data['abilities']]
+                            monster_data['abilities'] = abilities
+                            monster = Monster(**monster_data)
+                            monsters.append(monster)
+                        structure_data['monsters'] = monsters
                         structure = OpenFields(**structure_data)
                     elif structure_data['type'] == STRUCTURE_TYPE_SHOP:
+                        shopkeeper = Npc(**structure_data['shopkeeper'])
+                        items_for_sale = []
+                        for item_data in structure_data['items_for_sale']:
+                            item_type = item_data['type']
+                            if item_type == ITEM_TYPE_DAMAGE:
+                                item = DamageItem(**item_data)
+                            elif item_type == ITEM_TYPE_CONSUMABLE:
+                                item = ConsumableItem(**item_data)
+                            elif item_type == ITEM_TYPE_WEARABLE:
+                                item = WearableItem(**item_data)
+                            items_for_sale.append(item)
+                        structure_data['shopkeeper'] = shopkeeper
+                        structure_data['items_for_sale'] = items_for_sale
                         structure = Shop(**structure_data)
                     else:
                         print(f"Unknown structure type: {structure_data['type']}")
@@ -244,23 +304,25 @@ class DataStore:
             'player_info': player_info
         })
 
-        self.json_file_processor.write_to_file("datastore\\saves.json", {'saves': data})
+        self.json_file_processor.write_to_file(self.get_path("saves.json"), {'saves': data})
 
         return True
 
     def find_saves(self):
-        data = self.json_file_processor.read_file_contents("datastore\\saves.json")
+        data = self.read_file_content("saves.json")
+        if data is None:
+            raise ValueError("No data could be read from the file.")
         value = data["saves"]
         return value
-    
+        
     def find_items_by_rarity(self, rarity):
-        data = self.json_file_processor.read_file_contents("datastore\\items.json")
-        items_of_rarity = [item for item in data['items'] if item['_rarity'] == rarity]
+        data = self.read_file_content("items.json")
+        items_of_rarity = [item for item in data['items'] if item['rarity'] == rarity]
         return items_of_rarity
     
 
     def find_open_fields_by_city(self, city):
-        data = self.json_file_processor.read_file_contents("datastore\\open_fields.json")
+        data = self.read_file_content("open_fields.json")
         open_fields = []
 
         for field_data in data['open_fields']:
@@ -296,7 +358,7 @@ class DataStore:
     
 
     def find_monsters(self):
-        data = self.json_file_processor.read_file_contents("datastore\\monsters.json")
+        data = self.read_file_content("monsters.json")
         monsters_data = data['monsters']
 
         monsters = []

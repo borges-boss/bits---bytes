@@ -49,7 +49,7 @@ class Player(Entity):
             'name': self.name,
             'health': self.health,
             'race': self.race,
-            'location': self._location.to_dict(),
+            'location': self._location.to_dict() if self._location!= None else "",
             'city': self._city
         }
 

@@ -246,39 +246,58 @@ class PlayerModel:
 
 
     def use_stats_ability(self, ability, target, player):
+        target_abilities = [ABILITY_TYPE_STATS_TARG_HEALTH, ABILITY_TYPE_STATS_TARG_STAMINA, 
+                            ABILITY_TYPE_STATS_TARG_DAMAGE, ABILITY_TYPE_STATS_TARG_DEFENCE]
+
         if player.mana >= ability.ability_cost:
             if ability.type == ABILITY_TYPE_STATS_HEALTH:
-                player.health += ability.effect_value
+                player.health += ability.value
+                print(f"{player.name} usou {ability.name}! e recuperou {ability.value} de vida!")
             elif ability.type == ABILITY_TYPE_STATS_STAMINA:
-                player.stamina += ability.effect_value
+                player.stamina += ability.value
+                print(f"{player.name} usou {ability.name}! e recuperou {ability.value} de stamina!")
             elif ability.type == ABILITY_TYPE_STATS_MANA:
-                player.mana += ability.effect_value
+                player.mana += ability.value
+                print(f"{player.name} usou {ability.name}! e recuperou {ability.value} de mana!")
             elif ability.type == ABILITY_TYPE_STATS_DAMAGE:
-                player.damage += ability.effect_value
+                player.damage += ability.value
+                print(f"{player.name} usou {ability.name}! e ganhou mais {ability.value} de dano!")
             elif ability.type == ABILITY_TYPE_STATS_DEFENCE:
-                player.defence += ability.effect_value
+                player.defence += ability.value
+                print(f"{player.name} usou {ability.name}! e ganhou mais {ability.value} de defesa!")
             elif ability.type == ABILITY_TYPE_STATS_TARG_HEALTH:
-                target.health -= ability.effect_value
+                target.health -= ability.value
+                print(f"{player.name} usou {ability.name}! e o {target.name} perdeu {ability.value} de vida")
             elif ability.type == ABILITY_TYPE_STATS_TARG_STAMINA:
-                target.stamina -= ability.effect_value
+                target.stamina -= ability.value
+                print(f"{player.name} usou {ability.name}! e o {target.name} perdeu {ability.value} de stamina")
             elif ability.type == ABILITY_TYPE_STATS_TARG_DAMAGE:
-                target.damage -= ability.effect_value
+                target.damage -= ability.value
+                print(f"{player.name} usou {ability.name}! e o {target.name} perdeu {ability.value} de dano")
             elif ability.type == ABILITY_TYPE_STATS_TARG_DEFENCE:
-                target.defence -= ability.effect_value
+                target.defence -= ability.value
+                print(f"{player.name} usou {ability.name}! e o {target.name} perdeu {ability.value} de defesa")
             elif ability.type == ABILITY_TYPE_STATS_ALL:
-                player.defence += ability.effect_value
-                player.damage += ability.effect_value
-                player.health+= ability.effect_value
-                player.stamina+= ability.effect_value
-                player.mana+= ability.effect_value
+                player.defence += ability.value
+                player.damage += ability.value
+                player.health+= ability.value
+                player.stamina+= ability.value
+                player.mana+= ability.value
+                print(f"{player.name} usou {ability.name}! e recuperou todos os stats em {ability.value}")
             else:
                 print("Invalid ability type.")
+            
             if ability.type == ABILITY_TYPE_STATS_MANA:
                 player.health-= ability.ability_cost
             else:
                 player.mana-= ability.ability_cost
         else:
             print(f"Voce nao tem mana o suficiente para usar a abilidade {ability.name}")
+
+        if ability.type in target_abilities:
+            return target
+        else:
+            return player
 
 
     def useAbility(self, ability, target, player):
@@ -295,7 +314,7 @@ class PlayerModel:
             else:
                 print("Voce não tem mana o suficiente para usar essa abilidade")
         else:
-            self.use_stats_ability(ability,target,player)
+            return self.use_stats_ability(ability,target,player)
 
         return target
     

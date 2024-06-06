@@ -10,6 +10,8 @@ class ShopView:
         self.previous_structure_view = previous_structure_view
         self.is_running = True
         self.shop = shop
+        self.player = PlayerController.get_player()
+        self.player.location = shop
 
     def display_items_for_sale(self):
         items = self.controller.get_items_for_sale()
@@ -42,18 +44,25 @@ class ShopView:
                 items = self.controller.get_items_for_sale()
                 if 1 <= item_number <= len(items):
                     item_to_buy = items[item_number - 1]
-                    self.controller.buy_item(item_to_buy)
+                    self.player = self.controller.buy_item(item_to_buy,self.player)
+                    PlayerController.save_player(self.player)
                 else:
                     print("Numero de item invalido")
             elif input_value == "2":
-                player_items = PlayerController.get_player().inventory.items
+                player_items = [item for item in self.player.inventory.items if item.name != "Punhos"]
+                
                 for i, item in enumerate(player_items, start=1):
                     price = self.controller.evaluate_item_price(item)
                     print(f"{i}. Item: {item.name}, Preco: {price}")
-                item_number = int(input("\nDigite o numero do item que voce quer vender: "))
+                item_number = int(input("\nDigite o numero do item que voce quer vender (0 para voltar): "))
+                
+                if item_number == 0:
+                   pass
+            
                 if 1 <= item_number <= len(player_items):
                     item_to_sell = player_items[item_number - 1]
-                    self.controller.sell_item(item_to_sell)
+                    self.player = self.controller.sell_item(item_to_sell,self.player)
+                    PlayerController.save_player(self.player)
                 else:
                     print("Numero de item invalido\n")  
             elif input_value == "3":
@@ -61,11 +70,11 @@ class ShopView:
             elif input_value == "4":
                 self.controller.open_journal()
             elif input_value == "5":
+                PlayerController.save_player_state(self.player)
                 self.stop_view()
-                PlayerController.save_player_state()
             elif input_value == "6":
-                self.stop_view()
                 LocationService.leave(self.previous_structure_view)
+                self.stop_view()
                 break
             else:
                 print("Opcao invalida.")

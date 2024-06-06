@@ -9,8 +9,6 @@ class TavernController:
     def get_taverns_by_city(self):
         return self.model.get_taverns_by_city(self.city_name)
 
-    def list_available_quests(self):
-        return self.list_available_quests(self.city_name) 
     
 
     def explore(self):

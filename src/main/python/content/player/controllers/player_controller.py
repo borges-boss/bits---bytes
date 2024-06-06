@@ -7,7 +7,8 @@ from base.wallet import Wallet
 from classes.damage_item import DamageItem
 from classes.inventory import Inventory
 from classes.player import Player
-from constants.constants import ABILITY_TYPE_MAGIC, ABILITY_TYPE_PHYSICAL, ABILITY_TYPE_STATS_ALL, ABILITY_TYPE_STATS_DAMAGE, ABILITY_TYPE_STATS_DEFENCE, ABILITY_TYPE_STATS_HEALTH, ABILITY_TYPE_STATS_MANA, ABILITY_TYPE_STATS_STAMINA, ABILITY_TYPE_STATS_TARG_DAMAGE, CLASS_TYPE_ASSASIN, CLASS_TYPE_BATTLE_MAGE, CLASS_TYPE_BERSERKER, CLASS_TYPE_MAGE, CLASS_TYPE_WARRIOR, ITEM_RARITY_COMMON, ITEM_TYPE_DAMAGE, RACE_TYPE_DWARF, RACE_TYPE_HALF_ELF, RACE_TYPE_HIGH_ELF, RACE_TYPE_HUMAN, RACE_TYPE_LIZARDFOLK, RACE_TYPE_ORC
+from constants.constants import ABILITY_TYPE_MAGIC, ABILITY_TYPE_PHYSICAL, ABILITY_TYPE_STATS_ALL, ABILITY_TYPE_STATS_DAMAGE, ABILITY_TYPE_STATS_DEFENCE, ABILITY_TYPE_STATS_HEALTH, ABILITY_TYPE_STATS_MANA, ABILITY_TYPE_STATS_STAMINA, ABILITY_TYPE_STATS_TARG_DAMAGE, CLASS_TYPE_ASSASIN, CLASS_TYPE_BATTLE_MAGE, CLASS_TYPE_BERSERKER, CLASS_TYPE_MAGE, CLASS_TYPE_WARRIOR, ITEM_RARITY_COMMON, ITEM_TYPE_DAMAGE, RACE_TYPE_DWARF, RACE_TYPE_HALF_ELF, RACE_TYPE_HIGH_ELF, RACE_TYPE_HUMAN, RACE_TYPE_LIZARDFOLK, RACE_TYPE_ORC, STRUCTURE_TYPE_CAVE
+from classes.cave import Cave
 
 
 class PlayerController:
@@ -16,8 +17,7 @@ class PlayerController:
 
 
     @classmethod
-    def display_player_hud(cls):
-        player = cls.global_player
+    def display_player_hud(cls, player):
         health_bar = '\033[31m' + '█' * int(player.health / 10) + '\033[0m'
         mana_bar = '\033[34m' + '█' * int(player.mana / 10) + '\033[0m'
         stamina_bar = '\033[32m' + '█' * int(player.stamina / 10) + '\033[0m'
@@ -34,10 +34,15 @@ class PlayerController:
         cls.global_player = model.get_player_info()
 
     @classmethod
-    def save_player_state(cls):
+    def save_player_state(cls,player):
         model = GameSaveModel()
-        cls.global_player = model.save_game(cls.global_player)
+        model.save_game(player)
         print("O seu jogo foi salvo!")
+
+    @classmethod
+    def save_player(cls,player):
+        model = GameSaveModel()
+        model.save_game(player)
 
     @classmethod
     def get_player(cls):
@@ -52,19 +57,22 @@ class PlayerController:
         cls.global_player = player
 
     @classmethod
-    def restore_full_health(cls):
+    def restore_full_health(cls,player):
         player_model = PlayerModel()
-        cls.global_player.health = player_model.get_player_max_health(cls.global_player) #Restaurar vida completa do jogador
+        player.health = player_model.get_player_max_health(cls.global_player) #Restaurar vida completa do jogador
+        return player
 
     @classmethod
-    def restore_full_mana(cls):
+    def restore_full_mana(cls,player):
         player_model = PlayerModel()
-        cls.global_player.mana = player_model.get_player_max_mana(cls.global_player)
+        player.mana = player_model.get_player_max_mana(cls.global_player)
+        return player
 
     @classmethod
-    def restore_full_stamina(cls):
+    def restore_full_stamina(cls,player):
         player_model = PlayerModel()
-        cls.global_player.stamina = player_model.get_player_max_stamina(cls.global_player)
+        player.stamina = player_model.get_player_max_stamina(cls.global_player)
+        return player
 
     @classmethod
     def equip_piece_of_armor(cls,wearable_item):
@@ -82,9 +90,9 @@ class PlayerController:
         cls.set_player_state(player_model.use_consumable(item,cls.get_player()))
 
     @classmethod
-    def useAbility(cls, ability, target):
+    def useAbility(cls, ability, target, player):
         player_model = PlayerModel()
-        return player_model.useAbility(ability,target,cls.get_player())
+        return player_model.useAbility(ability,target,player)
     
     @classmethod
     def get_player_damage(cls):
@@ -105,37 +113,31 @@ class PlayerController:
 
 
     @classmethod
-    def inti_new_player_instance(cls):
+    def init_new_player_instance(cls):
         initial_item = DamageItem("Punhos",ITEM_TYPE_DAMAGE,ITEM_RARITY_COMMON,0,[],1.0)
-        cls.global_player = Player(0,0,0,0,"","","",[],1,0,Wallet(0),Inventory([],500.0),initial_item,[],Journal([]),None,"")
+        cls.global_player = Player(0,0,0,0,"","","",[],1,0,Wallet(0),Inventory([],500.0),initial_item,[],Journal([]),Cave("",STRUCTURE_TYPE_CAVE,1,[],[]),"")
         cls.global_player.inventory.add_item(initial_item)
+        model = GameSaveModel()
+        model.save_game(cls.global_player)
 
     @classmethod
     def init_player_attributes(cls):
         player_mode = PlayerModel()
-        cls.get_player().health = player_mode.get_player_max_health(cls.get_player())
-        cls.get_player().mana = player_mode.get_player_max_mana(cls.get_player())
-        cls.get_player().stamina = player_mode.get_player_max_stamina(cls.get_player())
-        cls.get_player().damage = player_mode.get_player_damage(cls.get_player())
-        cls.get_player().defence = player_mode.get_player_defence(cls.get_player())
-
-    
-    @classmethod
-    def reset_player_defence(cls):
-        player_mode = PlayerModel()
-        cls.get_player().defence = player_mode.get_player_defence(cls.get_player())
-
-    @classmethod
-    def reset_player_damage(cls):
-        player_mode = PlayerModel()
-        cls.get_player().damage = player_mode.get_player_damage(cls.get_player())
+        player = cls.get_player()
+        player.health = player_mode.get_player_max_health(player)
+        player.mana = player_mode.get_player_max_mana(player)
+        player.stamina = player_mode.get_player_max_stamina(player)
+        player.damage = player_mode.get_player_damage(player)
+        player.defence = player_mode.get_player_defence(player)
+        model = GameSaveModel()
+        model.save_game(player)
+        return player
 
 
     @classmethod
     def init_player_abilities(cls):
         player = cls.get_player()
 
-        # Define some abilities for each class
         if player.game_class == CLASS_TYPE_WARRIOR:
             player.abilities.append(Ability("Golpe Poderoso", "Um ataque corpo a corpo poderoso.", ABILITY_TYPE_PHYSICAL, 50, 10))
             player.abilities.append(Ability("Defender", "Aumenta a defesa durante a batalha", ABILITY_TYPE_STATS_DEFENCE, 20, 5))
@@ -146,7 +148,7 @@ class PlayerController:
 
         elif player.game_class == CLASS_TYPE_ASSASIN:
             player.abilities.append(Ability("Ataque Surpresa", "Um ataque rápido e surpreendente.", ABILITY_TYPE_PHYSICAL, 60, 10))
-            player.abilities.append(Ability("Esconder", "Fica invisível durante a batalha", ABILITY_TYPE_STATS_DEFENCE, 30, 5))
+            player.abilities.append(Ability("Esconder", "Fica invisível e aumenta sua defesa", ABILITY_TYPE_STATS_DEFENCE, 30, 5))
 
         elif player.game_class == CLASS_TYPE_BERSERKER:
             player.abilities.append(Ability("Fúria", "Aumenta o dano causado durante a batalha", ABILITY_TYPE_STATS_DAMAGE, 70, 10))
@@ -156,7 +158,6 @@ class PlayerController:
             player.abilities.append(Ability("Raio Arcano", "Um ataque mágico à distância.", ABILITY_TYPE_MAGIC, 50, 15))
             player.abilities.append(Ability("Escudo Mágico", "Cria um escudo que absorve parte do dano recebido.", ABILITY_TYPE_STATS_DEFENCE, 25, 10))
 
-        # Define some abilities for each race
         if player.race == RACE_TYPE_HUMAN:
             player.abilities.append(Ability("Determinação", "Aumenta todas as estatísticas durante a batalha", ABILITY_TYPE_STATS_ALL, 10, 10))
 
@@ -174,6 +175,13 @@ class PlayerController:
 
         elif player.race == RACE_TYPE_HIGH_ELF:
             player.abilities.append(Ability("Sabedoria Antiga", "Sacrifica um pouco de vida para aumentar a mana durante a batalha", ABILITY_TYPE_STATS_MANA, 30, 10))
+
+        #Ataque basico para todas as classes e raças
+        player.abilities.append(Ability("Bater", "Um ataque basico que usa oque voce tiver na mao para atacar o inimigo (O dano da abilidade aumenta dependendo do que voce tem equipado)", ABILITY_TYPE_PHYSICAL, 1, 4))
+
+        model = GameSaveModel()
+        model.save_game(player)
+        cls.global_player = player
         
     @classmethod
     def add_exp(cls, xp_amount):

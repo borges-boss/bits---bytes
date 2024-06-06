@@ -10,11 +10,11 @@ class ShopController:
     def evaluate_item_price(self, item):
         return self.model.evaluate_item_price(item)
 
-    def buy_item(self, item):
-        self.model.buy_item(item)
+    def buy_item(self, item, player):
+        return self.model.buy_item(item, player)
 
-    def sell_item(self, item):
-        self.model.sell_item(item)
+    def sell_item(self, item, player):
+        return self.model.sell_item(item, player)
 
     def open_inventory(self):
         self.model.open_inventory()

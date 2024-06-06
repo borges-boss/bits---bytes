@@ -6,10 +6,12 @@ from utils.console_utils import ConsoleUtils
 
 class InnView:
     def __init__(self, previous_structure_view, inn):
-        self.controller = InnController()
+        self.controller = InnController(inn)
         self.previous_structure_view = previous_structure_view
         self.inn = inn
         self.is_running = True
+        self.player = PlayerController.get_player()
+        self.player.location = inn
 
     def display_options(self):
         PrintUtils.print_centered("Voce está em um Inn\n")
@@ -27,13 +29,13 @@ class InnView:
             self.display_options()
             input_value = input("Escolha uma opção: ")
             if input_value == "1":
-                self.controller.rest()
+                self.controller.rest(self.player)
             elif input_value == "2":
                 self.controller.open_inventory()
             elif input_value == "3":
                 self.controller.open_journal()
             elif input_value == "4":
-                PlayerController.save_player_state()
+                PlayerController.save_player_state(self.player)
             elif input_value == "5":
                 self.stop_View()
                 LocationService.leave(self.previous_structure_view)

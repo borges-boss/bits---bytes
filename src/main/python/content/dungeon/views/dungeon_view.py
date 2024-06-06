@@ -11,6 +11,8 @@ class DungeonView:
         self.previous_structure_view = previous_structure_view
         self.is_running = True
         self.dungeon = dungeon
+        self.player = PlayerController.get_player()
+        self.player.location = dungeon
 
     def display_options(self):
         PrintUtils.print_centered("Voce está explorando uma dangeon\n")
@@ -34,7 +36,7 @@ class DungeonView:
             elif input_value == "3":
                 self.controller.open_journal()
             elif input_value == "4":
-                PlayerController.save_player_state()
+                PlayerController.save_player_state(self.player)
             elif input_value == "5":
                 self.stop_view()
                 LocationService.leave(self.previous_structure_view)

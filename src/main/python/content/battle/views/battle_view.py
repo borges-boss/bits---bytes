@@ -4,6 +4,8 @@ from classes.monster import Monster
 from content.player.controllers.player_controller import PlayerController
 from content.inventory.views.inventory_view import InventoryView
 from constants.constants import ABILITY_TYPE_PHYSICAL, ABILITY_TYPE_MAGIC
+from classes.player import Player
+from services.monster_service import MonsterService
 from services.loot_service import LootService
 from utils.console_utils import ConsoleUtils
 from utils.print_utils import PrintUtils
@@ -28,6 +30,11 @@ class BattleView:
             else:
                 print(f"{i}. {ability.name} - {ability.description} (Efeito: {ability.value}, Custo: {ability.ability_cost} {cost_type})")
 
+    def refresh_hud(self):
+            ConsoleUtils.clear_terminal()
+            PlayerController.display_player_hud(self.player)
+            MonsterService.display_monster_hud(self.target)
+
     def display_options(self):
         PrintUtils.print_centered(f"Voce esta em batalha contra {self.target.name} de nivel {self.target.level}\n")
         PrintUtils.print_separator_line()
@@ -39,7 +46,7 @@ class BattleView:
 
     def handle_input(self):
         while self.is_running:
-            PlayerController.display_player_hud()
+            self.refresh_hud()
             self.display_options()
             if self.player_turn: 
                 input_value = input("Escolha uma opcao: ")
@@ -48,9 +55,17 @@ class BattleView:
                     ability_choice = input("Escolha uma abilidade: ")
                     try:
                         chosen_ability = self.player.abilities[int(ability_choice) - 1]
-                        PlayerController.useAbility(chosen_ability, self.target)
+                        ability_result_entity = PlayerController.useAbility(chosen_ability, self.target,self.player)
+
+                        if isinstance(ability_result_entity,Player):
+                            self.player = ability_result_entity
+                        else:
+                            self.target = ability_result_entity
+
                         self.player_turn = False  
                         time.sleep(3)
+                        self.refresh_hud()
+                        self.display_options()
                     except (IndexError, ValueError):
                         print("Abilidade invalida.")
 
@@ -65,9 +80,8 @@ class BattleView:
                     ConsoleUtils.clear_terminal()
                     print("Voce fugiu da batalha como um covarde, mas pelo menos ainda esta vivo...")
                     PlayerController.init_player_attributes() # Resetar atributos do player depois da batalha
-                    PlayerController.save_player_state()
+                    self.stop_view()
                     self.out_of_battle_view.init_view()
-
                 else:
                     print("Opcao invalida")
 
@@ -82,7 +96,13 @@ class BattleView:
 
                 if self.target.abilities: 
                     chosen_ability = random.choice(self.target.abilities)
-                    self.target.useAbility(chosen_ability, self.player) 
+
+                    result_monster_entity_ability = self.target.useAbility(chosen_ability, self.player)
+                    if isinstance(result_monster_entity_ability, Monster):
+                        self.target = result_monster_entity_ability
+                    else:
+                        self.player = result_monster_entity_ability 
+
                     time.sleep(3)
                     
                     if self.is_player_defending:
@@ -105,15 +125,15 @@ class BattleView:
             elif self.target.health <= 0:
                 print(f"\nVoce derrotou o {self.target.name}!")
                 loot = LootService.get_random_loot_from_monster(self.target)
+
                 if loot is not None:
                  self.player.inventory.add_item(loot)
+                 PlayerController.save_player(self.player)
 
                 xp_amount = (self.target.level * 10) + self.player.xp
                 print(f"\nVoce ganhou {xp_amount} de xp")
                 PlayerController.add_exp(xp_amount)
-
                 PlayerController.init_player_attributes() # Resetar atributos do player depois da batalha
-                PlayerController.save_player_state()
                 self.stop_view()
                 self.out_of_battle_view.init_view()
 

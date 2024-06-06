@@ -1,3 +1,4 @@
+import keyboard
 from content.journal.controllers.journal_controller import JournalController
 from utils.print_utils import PrintUtils
 
@@ -26,3 +27,9 @@ class JournalView:
         self.show_active_quests(self.controller.get_active_quests())
         PrintUtils.print_separator_line()
         self.show_completed_quests(self.controller.get_completed_quests())
+
+
+    def init_view(self):
+        self.show_my_quests()
+        print("q para fechar")
+        keyboard.wait("q")

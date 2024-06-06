@@ -2,7 +2,7 @@
     "taverns": [
         {
             "name": "A Caneca de Prata",
-            "type": "Tavern",
+            "type": "tavern",
             "width": 20,
             "height": 15,
             "tavern_keeper": {
@@ -28,7 +28,7 @@
         },
         {
             "name": "O Javali Feliz",
-            "type": "Tavern",
+            "type": "tavern",
             "width": 25,
             "height": 20,
             "tavern_keeper": {
@@ -54,7 +54,7 @@
         },
         {
             "name": "O Dragão Cervejeiro",
-            "type": "Tavern",
+            "type": "tavern",
             "width": 30,
             "height": 25,
             "tavern_keeper": {
@@ -80,7 +80,7 @@
         },
         {
             "name": "O Unicórnio Rosa",
-            "type": "Tavern",
+            "type": "tavern",
             "width": 35,
             "height": 30,
             "tavern_keeper": {
@@ -106,7 +106,7 @@
         },
         {
             "name": "O Corvo Negro",
-            "type": "Tavern",
+            "type": "tavern",
             "width": 40,
             "height": 35,
             "tavern_keeper": {

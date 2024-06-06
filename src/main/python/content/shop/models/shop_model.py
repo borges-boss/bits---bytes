@@ -36,28 +36,32 @@ class ShopModel:
 
         return base_price * price_multiplier
 
-    def buy_item(self, item):
+    def buy_item(self, item, player):
         item_price = self.evaluate_item_price(item)
 
-        if PlayerController.get_player().wallet.coins >= item_price:
-            added_to_inventory = PlayerController.get_player().inventory.add_item(item)
+        if player.wallet.coins >= item_price:
+            added_to_inventory = player.inventory.add_item(item)
 
             if added_to_inventory:
-                PlayerController.get_player().wallet.subtract_coins(item_price)
+                player.wallet.subtract_coins(item_price)
 
         else:
             print("\nVoce nao coins suficientes para comprar esse item.")
+        
+        return player
 
-    def sell_item(self, item):
+    def sell_item(self, item, player):
         # O preço de venda é 50% do preço de compra
         selling_price = self.evaluate_item_price(item) * 0.5
-        removed_from_inventory = PlayerController.get_player().inventory.remove_item(item)
+        removed_from_inventory = player.inventory.remove_item(item)
 
         if removed_from_inventory:
-            PlayerController.get_player().wallet.add_coins(selling_price)
+            player.wallet.add_coins(selling_price)
             print(f"\nVoce vendeu {item.name} por {selling_price} coins.")
         else:
             print("\nFalha ao vender o item. O item nao esta no seu inventario.")
+
+        return player
 
     def open_inventory(self):
         view = InventoryView()

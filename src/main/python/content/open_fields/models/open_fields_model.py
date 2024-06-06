@@ -9,11 +9,11 @@ class OpenFieldsModel:
  
     def open_inventory(self):
         view = InventoryView()
-        view.display_items()
+        view.init_view()
 
     def open_journal(self):
         view = JournalView()
-        view.show_my_quests()
+        view.init_view()
 
     def find_open_fields_by_city(self, city):
         return self.datastore.find_open_fields_by_city(city)

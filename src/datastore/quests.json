@@ -113,7 +113,7 @@
             "description": "Recupere o Livro de Feitiços da bruxa da floresta.",
             "reward": {
                 "name": "Livro de Feitiços",
-                "type": "knowledge_item",
+                "type": "damage_item",
                 "rarity": "legendary",
                 "weight": 3,
                 "knowledge_type": "magic",

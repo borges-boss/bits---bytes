@@ -1,5 +1,4 @@
 from classes.dangerous_structure import DangerousStructure
-from base.item import Item
 from typing import List
 from classes.monster import Monster
 

@@ -15,8 +15,10 @@ class LocationService:
     @staticmethod
     def explore(current_structure, current_view):
         difficulty = current_structure.dificulty
+        rarity = None
         monster_probabilities = {1: 0.2, 2: 0.35, 3: 0.5, 4: 0.7}
         loot_probabilities = {1: 0.35, 2: 0.25, 3: 0.15, 4: 0.08}
+        datastore = DataStore()
 
         ConsoleUtils.clear_terminal()
         PrintUtils.print_dot_loading_animation("Explorando")
@@ -26,8 +28,6 @@ class LocationService:
             print("Voce encontrou um monstro!")
             BattleView(MonsterService.spawn_monster(difficulty,current_structure.monsters),current_structure).init_view()
         elif random.random() < loot_probabilities[difficulty]:
-            datastore = DataStore()
-            rarity = None
             if difficulty == 1:  # Fácil
                 # 80% de chance para comum, 20% de chance para raro
                 rarity = ITEM_RARITY_COMMON if random.random() < 0.8 else ITEM_RARITY_RARE

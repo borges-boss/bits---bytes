@@ -12,6 +12,8 @@ class CaveView:
         self.previous_structure_view = previous_structure_view
         self.is_running = True
         self.cave = cave
+        self.player = PlayerController.get_player()
+        self.player.location = cave
 
     def display_options(self):
         PrintUtils.print_centered("Voce está explorando uma caverna\n")
@@ -34,7 +36,7 @@ class CaveView:
             elif input_value == "3":
                 self.controller.open_journal()
             elif input_value == "4":
-                PlayerController.save_player_state()
+                PlayerController.save_player_state(self.player)
             elif input_value == "5":
                 self.stop_view()
                 LocationService.leave(self.previous_structure_view)

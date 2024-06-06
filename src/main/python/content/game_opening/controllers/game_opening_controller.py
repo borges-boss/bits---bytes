@@ -12,7 +12,7 @@ class GameOpeningController:
       self.view = GameOpeningView()
 
     def start_game(self):
-       PlayerController.inti_new_player_instance()
+       PlayerController.init_new_player_instance()
        ConsoleUtils.clear_terminal()
        RaceSelectionView().init_view()
     

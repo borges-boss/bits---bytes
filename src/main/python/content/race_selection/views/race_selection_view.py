@@ -13,6 +13,7 @@ class RaceSelectionView:
         self.available_races = [RACE_TYPE_HUMAN, RACE_TYPE_HIGH_ELF, RACE_TYPE_DWARF, RACE_TYPE_HALF_ELF, RACE_TYPE_LIZARDFOLK, RACE_TYPE_ORC]
         self.player_model = PlayerModel()
         self.is_running = True
+        self.player = PlayerController.get_player()
 
     def select_race(self):
         PrintUtils.print_centered("Available races:")
@@ -44,7 +45,8 @@ class RaceSelectionView:
                     confirm = input("Voce tem certeza que quer escolher essa raca? (s/n): ")
 
                     if confirm.lower() == 's':
-                        PlayerController.get_player().race = chosen_race
+                        self.player.race = chosen_race
+                        PlayerController.save_player(self.player)
                         self.stop_view()
                         ClassSelectionView().init_view()
                     else:

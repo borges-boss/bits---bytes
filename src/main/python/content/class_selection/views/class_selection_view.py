@@ -13,6 +13,7 @@ class ClassSelectionView:
         self.available_classes = [CLASS_TYPE_WARRIOR, CLASS_TYPE_MAGE, CLASS_TYPE_ASSASIN, CLASS_TYPE_BERSERKER, CLASS_TYPE_BATTLE_MAGE]
         self.player_model = PlayerModel()
         self.is_running = True
+        self.player = PlayerController.get_player()
 
     def select_class(self):
         PrintUtils.print_centered("Available races:")
@@ -45,7 +46,8 @@ class ClassSelectionView:
                     confirm = input("Voce tem certeza que quer escolher essa classe? (s/n): ")
                     if confirm.lower() == 's':
                         self.stop_view()
-                        PlayerController.get_player().game_class = chosen_class
+                        self.player.game_class = chosen_class
+                        PlayerController.save_player(self.player)
                         PrisonView().wake_up()
                     else:
                         print("Ok, vamos tentar novamente.")
