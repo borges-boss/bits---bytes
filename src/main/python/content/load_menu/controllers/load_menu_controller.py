@@ -34,22 +34,21 @@ class LoadMenuController:
                 datastore = DataStore()
                 
                 current_player_location = PlayerController.get_player().location
-                print("Player city: "+PlayerController.get_player().city)
                 city_open_field = datastore.find_open_fields_by_city(PlayerController.get_player().city)
-                city = datastore.find_city_by_name(PlayerController.get_player().city)
+                city = datastore.find_city_by_name(PlayerController.get_player().city)[0]
                 
                 if current_player_location.type == STRUCTURE_TYPE_DUNGEON:
-                    DungeonView(OpenFieldsView(city_open_field),current_player_location).init_view()
+                    DungeonView(OpenFieldsView(city_open_field[0]),current_player_location).init_view()
                 elif current_player_location.type == STRUCTURE_TYPE_CAVE:
-                    CaveView(CityStructureView(city_open_field,city.structures),current_player_location).init_view()
+                    CaveView(CityStructureView(city_open_field[0],city.structures),current_player_location).init_view()
                 elif current_player_location.type == STRUCTURE_TYPE_INN:
-                    InnView(CityStructureView(city_open_field,city.structures),current_player_location).init_view()
+                    InnView(CityStructureView(city_open_field[0],city.structures),current_player_location).init_view()
                 elif current_player_location.type == STRUCTURE_TYPE_OPEN_FIELD:
-                    OpenFieldsView(city_open_field).init_view()
+                    OpenFieldsView(city_open_field[0]).init_view()
                 elif current_player_location.type == STRUCTURE_TYPE_SHOP:
-                    ShopView(CityStructureView(city_open_field,city.structures),current_player_location).init_view()
+                    ShopView(CityStructureView(city_open_field[0],city.structures),current_player_location).init_view()
                 elif current_player_location.type == STRUCTURE_TYPE_TAVERN:
-                    TavernView(CityStructureView(city_open_field,city.structures),current_player_location).init_view()
+                    TavernView(CityStructureView(city_open_field[0],city.structures),current_player_location).init_view()
                 else:
                     print("Local desconhecido")
 

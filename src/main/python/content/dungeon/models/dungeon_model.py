@@ -5,11 +5,8 @@ class DungeonModel:
 
     def open_inventory(self):
         view = InventoryView()
-        view.display_items()
+        view.init_view()
 
     def open_journal(self):
         view = JournalView()
-        view.show_my_quests()
-
-    def leave(self):
-       pass
+        view.init_view()

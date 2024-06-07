@@ -22,6 +22,41 @@
                     "weight": 5,
                     "enchantments": [],
                     "damage": 10.0
+                },
+                {
+                    "name": "Cota de Malha",
+                    "type": "wearable_item",
+                    "rarity": "rare",
+                    "weight": 12,
+                    "enchantments": [{"name": "Protection", "description": "Aumenta a defesa", "type": "defence", "value": 5}],
+                    "defence": 15.0,
+                    "wearable_type": "chestplate"
+                },
+                {
+                    "name": "Perneiras de Placa",
+                    "type": "wearable_item",
+                    "rarity": "rare",
+                    "weight": 10,
+                    "enchantments": [{"name": "Endurance", "description": "Aumenta a resistência", "type": "defence", "value": 4}],
+                    "defence": 14.0,
+                    "wearable_type": "leggins"
+                },
+                {
+                    "name": "Machado de Guerra",
+                    "type": "damage_item",
+                    "rarity": "legendary",
+                    "weight": 20,
+                    "enchantments": [{"name": "Frost", "description": "Causa dano de gelo", "type": "damage", "value": 10}],
+                    "damage": 60.0
+                },
+                {
+                    "name": "Poção de Força",
+                    "type": "consumable_item",
+                    "rarity": "rare",
+                    "weight": 1,
+                    "consumable_type": "potion",
+                    "effect_value": 20,
+                    "effect_type": "damage"
                 }
             ],
             "city": "Gondolin"
@@ -48,6 +83,50 @@
                     "weight": 3,
                     "enchantments": [],
                     "damage": 15.0
+                },
+                {
+                    "name": "Arco de Ébano",
+                    "type": "damage_item",
+                    "rarity": "epic",
+                    "weight": 10,
+                    "enchantments": [{"name": "Power", "description": "Aumenta o dano do arco", "type": "damage", "value": 3}],
+                    "damage": 30.0
+                },
+                {
+                    "name": "Poção de Cura Maior",
+                    "type": "consumable_item",
+                    "rarity": "rare",
+                    "weight": 1,
+                    "consumable_type": "potion",
+                    "effect_value": 50,
+                    "effect_type": "health"
+                },
+                {
+                    "name": "Cota de Malha",
+                    "type": "wearable_item",
+                    "rarity": "rare",
+                    "weight": 12,
+                    "enchantments": [{"name": "Protection", "description": "Aumenta a defesa", "type": "defence", "value": 5}],
+                    "defence": 15.0,
+                    "wearable_type": "chestplate"
+                },
+                {
+                    "name": "Botas de Couro",
+                    "type": "wearable_item",
+                    "rarity": "epic",
+                    "weight": 3,
+                    "enchantments": [{"name": "Speed", "description": "Aumenta a velocidade de movimento", "type": "utility", "value": 2}],
+                    "defence": 5.0,
+                    "wearable_type": "boots"
+                },
+                {
+                    "name": "Escudo de Bronze",
+                    "type": "wearable_item",
+                    "rarity": "common",
+                    "weight": 10,
+                    "enchantments": [],
+                    "defence": 15.0,
+                    "wearable_type": "shield"
                 }
             ],
             "city": "Rivendell"
@@ -75,6 +154,59 @@
                     "enchantments": [],
                     "defence": 10.0,
                     "wearable_type": "chestplate"
+                },
+                {
+                    "name": "Anel do Mago",
+                    "type": "wearable_item",
+                    "rarity": "epic",
+                    "weight": 1,
+                    "enchantments": [{"name": "Mana Boost", "description": "Aumenta a mana máxima", "type": "utility", "value": 50}],
+                    "defence": 2.0,
+                    "wearable_type": "ring"
+                },
+                {
+                    "name": "Amuleto do Dragão",
+                    "type": "wearable_item",
+                    "rarity": "legendary",
+                    "weight": 2,
+                    "enchantments": [{"name": "Dragon's Breath", "description": "Adiciona dano de fogo ao ataque", "type": "damage", "value": 20}],
+                    "defence": 8.0,
+                    "wearable_type": "neckless"
+                },
+                {
+                    "name": "Túnica de Seda",
+                    "type": "wearable_item",
+                    "rarity": "common",
+                    "weight": 3,
+                    "enchantments": [],
+                    "defence": 3.0,
+                    "wearable_type": "chestplate"
+                },
+                {
+                    "name": "Poção de Fúria",
+                    "type": "consumable_item",
+                    "rarity": "rare",
+                    "weight": 1,
+                    "consumable_type": "potion",
+                    "effect_value": 20,
+                    "effect_type": "damage"
+                },
+                {
+                    "name": "Machado de Batalha",
+                    "type": "damage_item",
+                    "rarity": "rare",
+                    "weight": 12,
+                    "enchantments": [{"name": "Sharpness", "description": "Aumenta o dano do machado", "type": "damage", "value": 3}],
+                    "damage": 20.0
+                },
+                {
+                    "name": "Perneiras de Aço",
+                    "type": "wearable_item",
+                    "rarity": "rare",
+                    "weight": 7,
+                    "enchantments": [{"name": "Fortitude", "description": "Aumenta a resistência", "type": "defence", "value": 3}],
+                    "defence": 15.0,
+                    "wearable_type": "leggins"
                 }
             ],
             "city": "Bree"
@@ -102,6 +234,59 @@
                     "consumable_type": "potion",
                     "effect_value": 20,
                     "effect_type": "health"
+                },
+                {
+                    "name": "Poção de Regeneração",
+                    "type": "consumable_item",
+                    "rarity": "epic",
+                    "weight": 1,
+                    "consumable_type": "potion",
+                    "effect_value": 40,
+                    "effect_type": "health"
+                },
+                {
+                    "name": "Poção de Força",
+                    "type": "consumable_item",
+                    "rarity": "rare",
+                    "weight": 1,
+                    "consumable_type": "potion",
+                    "effect_value": 20,
+                    "effect_type": "damage"
+                },
+                {
+                    "name": "Poção de Mana",
+                    "type": "consumable_item",
+                    "rarity": "common",
+                    "weight": 1,
+                    "consumable_type": "potion",
+                    "effect_value": 30,
+                    "effect_type": "mana"
+                },
+                {
+                    "name": "Cajado Arcano",
+                    "type": "damage_item",
+                    "rarity": "epic",
+                    "weight": 8,
+                    "enchantments": [{"name": "Fireball", "description": "Lança uma bola de fogo", "type": "damage", "value": 40}],
+                    "damage": 50.0
+                },
+                {
+                    "name": "Poção de Cura Maior",
+                    "type": "consumable_item",
+                    "rarity": "rare",
+                    "weight": 1,
+                    "consumable_type": "potion",
+                    "effect_value": 50,
+                    "effect_type": "health"
+                },
+                {
+                    "name": "Pocao de Rejuvenecimento",
+                    "type": "consumable_item",
+                    "rarity": "legendary",
+                    "weight": 1,
+                    "consumable_type": "potion",
+                    "effect_value": 100,
+                    "effect_type": "health"
                 }
             ],
             "city": "The Shire"
@@ -128,6 +313,50 @@
                     "weight": 8,
                     "enchantments": [],
                     "damage": 25.0
+                }, 
+                {
+                    "name": "Poção de Mana",
+                    "type": "consumable_item",
+                    "rarity": "common",
+                    "weight": 1,
+                    "consumable_type": "potion",
+                    "effect_value": 30,
+                    "effect_type": "mana"
+                },
+                {
+                    "name": "Estrela do Amanhecer",
+                    "type": "damage_item",
+                    "rarity": "legendary",
+                    "weight": 18,
+                    "enchantments": [{"name": "Holy Light", "description": "Dano adicional a inimigos das trevas", "type": "damage", "value": 20}],
+                    "damage": 70.0
+                },
+                {
+                    "name": "Poção de Mana Maior",
+                    "type": "consumable_item",
+                    "rarity": "rare",
+                    "weight": 1,
+                    "consumable_type": "potion",
+                    "effect_value": 50,
+                    "effect_type": "mana"
+                },
+                {
+                    "name": "Elixir de Proteção",
+                    "type": "consumable_item",
+                    "rarity": "epic",
+                    "weight": 1,
+                    "consumable_type": "elixir",
+                    "effect_value": 30,
+                    "effect_type": "defence"
+                },
+                {
+                    "name": "Poção de Escudo de Pedra",
+                    "type": "consumable_item",
+                    "rarity": "legendary",
+                    "weight": 1,
+                    "consumable_type": "potion",
+                    "effect_value": 50,
+                    "effect_type": "defence"
                 }
             ],
             "city": "Rohan"

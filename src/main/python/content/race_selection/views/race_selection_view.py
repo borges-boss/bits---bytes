@@ -3,6 +3,7 @@ from constants.constants import  RACE_TYPE_DWARF, RACE_TYPE_HALF_ELF, RACE_TYPE_
 from content.player.models.player_model import PlayerModel
 from content.class_selection.views.class_selection_view import ClassSelectionView
 from content.player.controllers.player_controller import PlayerController
+from utils.console_utils import ConsoleUtils
 from utils.print_utils import PrintUtils
 
 
@@ -46,8 +47,9 @@ class RaceSelectionView:
 
                     if confirm.lower() == 's':
                         self.player.race = chosen_race
-                        PlayerController.save_player(self.player)
+                        PlayerController.silent_save(self.player)
                         self.stop_view()
+                        ConsoleUtils.clear_terminal()
                         ClassSelectionView().init_view()
                     else:
                         print("Ok, vamos tentar novamente.")

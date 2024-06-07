@@ -21,6 +21,3 @@ class ShopController:
 
     def open_journal(self):
         self.model.open_journal()
-
-    def leave(self):
-        self.model.leave()

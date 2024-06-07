@@ -23,7 +23,7 @@ class OpenFieldsView:
         print("3. Abrir Journal")
         print("4. Viajar")
 
-        if self.open_field.structures:
+        if self.open_field!= None and self.open_field.structures:
             print("\nEstruturas:")
             for i, structure in enumerate(self.open_field.structures, start=5):
               difficulty = 'Facil' if structure.dificulty == 1 else 'Normal' if structure.dificulty == 2 else 'Dificil'
@@ -35,14 +35,14 @@ class OpenFieldsView:
             self.display_options()
             input_value = input("Choose an option: ")
             if input_value == "1":
-                LocationService.explore(self.open_field,self)
+                LocationService.explore(self.open_field,self, self.player)
             elif input_value == "2":
                 self.controller.open_inventory()
             elif input_value == "3":
                 self.controller.open_journal()
             elif input_value == "4":
                 self.stop_view()
-                LocationService.travel()
+                LocationService.travel(self.player)
                 break
             elif int(input_value) >= 5 and int(input_value) <= len(self.open_field.structures) + 4:
                 structure = self.open_field.structures[int(input_value) - 5]

@@ -1,3 +1,4 @@
+import time
 from content.inventory.views.inventory_view import InventoryView
 from content.journal.views.journal_view import JournalView
 from constants.constants import ITEM_RARITY_COMMON, ITEM_RARITY_EPIC, ITEM_RARITY_LEGENDARY, ITEM_RARITY_RARE
@@ -61,6 +62,9 @@ class ShopModel:
         else:
             print("\nFalha ao vender o item. O item nao esta no seu inventario.")
 
+     
+        time.sleep(3)
+
         return player
 
     def open_inventory(self):
@@ -69,7 +73,4 @@ class ShopModel:
 
     def open_journal(self):
         view = JournalView()
-        view.show_my_quests()
-
-    def leave(self):
-       pass
+        view.init_view()

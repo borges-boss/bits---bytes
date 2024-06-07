@@ -30,7 +30,7 @@ class DungeonView:
             input_value = input("Escolha uma opção: ")
             if input_value == "1":
                 self.stop_view()
-                LocationService.explore(self.dungeon, self)
+                LocationService.explore(self.dungeon, self, self.player)
             elif input_value == "2":
                 self.controller.open_inventory()
             elif input_value == "3":

@@ -173,15 +173,15 @@ class PlayerModel:
     def equip_piece_of_armor(self,wearable_item, player):
         equipped = False
 
-        for piece_of_armor in self.equiped_armor:
+        for piece_of_armor in self.equipped_armor:
             if piece_of_armor.wearable_type == wearable_item.wearable_type:
-                index = player.equiped_armor.index(piece_of_armor)
-                player.equiped_armor[index] = wearable_item
+                index = player.equipped_armor.index(piece_of_armor)
+                player.equipped_armor[index] = wearable_item
                 equipped = True
                 break
         
         if not equipped:
-            player.equiped_armor.append(wearable_item) 
+            player.equipped_armor.append(wearable_item) 
 
         return player
 
@@ -190,7 +190,7 @@ class PlayerModel:
             if item.type == ITEM_TYPE_DAMAGE:
                 player.equipped_item = item
             else:
-                self.equip_piece_of_armor(item,player)
+                self.equip_piece_of_armor(item, player)
         else:
             print("Esse item não pode ser equipado")
 
@@ -272,7 +272,7 @@ class PlayerModel:
                 target.stamina -= ability.value
                 print(f"{player.name} usou {ability.name}! e o {target.name} perdeu {ability.value} de stamina")
             elif ability.type == ABILITY_TYPE_STATS_TARG_DAMAGE:
-                target.damage -= ability.value
+                target.damage-= ability.value
                 print(f"{player.name} usou {ability.name}! e o {target.name} perdeu {ability.value} de dano")
             elif ability.type == ABILITY_TYPE_STATS_TARG_DEFENCE:
                 target.defence -= ability.value

@@ -78,10 +78,15 @@ class BattleView:
 
                 elif input_value == "4":
                     ConsoleUtils.clear_terminal()
-                    print("Voce fugiu da batalha como um covarde, mas pelo menos ainda esta vivo...")
-                    PlayerController.init_player_attributes() # Resetar atributos do player depois da batalha
-                    self.stop_view()
-                    self.out_of_battle_view.init_view()
+                    if random.random() < 0.50:  # 25% de change de falhar
+                        print("Você tentou fugir da batalha, mas falhou...")
+                        self.player_turn = False
+                    else:
+                        print("Você fugiu da batalha como um covarde, mas pelo menos ainda está vivo...")
+                        PlayerController.init_player_battle_attributes(self.player)  # Resetar atributos do player depois da batalha
+                        time.sleep(4)
+                        self.stop_view()
+                        self.out_of_battle_view.init_view()
                 else:
                     print("Opcao invalida")
 
@@ -118,22 +123,30 @@ class BattleView:
                 print("Voce foi derrotado...")
                 PrintUtils.print_slowly(f"\nDe alguma forma voce conseguiu sobreviver e se arrastar para um local seguro. Mas cuidado porque pode não haver uma proxima vez...")
                 time.sleep(3)
-                PlayerController.init_player_attributes() # Resetar atributos do player depois da batalha
+                PlayerController.init_player_battle_attributes(self.player) # Resetar atributos do player depois da batalha
+                self.player.health = PlayerController.get_player_max_health() * 0.25  #Se o player for derrotado restaure 25% da vida maxima dele
+                self.player.wallet.add_coins(1)
+                PlayerController.silent_save(self.player)
                 self.stop_view()
                 self.out_of_battle_view.init_view()
 
             elif self.target.health <= 0:
                 print(f"\nVoce derrotou o {self.target.name}!")
+                self.player.wallet.add_coins(2)
                 loot = LootService.get_random_loot_from_monster(self.target)
 
                 if loot is not None:
+                 print(f"\nVoce ganhou {loot.name} como recompensa")
                  self.player.inventory.add_item(loot)
-                 PlayerController.save_player(self.player)
+                 PlayerController.silent_save(self.player)
 
+                time.sleep(4)
                 xp_amount = (self.target.level * 10) + self.player.xp
                 print(f"\nVoce ganhou {xp_amount} de xp")
                 PlayerController.add_exp(xp_amount)
-                PlayerController.init_player_attributes() # Resetar atributos do player depois da batalha
+                PlayerController.init_player_battle_attributes(self.player) # Resetar atributos do player depois da batalha
+                
+                time.sleep(4)
                 self.stop_view()
                 self.out_of_battle_view.init_view()
 

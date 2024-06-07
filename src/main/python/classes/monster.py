@@ -49,6 +49,10 @@ class Monster(Entity):
     def damage(self):
         damage_per_level = 10
         return self._damage + (self._level * damage_per_level)
+    
+    @damage.setter
+    def damage(self,value):
+        self._damage = value
 
     def use_stats_ability(self, ability, target):
         target_abilities = [ABILITY_TYPE_STATS_TARG_HEALTH, ABILITY_TYPE_STATS_TARG_STAMINA, 

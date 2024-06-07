@@ -2,7 +2,7 @@
     "open_fields": [
         {
             "name": "Planícies de Gondolin",
-            "type": "OpenFields",
+            "type": "open_field",
             "width": 500,
             "height": 500,
             "dificulty": 2,
@@ -74,7 +74,7 @@
         },
         {
             "name": "Bosque de Rivendell",
-            "type": "OpenFields",
+            "type": "open_field",
             "width": 600,
             "height": 600,
             "dificulty": 1,
@@ -148,7 +148,7 @@
         },
         {
             "name": "Planícies de Bree",
-            "type": "OpenFields",
+            "type": "open_field",
             "width": 700,
             "height": 700,
             "dificulty": 2,
@@ -221,7 +221,7 @@
         },
         {
             "name": "Floresta do Shire",
-            "type": "OpenFields",
+            "type": "open_field",
             "width": 800,
             "height": 800,
             "dificulty": 1,
@@ -295,7 +295,7 @@
         },
         {
             "name": "Planícies de Rohan",
-            "type": "OpenFields",
+            "type": "open_field",
             "width": 900,
             "height": 900,
             "dificulty": 3,

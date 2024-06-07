@@ -63,7 +63,7 @@ class TavernView:
             else:
                 self.player.journal.add_quest(quest_to_add)
                 print(f"Quest '{quest_to_add.name}' foi adicionada ao seu journal.")
-                PlayerController.save_player(self.player)
+                PlayerController.silent_save(self.player)
         else:
             print("Nenhuma taverna disponivel nessa cidade")
 

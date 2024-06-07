@@ -37,6 +37,6 @@ class GameOpeningController:
 
 
     def show_intro(self):
-       #self.show_intro_text()
+       self.show_intro_text()
        self.show_transition_key()
        

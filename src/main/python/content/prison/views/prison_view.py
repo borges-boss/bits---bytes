@@ -21,22 +21,22 @@ class PrisonView:
         self.player = PlayerController.get_player()
         self.player.location = self.prison
         self.player.city = "Rivendell"
-        PlayerController.save_player(self.player)
+        PlayerController.silent_save(self.player)
         ConsoleUtils.clear_terminal()
         self.is_battle_finished = False
 
     
 
     def wake_up(self):
-        #PrintUtils.print_slowly("A escuridão da cela de prisão é interrompida abruptamente por um estrondo ensurdecedor. O chão frio e úmido treme sob você enquanto sons de luta e gritos ecoam pelos corredores de pedra.\n"+
-                            #    "Você se levanta, os olhos lutando para se ajustar à fraca luz que se infiltra através das barras enferrujadas da cela. O ar está carregado com uma tensão palpável, uma sensação de medo e urgência que faz seu coração acelerar.\n"
-                           #     +"De repente, a porta da sua cela é arremessada aberta com um estrondo. Um guarda da prisão entra, ofegante e coberto de suor.\n")
+        PrintUtils.print_slowly("A escuridão da cela de prisão é interrompida abruptamente por um estrondo ensurdecedor. O chão frio e úmido treme sob você enquanto sons de luta e gritos ecoam pelos corredores de pedra.\n"+
+                                "Você se levanta, os olhos lutando para se ajustar à fraca luz que se infiltra através das barras enferrujadas da cela. O ar está carregado com uma tensão palpável, uma sensação de medo e urgência que faz seu coração acelerar.\n"
+                                +"De repente, a porta da sua cela é arremessada aberta com um estrondo. Um guarda da prisão entra, ofegante e coberto de suor.\n")
         
-        #PrintUtils.print_slowly("\nGuarda: Os exércitos do rei demônio estão aqui! Eles estão matando todos...")
-        #PrintUtils.print_slowly("\nGuarda: Fuja!")
+        PrintUtils.print_slowly("\nGuarda: Os exércitos do rei demônio estão aqui! Eles estão matando todos...")
+        PrintUtils.print_slowly("\nGuarda: Fuja!")
 
-        #PrintUtils.print_slowly("\nVocê pega as chaves, a realidade da situação começando a afundar. A prisão está sendo invadida. E se você não agir rápido, pode ser o próximo.\nCom um ultimo olhar para a cela que foi sua casa por tanto tempo, voce sai correndo para o corredor, pronto para enfrentar o desconhecido. A aventura esta apenas começando.")
-        #time.sleep(2)
+        PrintUtils.print_slowly("\nVocê pega as chaves, a realidade da situação começando a afundar. A prisão está sendo invadida. E se você não agir rápido, pode ser o próximo.\nCom um ultimo olhar para a cela que foi sua casa por tanto tempo, voce sai correndo para o corredor, pronto para enfrentar o desconhecido. A aventura esta apenas começando.")
+        time.sleep(2)
         name = None
         ConsoleUtils.clear_terminal()
         while name == None:
@@ -46,7 +46,7 @@ class PrisonView:
              confirm = str(input())
              if confirm.lower() == "s":
                  self.player.name = name
-                 PlayerController.save_player(self.player)
+                 PlayerController.silent_save(self.player)
                  ConsoleUtils.clear_terminal()
              else:
                  ConsoleUtils.clear_terminal()
@@ -60,16 +60,16 @@ class PrisonView:
         sword = DamageItem("Espada de Ferro",ITEM_TYPE_DAMAGE,ITEM_RARITY_COMMON,4.0,[],3.4)
         self.player.inventory.add_item(sword)
         self.player.equipped_item = sword 
-        PlayerController.save_player(self.player)
+        PlayerController.silent_save(self.player)
 
-        monster = Monster(120,10,40,50,RACE_TYPE_DEMON,RACE_TYPE_DEMON,"Soldado Infernal",70,"Um soldado dos exercitos do rei demonio",[],1)
+        monster = Monster(110,10,40,50,RACE_TYPE_DEMON,RACE_TYPE_DEMON,"Soldado Infernal",70,"Um soldado dos exercitos do rei demonio",[],1)
         slash = Ability("Corte", "Um ataque básico com a espada.", "physical", 20, 5)
         fireball = Ability("Bola de Fogo", "Um ataque mágico de fogo.", "magic", 30, 10)
         monster.abilities.append(slash)
         monster.abilities.append(fireball)
         
         datastore = DataStore()
-        city = datastore.find_city_by_name(self.player.city)
+        city = datastore.find_city_by_name(self.player.city)[0]
         city_open_fields = datastore.find_open_fields_by_city(self.player.city) # Lembrar de cadastrar essa cidade nos arquivos json
 
         BattleView(monster, CityStructureView(city_open_fields[0],city.structures)).init_view()

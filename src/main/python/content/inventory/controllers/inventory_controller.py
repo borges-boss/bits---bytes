@@ -1,3 +1,4 @@
+import time
 from content.inventory.models.inventory_model import InventoryModel
 from constants.constants import ITEM_TYPE_CONSUMABLE, ITEM_TYPE_DAMAGE, ITEM_TYPE_WEARABLE
 from content.player.controllers.player_controller import PlayerController
@@ -21,3 +22,5 @@ class InventoryController:
                 PlayerController.equip_piece_of_armor(item)
             else: 
                 PlayerController.equip_item(item)
+
+            time.sleep(3)

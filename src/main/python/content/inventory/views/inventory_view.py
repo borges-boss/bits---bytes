@@ -6,6 +6,7 @@ from utils.print_utils import PrintUtils
 class InventoryView:
     def __init__(self):
         self.controller = InventoryController()
+        self.is_running = True
 
     def display_items(self):
         items = self.controller.get_player_items()
@@ -22,12 +23,13 @@ class InventoryView:
             
 
     def handle_input(self):
-        while True:
+        while self.is_running:
             ConsoleUtils.clear_terminal()
             self.display_items()
             print("\nDigite o numero do item que quer equipar ou usar, ou digite 'q' para sair:")
             user_input = input()
             if user_input.lower() == 'q':
+                self.stop_View()
                 break
             try:
                 item_number = int(user_input)
@@ -44,6 +46,12 @@ class InventoryView:
 
 
     def init_view(self):
+        self.is_running = True
         self.handle_input()
+
+
+    def stop_View(self):
+        self.is_running = False
+
 
 

@@ -1,3 +1,4 @@
+import time
 from content.game_save.models.game_save_model import GameSaveModel
 from content.player.models.player_model import PlayerModel
 from base.ability import Ability
@@ -32,25 +33,23 @@ class PlayerController:
     def load_player(cls):
         model = GameSaveModel()
         cls.global_player = model.get_player_info()
+        return cls.global_player
 
     @classmethod
     def save_player_state(cls,player):
         model = GameSaveModel()
         model.save_game(player)
         print("O seu jogo foi salvo!")
+        time.sleep(3)
 
     @classmethod
-    def save_player(cls,player):
+    def silent_save(cls,player):
         model = GameSaveModel()
         model.save_game(player)
 
     @classmethod
     def get_player(cls):
-        cls.load_player()
-        if cls.get_player == None:
-            cls.load_player()
-
-        return cls.global_player
+        return cls.load_player()
     
     @classmethod
     def set_player_state(cls, player):
@@ -59,19 +58,19 @@ class PlayerController:
     @classmethod
     def restore_full_health(cls,player):
         player_model = PlayerModel()
-        player.health = player_model.get_player_max_health(cls.global_player) #Restaurar vida completa do jogador
+        player.health = player_model.get_player_max_health(player) #Restaurar vida completa do jogador
         return player
 
     @classmethod
     def restore_full_mana(cls,player):
         player_model = PlayerModel()
-        player.mana = player_model.get_player_max_mana(cls.global_player)
+        player.mana = player_model.get_player_max_mana(player)
         return player
 
     @classmethod
     def restore_full_stamina(cls,player):
         player_model = PlayerModel()
-        player.stamina = player_model.get_player_max_stamina(cls.global_player)
+        player.stamina = player_model.get_player_max_stamina(player)
         return player
 
     @classmethod
@@ -83,6 +82,19 @@ class PlayerController:
     def equip_item(cls,item):
         player_model = PlayerModel()
         cls.set_player_state(player_model.equip_item(item,cls.get_player()))
+
+    
+    @classmethod
+    def is_equipped(cls, item, player: Player):
+        if item == player.equipped_item:
+            return True
+
+        for armor in player.equipped_armor:
+            if item == armor:
+                return True
+
+        return False
+
 
     @classmethod
     def use_consumable(cls,item):
@@ -104,18 +116,16 @@ class PlayerController:
         player_model = PlayerModel()
         return player_model.get_player_defence(cls.get_player())
     
-
     @classmethod
-    def reset_player_status(cls):
-        player_mode = PlayerModel()
-        cls.get_player().damage = player_mode.get_player_damage(cls.get_player())
-        cls.get_player().defence = player_mode.get_player_defence(cls.get_player())
+    def get_player_max_health(cls):
+        player_model = PlayerModel()
+        return player_model.get_player_max_health(cls.get_player())
 
 
     @classmethod
     def init_new_player_instance(cls):
         initial_item = DamageItem("Punhos",ITEM_TYPE_DAMAGE,ITEM_RARITY_COMMON,0,[],1.0)
-        cls.global_player = Player(0,0,0,0,"","","",[],1,0,Wallet(0),Inventory([],500.0),initial_item,[],Journal([]),Cave("",STRUCTURE_TYPE_CAVE,1,[],[]),"")
+        cls.global_player = Player(0,0,0,0,"","","",[],1,0,Wallet(50),Inventory([],500.0),initial_item,[],Journal([]),Cave("",STRUCTURE_TYPE_CAVE,1,[],[]),"")
         cls.global_player.inventory.add_item(initial_item)
         model = GameSaveModel()
         model.save_game(cls.global_player)
@@ -132,7 +142,16 @@ class PlayerController:
         model = GameSaveModel()
         model.save_game(player)
         return player
+    
 
+    @classmethod
+    def init_player_battle_attributes(cls, player):
+        player_mode = PlayerModel()
+        player.damage = player_mode.get_player_damage(player)
+        player.defence = player_mode.get_player_defence(player)
+        model = GameSaveModel()
+        model.save_game(player)
+        return player
 
     @classmethod
     def init_player_abilities(cls):

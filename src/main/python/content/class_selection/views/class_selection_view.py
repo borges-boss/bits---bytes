@@ -47,7 +47,7 @@ class ClassSelectionView:
                     if confirm.lower() == 's':
                         self.stop_view()
                         self.player.game_class = chosen_class
-                        PlayerController.save_player(self.player)
+                        PlayerController.silent_save(self.player)
                         PrisonView().wake_up()
                     else:
                         print("Ok, vamos tentar novamente.")

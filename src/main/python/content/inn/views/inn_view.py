@@ -16,7 +16,7 @@ class InnView:
     def display_options(self):
         PrintUtils.print_centered("Voce está em um Inn\n")
         PrintUtils.print_separator_line()
-        print("1. Descansar")
+        print(f"1. Descansar (Preco: {self.inn.price_per_stay})")
         print("2. Abrir inventario")
         print("3. Abrir Journal")
         print("4. Salvar Jogo")
@@ -29,7 +29,7 @@ class InnView:
             self.display_options()
             input_value = input("Escolha uma opção: ")
             if input_value == "1":
-                self.controller.rest(self.player)
+                self.player = self.controller.rest(self.player)
             elif input_value == "2":
                 self.controller.open_inventory()
             elif input_value == "3":

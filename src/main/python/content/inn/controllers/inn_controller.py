@@ -15,4 +15,4 @@ class InnController:
 
     def open_journal(self):
         view = JournalView()
-        view.show_my_quests()
+        view.init_view()

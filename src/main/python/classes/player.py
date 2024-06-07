@@ -24,7 +24,7 @@ class Player(Entity):
         self._wallet = wallet
         self._inventory = inventory
         self._equipped_item = equipped_item
-        self._equiped_armor = equipped_armor
+        self._equipped_armor = equipped_armor
         self._journal = journal
         self._location = location # Dungeon, Cave, OpenFiedl, Shop, Tavern, Inn
         self._city = city
@@ -44,7 +44,7 @@ class Player(Entity):
             'wallet': self._wallet.to_dict(),
             'inventory': self._inventory.to_dict(),
             'equipped_item': self._equipped_item.to_dict(),
-            'equipped_armor': [item.to_dict() for item in self._equiped_armor],
+            'equipped_armor': [item.to_dict() for item in self._equipped_armor],
             'journal': self._journal.to_dict(),
             'name': self.name,
             'health': self.health,
@@ -72,14 +72,6 @@ class Player(Entity):
         self._city = value
 
     @property
-    def equiped_armor(self):
-        return self._equiped_armor
-    
-    @equiped_armor.setter
-    def equiped_armor(self, value):
-        self._equipped_armor = value
-
-    @property
     def player_id(self):
         return self._player_id
 
@@ -105,11 +97,11 @@ class Player(Entity):
 
     @property
     def equipped_armor(self):
-        return self._equiped_armor
+        return self._equipped_armor
 
     @equipped_armor.setter
     def equipped_armor(self, value):
-        self._equiped_armor = value
+        self._equipped_armor = value
 
     @property
     def xp(self):

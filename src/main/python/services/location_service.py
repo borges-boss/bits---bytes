@@ -13,10 +13,10 @@ from utils.console_utils import ConsoleUtils
 class LocationService:
 
     @staticmethod
-    def explore(current_structure, current_view):
-        difficulty = current_structure.dificulty
+    def explore(current_structure, current_view, player):
+        difficulty = current_structure.dificulty  if current_structure.dificulty != None else 2
         rarity = None
-        monster_probabilities = {1: 0.2, 2: 0.35, 3: 0.5, 4: 0.7}
+        monster_probabilities = {1: 0.35, 2: 0.5, 3: 0.7, 4: 0.85}
         loot_probabilities = {1: 0.35, 2: 0.25, 3: 0.15, 4: 0.08}
         datastore = DataStore()
 
@@ -26,7 +26,7 @@ class LocationService:
 
         if random.random() < monster_probabilities[difficulty]:
             print("Voce encontrou um monstro!")
-            BattleView(MonsterService.spawn_monster(difficulty,current_structure.monsters),current_structure).init_view()
+            BattleView(MonsterService.spawn_monster(difficulty,current_structure.monsters),current_view).init_view()
         elif random.random() < loot_probabilities[difficulty]:
             if difficulty == 1:  # Fácil
                 # 80% de chance para comum, 20% de chance para raro
@@ -55,8 +55,9 @@ class LocationService:
         items_by_rarity = datastore.find_items_by_rarity(rarity)
         if items_by_rarity:
             item = random.choice(items_by_rarity)
-            print(f"Voce encontrou {item['_name']}!")
-            PlayerController.get_player().inventory.add_item(ItemService.map_to_item(item))
+            print(f"Voce encontrou {item.name}!")
+            player.inventory.add_item(item)
+            PlayerController.silent_save(player)
             time.sleep(3)
         else:
             PrintUtils.print_slowly("Voce explorou o local mas não encontrou nada. Melhor continuar andando...")
@@ -66,7 +67,7 @@ class LocationService:
         current_view.init_view()
 
     @staticmethod
-    def travel():
+    def travel(player):
         from content.city_structure.views.city_structure_view import CityStructureView
         from content.open_fields.controllers.open_fields_controller import OpenFieldsController
 
@@ -94,7 +95,9 @@ class LocationService:
         city_view = CityStructureView(open_fields_in_city[0], chosen_city.structures)
         ConsoleUtils.clear_terminal()
         PrintUtils.print_dot_loading_animation("Viajando")
-        PlayerController.get_player().city = chosen_city.name
+        player.city = chosen_city.name
+        player.location = open_fields_in_city[0]
+        PlayerController.silent_save(player)
         city_view.init_view()
 
 
