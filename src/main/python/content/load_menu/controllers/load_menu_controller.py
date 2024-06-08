@@ -63,7 +63,7 @@ class LoadMenuController:
               
               
     def display_menu(self):
-        header_text = "Games in progress"
+        header_text = "Partidas em Progresso"
         dashed_line = "-" * self.view.box_width
         header = f"{header_text:^{self.view.columns}}\n{' ' * self.view.margin}{dashed_line}\n"
 

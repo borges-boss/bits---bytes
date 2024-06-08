@@ -11,14 +11,14 @@ class JournalView:
 
     def show_quests(self, quests):
         for quest in quests:
-            print(f"Name: {quest.name}\nDescription: {quest.description}\n")
+            print(f"Nome: {quest.name}\nDescricao: {quest.description}\n")
 
     def show_active_quests(self,active_quests):
-        print("Active Quests\n")
+        print("Quests ativas\n")
         self.show_quests(active_quests)
 
     def show_completed_quests(self, completed_quests):
-        print("Completed Quests\n")
+        print("Quests Finalizadas\n")
         self.show_quests(completed_quests)
 
     def show_my_quests(self):

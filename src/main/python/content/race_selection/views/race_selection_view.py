@@ -31,7 +31,7 @@ class RaceSelectionView:
             base_defence = self.player_model.get_base_defence(temp_player)
 
             print(f"{i}. {race_type}")
-            print(f"   Saúde: {base_health}")
+            print(f"   Saude: {base_health}")
             print(f"   Mana: {base_mana}")
             print(f"   Stamina: {base_stamina}")
             print(f"   Dano: {base_damage}")

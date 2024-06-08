@@ -18,7 +18,7 @@ class OpenFieldsView:
     def display_options(self):
         PrintUtils.print_centered(f"Voce esta em um campo aberto fora da cidade de {PlayerController.get_player().city}\n")
         PrintUtils.print_separator_line()
-        print("1. Explore")
+        print("1. Explorar")
         print("2. Abrir Inventario")
         print("3. Abrir Journal")
         print("4. Viajar")

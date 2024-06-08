@@ -64,7 +64,7 @@ class Quest:
                 player.wallet.add_coins(self.reward)
             
         else:
-            print(f'You have already completed the quest "{self.name}".')
+            print(f'Voce ja completou a quest "{self.name}".')
 
 
     def to_dict(self):

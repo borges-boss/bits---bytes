@@ -9,6 +9,6 @@ class FileReader:
         except FileNotFoundError:
             print(f"File '{filename}' not found.")
         except PermissionError:
-            print(f"Permission denied to read the file '{filename}'.")
+            print(f"Permissao negada para ler o arquivo '{filename}'.")
         except Exception as e:
-            print(f"An error occurred while reading the file '{filename}': {str(e)}")
+            print(f"Um erro ocorreu ao tentar ler o arquivo '{filename}': {str(e)}")
