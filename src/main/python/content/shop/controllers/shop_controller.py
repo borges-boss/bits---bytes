@@ -16,8 +16,8 @@ class ShopController:
     def sell_item(self, item, player):
         return self.model.sell_item(item, player)
 
-    def open_inventory(self):
-        self.model.open_inventory()
+    def open_inventory(self, player):
+        self.model.open_inventory(player)
 
     def open_journal(self):
         self.model.open_journal()

@@ -68,6 +68,7 @@ class LoadMenuController:
         header = f"{header_text:^{self.view.columns}}\n{' ' * self.view.margin}{dashed_line}\n"
 
         game_saves = self.model.get_saves()
+        game_saves.sort(key=lambda x: x['last_save'])
         game_boxes = [self.view.create_box(f"{game_saves[i]['title']}", game_saves[i]['last_save']) for i in range(len(game_saves))]
 
         self.saves_count = len(game_saves)

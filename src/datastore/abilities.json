@@ -9,7 +9,7 @@
         },
         {
             "name": "Toque de Cura",
-            "description": "Uma habilidade mágica que restaura a saúde.",
+            "description": "Uma habilidade magica que restaura a saúde.",
             "type": "magic",
             "value": 20,
             "ability_cost": 15
@@ -65,21 +65,21 @@
         },
         {
             "name": "Bola de Fogo",
-            "description": "Um ataque mágico de fogo que causa danos significativos.",
+            "description": "Um ataque magico de fogo que causa danos significativos.",
             "type": "magic",
             "value": 35,
             "ability_cost": 25
         },
         {
-            "name": "Escudo de Força",
-            "description": "Cria um escudo de força que absorve uma quantidade significativa de dano.",
+            "name": "Escudo de Forca",
+            "description": "Cria um escudo de forca que absorve uma quantidade significativa de dano.",
             "type": "magic",
             "value": 40,
             "ability_cost": 20
         },
         {
-            "name": "Recuperação Rápida",
-            "description": "Aumenta a taxa de recuperação de sua saúde por um curto período de tempo.",
+            "name": "Recuperacão Rapida",
+            "description": "Aumenta a taxa de recuperacão de sua saúde por um curto período de tempo.",
             "type": "stats_health",
             "value": 30,
             "ability_cost": 15
@@ -93,7 +93,7 @@
         },
         {
             "name": "Rajada de Vento",
-            "description": "Um ataque mágico que causa dano e empurra o alvo para trás.",
+            "description": "Um ataque magico que causa dano e empurra o alvo para tras.",
             "type": "magic",
             "value": 25,
             "ability_cost": 15
@@ -106,8 +106,8 @@
             "ability_cost": 30
         },
         {
-            "name": "Regeneração de Mana",
-            "description": "Aumenta a taxa de recuperação de sua mana por um curto período de tempo.",
+            "name": "Regeneracão de Mana",
+            "description": "Aumenta a taxa de recuperacão de sua mana por um curto período de tempo.",
             "type": "stats_mana",
             "value": 30,
             "ability_cost": 15
@@ -135,7 +135,7 @@
         },
         {
             "name": "Raio Congelante",
-            "description": "Um ataque mágico que causa dano e diminui a velocidade do alvo.",
+            "description": "Um ataque magico que causa dano e diminui a velocidade do alvo.",
             "type": "magic",
             "value": 25,
             "ability_cost": 15

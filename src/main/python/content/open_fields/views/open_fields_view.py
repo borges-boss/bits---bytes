@@ -37,7 +37,7 @@ class OpenFieldsView:
             if input_value == "1":
                 LocationService.explore(self.open_field,self, self.player)
             elif input_value == "2":
-                self.controller.open_inventory()
+                self.controller.open_inventory(self.player)
             elif input_value == "3":
                 self.controller.open_journal()
             elif input_value == "4":

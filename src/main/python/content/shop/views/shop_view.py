@@ -71,7 +71,7 @@ class ShopView:
                 else:
                     print("Numero de item invalido\n")  
             elif input_value == "3":
-                self.controller.open_inventory()
+                self.controller.open_inventory(self.player)
             elif input_value == "4":
                 self.controller.open_journal()
             elif input_value == "5":

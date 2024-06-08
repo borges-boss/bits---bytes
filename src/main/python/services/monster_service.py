@@ -2,6 +2,7 @@ import random
 from classes.monster import Monster
 from services.data_store import DataStore
 import curses
+import copy
 
 
 class MonsterService:
@@ -34,7 +35,7 @@ class MonsterService:
         elif difficulty == 3: 
             monster.level = random.randint(11, 30)
 
-        return monster
+        return copy.deepcopy(monster)
     
     @staticmethod
     def display_monster_hud(monster):

@@ -31,7 +31,7 @@ class InnView:
             if input_value == "1":
                 self.player = self.controller.rest(self.player)
             elif input_value == "2":
-                self.controller.open_inventory()
+                self.controller.open_inventory(self.player)
             elif input_value == "3":
                 self.controller.open_journal()
             elif input_value == "4":

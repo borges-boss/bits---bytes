@@ -2,7 +2,7 @@
     "quests": [
         {
             "name": "A Espada Perdida",
-            "description": "Encontre a espada perdida do rei no calabouço.",
+            "description": "Encontre a espada perdida do rei no calabouco.",
             "reward": 100,
             "reward_type": "money",
             "is_completed": false
@@ -24,7 +24,7 @@
         },
         {
             "name": "O Dragão do Pico da Montanha",
-            "description": "Derrote o dragão que está aterrorizando a cidade.",
+            "description": "Derrote o dragão que esta aterrorizando a cidade.",
             "reward": 500,
             "reward_type": "money",
             "is_completed": false
@@ -40,7 +40,7 @@
                 "enchantments": [
                     {
                         "name": "Fireball",
-                        "description": "Lança uma bola de fogo",
+                        "description": "Lanca uma bola de fogo",
                         "type": "damage",
                         "value": 40
                     }
@@ -74,16 +74,16 @@
         },
         {
             "name": "O Ladrão de Joias",
-            "description": "Encontre o ladrão que está roubando as joias da cidade.",
+            "description": "Encontre o ladrão que esta roubando as joias da cidade.",
             "reward": 200,
             "reward_type": "money",
             "is_completed": false
         },
         {
-            "name": "A Poção Rara",
-            "description": "Colete os ingredientes para a poção rara.",
+            "name": "A Pocão Rara",
+            "description": "Colete os ingredientes para a pocão rara.",
             "reward": {
-                "name": "Poção Rara",
+                "name": "Pocão Rara",
                 "type": "consumable_item",
                 "rarity": "rare",
                 "weight": 1,
@@ -109,10 +109,10 @@
             "is_completed": false
         },
         {
-            "name": "O Livro de Feitiços",
-            "description": "Recupere o Livro de Feitiços da bruxa da floresta.",
+            "name": "O Livro de Feiticos",
+            "description": "Recupere o Livro de Feiticos da bruxa da floresta.",
             "reward": {
-                "name": "Livro de Feitiços",
+                "name": "Livro de Feiticos",
                 "type": "damage_item",
                 "rarity": "legendary",
                 "weight": 3,
@@ -125,7 +125,7 @@
         },
         {
             "name": "O Monstro do Lago",
-            "description": "Derrote o monstro que está aterrorizando os pescadores do lago.",
+            "description": "Derrote o monstro que esta aterrorizando os pescadores do lago.",
             "reward": 400,
             "reward_type": "money",
             "is_completed": false
@@ -141,7 +141,7 @@
                 "enchantments": [
                     {
                         "name": "Lightning Strike",
-                        "description": "Lança um raio",
+                        "description": "Lanca um raio",
                         "type": "damage",
                         "value": 60
                     }
@@ -175,16 +175,16 @@
         },
         {
             "name": "O Fantasma do Teatro",
-            "description": "Encontre o fantasma que está assombrando o teatro da cidade.",
+            "description": "Encontre o fantasma que esta assombrando o teatro da cidade.",
             "reward": 250,
             "reward_type": "money",
             "is_completed": false
         },
         {
-            "name": "O Elixir de Força",
-            "description": "Colete os ingredientes para o Elixir de Força.",
+            "name": "O Elixir de Forca",
+            "description": "Colete os ingredientes para o Elixir de Forca.",
             "reward": {
-                "name": "Elixir de Força",
+                "name": "Elixir de Forca",
                 "type": "consumable_item",
                 "rarity": "rare",
                 "weight": 1,

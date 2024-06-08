@@ -45,9 +45,12 @@ class ShopModel:
 
             if added_to_inventory:
                 player.wallet.subtract_coins(item_price)
+                print(f"Voce comprou {item.name} por {item_price}")
+                time.sleep(3)
 
         else:
             print("\nVoce nao coins suficientes para comprar esse item.")
+            time.sleep(3)
         
         return player
 
@@ -67,9 +70,9 @@ class ShopModel:
 
         return player
 
-    def open_inventory(self):
-        view = InventoryView()
-        view.display_items()
+    def open_inventory(self, player):
+        view = InventoryView(player)
+        view.init_view()
 
     def open_journal(self):
         view = JournalView()

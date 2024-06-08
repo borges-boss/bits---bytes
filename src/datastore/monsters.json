@@ -9,7 +9,7 @@
             "race": "Goblin",
             "type": "Saqueador",
             "mana": 0,
-            "description": "Um goblin pequeno e ágil, conhecido por saquear viajantes desavisados.",
+            "description": "Um goblin pequeno e agil, conhecido por saquear viajantes desavisados.",
             "abilities": [
                 {
                     "name": "Golpe Duplo",
@@ -62,7 +62,7 @@
             "abilities": [
                 {
                     "name": "Raio Congelante",
-                    "description": "Um ataque mágico que causa dano e diminui a velocidade do alvo.",
+                    "description": "Um ataque magico que causa dano e diminui a velocidade do alvo.",
                     "type": "magic",
                     "value": 25,
                     "ability_cost": 15
@@ -90,14 +90,14 @@
             "abilities": [
                 {
                     "name": "Bola de Fogo",
-                    "description": "Um ataque mágico de fogo que causa danos significativos.",
+                    "description": "Um ataque magico de fogo que causa danos significativos.",
                     "type": "magic",
                     "value": 35,
                     "ability_cost": 25
                 },
                 {
-                    "name": "Escudo de Força",
-                    "description": "Cria um escudo de força que absorve uma quantidade significativa de dano.",
+                    "name": "Escudo de Forca",
+                    "description": "Cria um escudo de forca que absorve uma quantidade significativa de dano.",
                     "type": "magic",
                     "value": 40,
                     "ability_cost": 20
@@ -118,7 +118,7 @@
             "abilities": [
                 {
                     "name": "Ataque Furtivo",
-                    "description": "Um ataque rápido e silencioso que pega o alvo de surpresa.",
+                    "description": "Um ataque rapido e silencioso que pega o alvo de surpresa.",
                     "type": "physical",
                     "value": 25,
                     "ability_cost": 10
@@ -135,11 +135,11 @@
             "race": "Elemental",
             "type": "Fogo",
             "mana": 60,
-            "description": "Uma criatura mágica feita inteiramente de chamas ardentes.",
+            "description": "Uma criatura magica feita inteiramente de chamas ardentes.",
             "abilities": [
                 {
                     "name": "Bola de Fogo",
-                    "description": "Um ataque mágico de fogo que causa danos significativos.",
+                    "description": "Um ataque magico de fogo que causa danos significativos.",
                     "type": "magic",
                     "value": 35,
                     "ability_cost": 25
@@ -163,11 +163,11 @@
             "race": "Golem",
             "type": "Pedra",
             "mana": 0,
-            "description": "Uma criatura gigantesca feita de pedra sólida, quase impenetrável.",
+            "description": "Uma criatura gigantesca feita de pedra solida, quase impenetravel.",
             "abilities": [
                 {
                     "name": "Punho de Pedra",
-                    "description": "Um golpe poderoso que pode esmagar até mesmo o mais forte dos adversários.",
+                    "description": "Um golpe poderoso que pode esmagar até mesmo o mais forte dos adversarios.",
                     "type": "physical",
                     "value": 40,
                     "ability_cost": 15
@@ -194,8 +194,8 @@
                     "ability_cost": 20
                 },
                 {
-                    "name": "Maldição da Fraqueza",
-                    "description": "Lança uma maldição que reduz o dano do alvo por um curto período de tempo.",
+                    "name": "Maldicão da Fraqueza",
+                    "description": "Lanca uma maldicão que reduz o dano do alvo por um curto período de tempo.",
                     "type": "magic",
                     "value": 10,
                     "ability_cost": 15

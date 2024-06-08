@@ -7,8 +7,8 @@ class DungeonController:
     def __init__(self):
         self.model = DungeonModel()
 
-    def open_inventory(self):
-        self.model.open_inventory()
+    def open_inventory(self, player):
+        self.model.open_inventory(player)
 
     def open_journal(self):
         self.model.open_journal()

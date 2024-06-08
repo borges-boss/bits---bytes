@@ -32,7 +32,7 @@ class DungeonView:
                 self.stop_view()
                 LocationService.explore(self.dungeon, self, self.player)
             elif input_value == "2":
-                self.controller.open_inventory()
+                self.controller.open_inventory(self.player)
             elif input_value == "3":
                 self.controller.open_journal()
             elif input_value == "4":

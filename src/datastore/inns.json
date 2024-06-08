@@ -1,7 +1,7 @@
 {
     "inns": [
         {
-            "name": "A Águia Dourada",
+            "name": "A aguia Dourada",
             "type": "inn",
             "width": 20,
             "height": 15,
@@ -29,7 +29,7 @@
                 "defence": 5,
                 "race": "Elf",
                 "type": "Civilian",
-                "description": "Um elfo de aparência sábia com olhos brilhantes.",
+                "description": "Um elfo de aparencia sabia com olhos brilhantes.",
                 "role": "Innkeeper"
             },
             "rooms": 15,
@@ -65,7 +65,7 @@
                 "defence": 6,
                 "race": "Hobbit",
                 "type": "Civilian",
-                "description": "Um hobbit amigável com um brilho aventureiro nos olhos.",
+                "description": "Um hobbit amigavel com um brilho aventureiro nos olhos.",
                 "role": "Innkeeper"
             },
             "rooms": 25,
@@ -83,7 +83,7 @@
                 "defence": 8,
                 "race": "Human",
                 "type": "Civilian",
-                "description": "Um homem humano de aparência nobre com uma voz profunda e acolhedora.",
+                "description": "Um homem humano de aparencia nobre com uma voz profunda e acolhedora.",
                 "role": "Innkeeper"
             },
             "rooms": 30,

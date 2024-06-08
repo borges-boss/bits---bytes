@@ -16,7 +16,7 @@
                     "race": "Goblin",
                     "type": "Saqueador",
                     "mana": 0,
-                    "description": "Um goblin pequeno e ágil, conhecido por saquear viajantes desavisados.",
+                    "description": "Um goblin pequeno e agil, conhecido por saquear viajantes desavisados.",
                     "abilities": [
                         {
                             "name": "Golpe Duplo",
@@ -92,7 +92,7 @@
                     "abilities": [
                         {
                             "name": "Ataque Furtivo",
-                            "description": "Um ataque rápido e silencioso que pega o alvo de surpresa.",
+                            "description": "Um ataque rapido e silencioso que pega o alvo de surpresa.",
                             "type": "physical",
                             "value": 25,
                             "ability_cost": 10
@@ -122,11 +122,11 @@
                             "race": "Elemental",
                             "type": "Fogo",
                             "mana": 60,
-                            "description": "Uma criatura mágica feita inteiramente de chamas ardentes.",
+                            "description": "Uma criatura magica feita inteiramente de chamas ardentes.",
                             "abilities": [
                                 {
                                     "name": "Bola de Fogo",
-                                    "description": "Um ataque mágico de fogo que causa danos significativos.",
+                                    "description": "Um ataque magico de fogo que causa danos significativos.",
                                     "type": "magic",
                                     "value": 35,
                                     "ability_cost": 25
@@ -162,7 +162,7 @@
                     "race": "Goblin",
                     "type": "Saqueador",
                     "mana": 0,
-                    "description": "Um goblin pequeno e ágil, conhecido por saquear viajantes desavisados.",
+                    "description": "Um goblin pequeno e agil, conhecido por saquear viajantes desavisados.",
                     "abilities": [
                         {
                             "name": "Golpe Duplo",
@@ -239,7 +239,7 @@
                     "abilities": [
                         {
                             "name": "Ataque Furtivo",
-                            "description": "Um ataque rápido e silencioso que pega o alvo de surpresa.",
+                            "description": "Um ataque rapido e silencioso que pega o alvo de surpresa.",
                             "type": "physical",
                             "value": 25,
                             "ability_cost": 10
@@ -269,11 +269,11 @@
                             "race": "Elemental",
                             "type": "Fogo",
                             "mana": 60,
-                            "description": "Uma criatura mágica feita inteiramente de chamas ardentes.",
+                            "description": "Uma criatura magica feita inteiramente de chamas ardentes.",
                             "abilities": [
                                 {
                                     "name": "Bola de Fogo",
-                                    "description": "Um ataque mágico de fogo que causa danos significativos.",
+                                    "description": "Um ataque magico de fogo que causa danos significativos.",
                                     "type": "magic",
                                     "value": 35,
                                     "ability_cost": 25
@@ -309,7 +309,7 @@
                     "race": "Goblin",
                     "type": "Saqueador",
                     "mana": 0,
-                    "description": "Um goblin pequeno e ágil, conhecido por saquear viajantes desavisados.",
+                    "description": "Um goblin pequeno e agil, conhecido por saquear viajantes desavisados.",
                     "abilities": [
                         {
                             "name": "Golpe Duplo",
@@ -365,11 +365,11 @@
                             "race": "Elemental",
                             "type": "Fogo",
                             "mana": 60,
-                            "description": "Uma criatura mágica feita inteiramente de chamas ardentes.",
+                            "description": "Uma criatura magica feita inteiramente de chamas ardentes.",
                             "abilities": [
                                 {
                                     "name": "Bola de Fogo",
-                                    "description": "Um ataque mágico de fogo que causa danos significativos.",
+                                    "description": "Um ataque magico de fogo que causa danos significativos.",
                                     "type": "magic",
                                     "value": 35,
                                     "ability_cost": 25

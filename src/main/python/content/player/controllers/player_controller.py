@@ -74,14 +74,14 @@ class PlayerController:
         return player
 
     @classmethod
-    def equip_piece_of_armor(cls,wearable_item):
+    def equip_piece_of_armor(cls,wearable_item, player):
         player_model = PlayerModel()
-        cls.set_player_state(player_model.equip_piece_of_armor(wearable_item, cls.get_player()))
+        cls.silent_save(player_model.equip_piece_of_armor(wearable_item, player))
 
     @classmethod
-    def equip_item(cls,item):
+    def equip_item(cls,item, player):
         player_model = PlayerModel()
-        cls.set_player_state(player_model.equip_item(item,cls.get_player()))
+        cls.silent_save(player_model.equip_item(item,player))
 
     
     @classmethod
@@ -97,9 +97,9 @@ class PlayerController:
 
 
     @classmethod
-    def use_consumable(cls,item):
+    def use_consumable(cls,item, player):
         player_model = PlayerModel()
-        cls.set_player_state(player_model.use_consumable(item,cls.get_player()))
+        cls.silent_save(player_model.use_consumable(item,player))
 
     @classmethod
     def useAbility(cls, ability, target, player):

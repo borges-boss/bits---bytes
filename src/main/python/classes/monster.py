@@ -48,7 +48,7 @@ class Monster(Entity):
     @property
     def damage(self):
         damage_per_level = 10
-        return self._damage + (self._level * damage_per_level)
+        return (self._damage + (self._level * damage_per_level)) / 2
     
     @damage.setter
     def damage(self,value):

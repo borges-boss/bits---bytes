@@ -3,8 +3,8 @@ from content.journal.views.journal_view import JournalView
 
 class DungeonModel:
 
-    def open_inventory(self):
-        view = InventoryView()
+    def open_inventory(self, player):
+        view = InventoryView(player)
         view.init_view()
 
     def open_journal(self):

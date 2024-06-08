@@ -14,8 +14,8 @@ class TavernModel:
     def get_taverns_by_city(self,city):
         return self.datastore.find_taverns_by_city(city)
 
-    def open_inventory(self):
-        view = InventoryView()
+    def open_inventory(self, player):
+        view = InventoryView(player)
         view.init_view()
 
     def open_journal(self):

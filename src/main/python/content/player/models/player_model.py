@@ -173,7 +173,7 @@ class PlayerModel:
     def equip_piece_of_armor(self,wearable_item, player):
         equipped = False
 
-        for piece_of_armor in self.equipped_armor:
+        for piece_of_armor in player.equipped_armor:
             if piece_of_armor.wearable_type == wearable_item.wearable_type:
                 index = player.equipped_armor.index(piece_of_armor)
                 player.equipped_armor[index] = wearable_item
@@ -193,6 +193,8 @@ class PlayerModel:
                 self.equip_piece_of_armor(item, player)
         else:
             print("Esse item não pode ser equipado")
+        
+        return player
 
 
     def use_consumable(self,item, player):
@@ -225,7 +227,7 @@ class PlayerModel:
         else:
             player.defence+= item.effect_value
             
-
+        player.inventory.remove_item(item)
         return player
     
 

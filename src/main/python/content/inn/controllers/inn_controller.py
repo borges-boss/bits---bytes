@@ -9,8 +9,8 @@ class InnController:
     def rest(self, player):
         self.model.rest(player)
 
-    def open_inventory(self):
-        view = InventoryView()
+    def open_inventory(self, player):
+        view = InventoryView(player)
         view.init_view()
 
     def open_journal(self):

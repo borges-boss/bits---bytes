@@ -10,17 +10,17 @@ class InventoryController:
     def get_player_items(self):
         return self.model.get_items()
     
-    def use_item(self, item):
+    def use_item(self, item, player):
         if item.type == ITEM_TYPE_CONSUMABLE:
-            PlayerController.use_consumable(item)
+            PlayerController.use_consumable(item, player)
 
 
-    def equip_item(self, item):
+    def equip_item(self, item, player):
         if item.type in [ITEM_TYPE_WEARABLE, ITEM_TYPE_DAMAGE]:
             print(f"\nVoce equipou {item.name}.")
             if item.type == ITEM_TYPE_WEARABLE:
-                PlayerController.equip_piece_of_armor(item)
+                PlayerController.equip_piece_of_armor(item,player)
             else: 
-                PlayerController.equip_item(item)
+                PlayerController.equip_item(item, player)
 
             time.sleep(3)

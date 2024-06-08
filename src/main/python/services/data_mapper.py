@@ -51,7 +51,7 @@ class DataMapper:
                 type=item_dict.get('type'),
                 rarity=item_dict.get('rarity'),
                 weight=item_dict.get('weight'),
-                enchantments=item_dict.get('enchantments', []),
+                enchantments=[],
                 defence=item_dict.get('defence', 0.0),
                 wearable_type=item_dict.get('wearable_type', "")
             )
@@ -61,7 +61,7 @@ class DataMapper:
                 type=item_dict.get('type'),
                 rarity=item_dict.get('rarity'),
                 weight=item_dict.get('weight'),
-                enchantments=item_dict.get('enchantments', []),
+                enchantments=[],
                 damage=item_dict.get('damage', 0.0)
             )
         elif type == ITEM_TYPE_CONSUMABLE:

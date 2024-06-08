@@ -11,19 +11,19 @@
                 "defence": 10,
                 "race": "Human",
                 "type": "Civilian",
-                "description": "Um homem robusto com um sorriso amigável.",
+                "description": "Um homem robusto com um sorriso amigavel.",
                 "role": "Tavern Keeper"
             },
             "quests": [
                 {
                     "name": "O Ladrão de Joias",
-                    "description": "Encontre o ladrão que está roubando as joias da cidade.",
+                    "description": "Encontre o ladrão que esta roubando as joias da cidade.",
                     "reward": 200,
                     "reward_type": "money",
                     "is_completed": false
                 }
             ],
-            "tavern_keeper_dialog": "Olá, viajante! Estamos tendo alguns problemas com um ladrão. Você poderia nos ajudar?",
+            "tavern_keeper_dialog": "Ola, viajante! Estamos tendo alguns problemas com um ladrão. Voce poderia nos ajudar?",
             "city": "Gondolin"
         },
         {
@@ -37,7 +37,7 @@
                 "defence": 5,
                 "race": "Elf",
                 "type": "Civilian",
-                "description": "Um elfo de aparência sábia com olhos brilhantes.",
+                "description": "Um elfo de aparencia sabia com olhos brilhantes.",
                 "role": "Tavern Keeper"
             },
             "quests": [
@@ -49,7 +49,7 @@
                     "is_completed": false
                 }
             ],
-            "tavern_keeper_dialog": "Saudações, viajante! Nós precisamos de alguém para explorar a Floresta Sombria. Você se interessa?",
+            "tavern_keeper_dialog": "Saudacões, viajante! Nós precisamos de alguém para explorar a Floresta Sombria. Voce se interessa?",
             "city": "Rivendell"
         },
         {
@@ -69,13 +69,13 @@
             "quests": [
                 {
                     "name": "O Dragão do Pico da Montanha",
-                    "description": "Derrote o dragão que está aterrorizando a cidade.",
+                    "description": "Derrote o dragão que esta aterrorizando a cidade.",
                     "reward": 500,
                     "reward_type": "money",
                     "is_completed": false
                 }
             ],
-            "tavern_keeper_dialog": "Olá, viajante! Temos um problema com um dragão. Você pode nos ajudar?",
+            "tavern_keeper_dialog": "Ola, viajante! Temos um problema com um dragão. Voce pode nos ajudar?",
             "city": "Bree"
         },
         {
@@ -89,19 +89,19 @@
                 "defence": 6,
                 "race": "Hobbit",
                 "type": "Civilian",
-                "description": "Um hobbit amigável com um brilho aventureiro nos olhos.",
+                "description": "Um hobbit amigavel com um brilho aventureiro nos olhos.",
                 "role": "Tavern Keeper"
             },
             "quests": [
                 {
                     "name": "A Espada Perdida",
-                    "description": "Encontre a espada perdida do rei no calabouço.",
+                    "description": "Encontre a espada perdida do rei no calabouco.",
                     "reward": 100,
                     "reward_type": "money",
                     "is_completed": false
                 }
             ],
-            "tavern_keeper_dialog": "Olá, viajante! Nós estamos procurando uma espada perdida. Você poderia nos ajudar a encontrá-la?",
+            "tavern_keeper_dialog": "Ola, viajante! Nós estamos procurando uma espada perdida. Voce poderia nos ajudar a encontra-la?",
             "city": "The Shire"
         },
         {
@@ -115,7 +115,7 @@
                 "defence": 8,
                 "race": "Human",
                 "type": "Civilian",
-                "description": "Um homem humano de aparência nobre com uma voz profunda e acolhedora.",
+                "description": "Um homem humano de aparencia nobre com uma voz profunda e acolhedora.",
                 "role": "Tavern Keeper"
             },
             "quests": [
@@ -135,7 +135,7 @@
                     "is_completed": false
                 }
             ],
-            "tavern_keeper_dialog": "Saudações, viajante! Nós estamos procurando o Elixir da Vida. Você poderia nos ajudar a encontrá-lo?",
+            "tavern_keeper_dialog": "Saudacões, viajante! Nós estamos procurando o Elixir da Vida. Voce poderia nos ajudar a encontra-lo?",
             "city": "Rohan"
         }
     ]

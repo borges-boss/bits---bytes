@@ -16,7 +16,7 @@ class LocationService:
     def explore(current_structure, current_view, player):
         difficulty = current_structure.dificulty  if current_structure.dificulty != None else 2
         rarity = None
-        monster_probabilities = {1: 0.35, 2: 0.5, 3: 0.7, 4: 0.85}
+        monster_probabilities = {1: 0.45, 2: 0.55, 3: 0.7, 4: 0.85}
         loot_probabilities = {1: 0.35, 2: 0.25, 3: 0.15, 4: 0.08}
         datastore = DataStore()
 

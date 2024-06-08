@@ -74,7 +74,7 @@ class BattleView:
                     self.player_turn = False  
 
                 elif input_value == "3":
-                    InventoryView().init_view()
+                    InventoryView(self.player).init_view()
 
                 elif input_value == "4":
                     ConsoleUtils.clear_terminal()

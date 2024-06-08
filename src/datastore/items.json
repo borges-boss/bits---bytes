@@ -1,7 +1,7 @@
 {
     "items": [
         {
-            "name": "Poção de Saúde",
+            "name": "Pocao de Saude",
             "type": "consumable_item",
             "rarity": "common",
             "weight": 1,
@@ -62,7 +62,7 @@
             "damage": 25.0
         },
         {
-            "name": "Arco de Ébano",
+            "name": "Arco de Ebano",
             "type": "damage_item",
             "rarity": "epic",
             "weight": 10,
@@ -70,7 +70,7 @@
             "damage": 30.0
         },
         {
-            "name": "Poção de Cura Maior",
+            "name": "Pocao de Cura Maior",
             "type": "consumable_item",
             "rarity": "rare",
             "weight": 1,
@@ -92,11 +92,11 @@
             "type": "damage_item",
             "rarity": "epic",
             "weight": 8,
-            "enchantments": [{"name": "Fireball", "description": "Lança uma bola de fogo", "type": "damage", "value": 40}],
+            "enchantments": [{"name": "Fireball", "description": "Lanca uma bola de fogo", "type": "damage", "value": 40}],
             "damage": 50.0
         },
         {
-            "name": "Poção de Mana",
+            "name": "Pocao de Mana",
             "type": "consumable_item",
             "rarity": "common",
             "weight": 1,
@@ -105,7 +105,7 @@
             "effect_type": "mana"
         },
         {
-            "name": "Poção de Energia",
+            "name": "Pocao de Energia",
             "type": "consumable_item",
             "rarity": "rare",
             "weight": 1,
@@ -126,7 +126,7 @@
             "type": "wearable_item",
             "rarity": "epic",
             "weight": 6,
-            "enchantments": [{"name": "Fortitude", "description": "Aumenta a resistência", "type": "defence", "value": 3}],
+            "enchantments": [{"name": "Fortitude", "description": "Aumenta a resistencia", "type": "defence", "value": 3}],
             "defence": 12.0,
             "wearable_type": "helmet"
         },
@@ -144,12 +144,12 @@
             "type": "wearable_item",
             "rarity": "rare",
             "weight": 10,
-            "enchantments": [{"name": "Endurance", "description": "Aumenta a resistência", "type": "defence", "value": 4}],
+            "enchantments": [{"name": "Endurance", "description": "Aumenta a resistencia", "type": "defence", "value": 4}],
             "defence": 14.0,
             "wearable_type": "leggins"
         },
         {
-            "name": "Botas de Couro Rápidas",
+            "name": "Botas de Couro Rapidas",
             "type": "wearable_item",
             "rarity": "epic",
             "weight": 3,
@@ -166,7 +166,7 @@
             "damage": 70.0
         },
         {
-            "name": "Poção de Força",
+            "name": "Pocao de Forca",
             "type": "consumable_item",
             "rarity": "rare",
             "weight": 1,
@@ -175,7 +175,7 @@
             "effect_type": "damage"
         },
         {
-            "name": "Poção de Regeneração",
+            "name": "Pocao de Regeneracao",
             "type": "consumable_item",
             "rarity": "epic",
             "weight": 1,
@@ -192,7 +192,7 @@
             "damage": 10.0
         },
         {
-            "name": "Poção de Mana Maior",
+            "name": "Pocao de Mana Maior",
             "type": "consumable_item",
             "rarity": "rare",
             "weight": 1,
@@ -201,7 +201,7 @@
             "effect_type": "mana"
         },
         {
-            "name": "Elmo de Dragão",
+            "name": "Elmo de Dragao",
             "type": "wearable_item",
             "rarity": "legendary",
             "weight": 5,
@@ -214,16 +214,16 @@
             "type": "wearable_item",
             "rarity": "epic",
             "weight": 8,
-            "enchantments": [{"name": "Endurance", "description": "Aumenta a resistência", "type": "defence", "value": 4}],
+            "enchantments": [{"name": "Endurance", "description": "Aumenta a resistencia", "type": "defence", "value": 4}],
             "defence": 25.0,
             "wearable_type": "chestplate"
         },
         {
-            "name": "Perneiras de Aço",
+            "name": "Perneiras de Aco",
             "type": "wearable_item",
             "rarity": "rare",
             "weight": 7,
-            "enchantments": [{"name": "Fortitude", "description": "Aumenta a resistência", "type": "defence", "value": 3}],
+            "enchantments": [{"name": "Fortitude", "description": "Aumenta a resistencia", "type": "defence", "value": 3}],
             "defence": 15.0,
             "wearable_type": "leggins"
         },
@@ -245,7 +245,7 @@
             "damage": 20.0
         },
         {
-            "name": "Poção de Resistência",
+            "name": "Pocao de Resistencia",
             "type": "consumable_item",
             "rarity": "common",
             "weight": 1,
@@ -254,7 +254,7 @@
             "effect_type": "defence"
         },
         {
-            "name": "Poção de Fúria",
+            "name": "Pocao de Furia",
             "type": "consumable_item",
             "rarity": "rare",
             "weight": 1,
@@ -263,7 +263,7 @@
             "effect_type": "damage"
         },
         {
-            "name": "Elixir de Proteção",
+            "name": "Elixir de Protecao",
             "type": "consumable_item",
             "rarity": "epic",
             "weight": 1,
@@ -272,7 +272,7 @@
             "effect_type": "defence"
         },
         {
-            "name": "Poção de Escudo de Pedra",
+            "name": "Pocao de Escudo de Pedra",
             "type": "consumable_item",
             "rarity": "legendary",
             "weight": 1,
@@ -281,15 +281,15 @@
             "effect_type": "defence"
         },
         {
-            "name": "Lança do Caçador",
+            "name": "Lanca do Cacador",
             "type": "damage_item",
             "rarity": "epic",
             "weight": 12,
-            "enchantments": [{"name": "Precision", "description": "Aumenta a precisão do ataque", "type": "utility", "value": 5}],
+            "enchantments": [{"name": "Precision", "description": "Aumenta a precisao do ataque", "type": "utility", "value": 5}],
             "damage": 35.0
         },
         {
-            "name": "Túnica de Seda",
+            "name": "Tunica de Seda",
             "type": "wearable_item",
             "rarity": "common",
             "weight": 3,
@@ -306,7 +306,7 @@
             "damage": 55.0
         },
         {
-            "name": "Amuleto do Dragão",
+            "name": "Amuleto do Dragao",
             "type": "wearable_item",
             "rarity": "legendary",
             "weight": 2,
@@ -319,7 +319,7 @@
             "type": "wearable_item",
             "rarity": "epic",
             "weight": 1,
-            "enchantments": [{"name": "Mana Boost", "description": "Aumenta a mana máxima", "type": "utility", "value": 50}],
+            "enchantments": [{"name": "Mana Boost", "description": "Aumenta a mana maxima", "type": "utility", "value": 50}],
             "defence": 2.0,
             "wearable_type": "ring"
         },
